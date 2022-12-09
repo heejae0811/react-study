@@ -1,10 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import {Routes, Route} from 'react-router-dom'
+import MainPage from './pages/main/index'
+import ProjectPage from './pages/project/index'
+import StudyPage from './pages/study/index'
 
 function App() {
   return (
     <div>
-      <h1>앞으로 리액트 스터디 시작</h1>
+      <Routes>
+        <Route path="/" element={<MainPage/>} />
+        <Route path="/project" element={<ProjectPage/>} />
+        <Route path="/study" element={<StudyPage/>} />
+      </Routes>
     </div>
   );
 }
