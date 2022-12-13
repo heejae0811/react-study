@@ -37,5 +37,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "homepage": "http://heejae0811.github.io/react-study",
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
