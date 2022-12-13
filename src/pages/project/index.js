@@ -1,6 +1,8 @@
 function ProjectPage() {
   return (
-    <h1>프로젝트 페이지</h1>
+    <div className="project-page">
+      <h1>프로젝트 페이지</h1>
+    </div>
   );
 }
 

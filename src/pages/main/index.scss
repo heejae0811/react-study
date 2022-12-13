@@ -1,5 +1,18 @@
-.swiper {
-  width: 500px;
-  height: 500px;
-  background-size: cover;
+.main-page {
+  h1 {
+    margin-bottom: 50px;
+  }
+
+  .swiper {
+    width: 500px;
+    margin: 0;
+
+    img {
+      width: 500px;
+    }
+
+    p {
+      margin-bottom: 50px;
+    }
+  }
 }

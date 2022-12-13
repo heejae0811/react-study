@@ -1,0 +1,21 @@
+// layout
+body {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+  }
+}
+
+div[class$="-page"] {
+  height: calc(100vh - 200px);
+  margin: 100px auto;
+}
+
+@media screen and (max-width: 1000px) {
+  div[class$="-page"] {
+
+  }
+}
