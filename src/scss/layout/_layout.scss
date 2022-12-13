@@ -10,8 +10,9 @@ body {
 }
 
 div[class$="-page"] {
-  height: calc(100vh - 200px);
-  margin: 100px auto;
+  height: 100vh;
+  padding: 100px 0;
+  background-color: lavender;
 }
 
 @media screen and (max-width: 1000px) {
