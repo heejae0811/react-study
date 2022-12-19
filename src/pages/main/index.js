@@ -21,19 +21,19 @@ function MainPage() {
         onSlideChange={() => console.log('slide change')}
       >
         <SwiperSlide>
-          <img src="/images/profile01.jpg" alt="프로필"/>
+          <img src="/react-study/images/profile01.jpg" alt="프로필"/>
           <p>저는 무럭무럭 자라</p>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/images/profile02.jpg" alt="프로필"/>
+          <img src="/react-study/images/profile02.jpg" alt="프로필"/>
           <p>유도도 하고</p>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/images/profile03.jpg" alt="프로필"/>
+          <img src="/react-study/images/profile03.jpg" alt="프로필"/>
           <p>클라이밍도 하고</p>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/images/profile04.jpg" alt="프로필"/>
+          <img src="/react-study/images/profile04.jpg" alt="프로필"/>
           <p>밴드도 하는 어른이 됐습니다.</p>
         </SwiperSlide>
       </Swiper>
