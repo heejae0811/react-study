@@ -1,14 +1,14 @@
 import {useState} from 'react'
 import './../../scss/component/prop/circle.scss'
 
-function Circle() {
+function Circle(props) {
   const [active, setActive] = useState(false)
 
   return (
     <div className="circle">
         <button
-          className={active ? 'on' : ''}
-          onClick={() => setActive(!active)}/>
+          className={active ? 'on' : '' || props.activeAll ? 'on' : ''}
+          onClick={() => {setActive(!active);  props.selectAll();}}>{props.text}</button>
     </div>
   )
 }
