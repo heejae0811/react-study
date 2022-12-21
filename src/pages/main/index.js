@@ -16,10 +16,7 @@ function MainPage() {
         spaceBetween={50}
         slidesPerView={1}
         navigation
-        pagination={{clickable: true}}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
-      >
+        pagination={{clickable: true}}>
         <SwiperSlide>
           <img src="/react-study/images/profile01.jpg" alt="프로필"/>
           <p>저는 무럭무럭 자라</p>

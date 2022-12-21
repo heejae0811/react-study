@@ -6,13 +6,13 @@ const Header = () => {
     <header className="header">
       <ul>
         <li>
-          <Link to="/">메인 페이지</Link>
+          <Link to="/">자기소개</Link>
         </li>
         <li>
-          <Link to="/project">프로젝트 페이지</Link>
+          <Link to="/todo">To Do List</Link>
         </li>
         <li>
-          <Link to="/study">스터디 페이지</Link>
+          <Link to="/props">부모/자식 Props</Link>
         </li>
       </ul>
     </header>

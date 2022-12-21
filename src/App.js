@@ -1,7 +1,7 @@
 import {Routes, Route} from 'react-router-dom'
 import MainPage from './pages/main/index'
-import ProjectPage from './pages/project/index'
-import StudyPage from './pages/study/index'
+import TodoPage from './pages/todo/index'
+import PropsPage from './pages/props/index'
 import Header from './component/layout/Header'
 import Footer from './component/layout/Footer'
 
@@ -12,8 +12,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<MainPage/>} />
-        <Route path="/project" element={<ProjectPage/>} />
-        <Route path="/study" element={<StudyPage/>} />
+        <Route path="/todo" element={<TodoPage/>} />
+        <Route path="/props" element={<PropsPage/>} />
       </Routes>
 
       <Footer/>
