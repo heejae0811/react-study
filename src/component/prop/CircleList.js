@@ -1,23 +1,30 @@
 import {useState} from 'react'
 import Circle from './Circle'
 
-function CircleList() {
-  const [activeAll, setActiveAll] = useState(false)
+const CircleList = () => {
+  const [checkAll, setCheckAll] = useState(false)
+  const [isCheck, setIsCheck] = useState(false)
+  const [checkItem, setCheckItem] = useState([])
 
-  const selectAll = () => {
-    setActiveAll(!activeAll)
+  const onCheckAll = (isCheck) => {
+    setIsCheck(isCheck)
   }
 
   return (
-    <div className="circle-list">
+    <div>
+      <button onClick={onCheckAll}>Select All</button>
+
       <Circle
-        text={'ALL'}
-        activeAll={activeAll}
-        selectAll={selectAll}/>
-      <Circle activeAll={activeAll}/>
-      <Circle activeAll={activeAll}/>
-      <Circle activeAll={activeAll}/>
-      <Circle activeAll={activeAll}/>
+        isCheck={isCheck}
+        onCheckAll={onCheckAll}/>
+
+      <Circle
+        isCheck={isCheck}
+        onCheckAll={onCheckAll}/>
+
+      <Circle
+        isCheck={isCheck}
+        onCheckAll={onCheckAll}/>
     </div>
   )
 }
