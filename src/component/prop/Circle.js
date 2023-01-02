@@ -8,6 +8,7 @@ function Circle({ isCheck, setIsCheck, children }) {
   }
 
   return (
+    // {children}을 사용하면 컴포넌트의 자식의 자식 형태로 사용할 수 있다.
     <div className="circle">
       <button
         className={isCheck ? 'on' : ''}

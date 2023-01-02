@@ -2,7 +2,7 @@ import CircleList from '../../component/prop/CircleList'
 
 function PropsPage() {
   return (
-    <div className="project-page">
+    <div className="props-page">
       <CircleList/>
     </div>
   )
