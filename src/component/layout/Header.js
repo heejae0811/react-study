@@ -14,6 +14,9 @@ const Header = () => {
         <li>
           <Link to="/props">부모/자식 Props</Link>
         </li>
+        <li>
+          <Link to="/snow">눈 내리기</Link>
+        </li>
       </ul>
     </header>
   )
