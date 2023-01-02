@@ -2,28 +2,27 @@ import {useState} from 'react'
 import Circle from './Circle'
 
 const CircleList = () => {
-  const [isCheck, setIsCheck] = useState(false)
-
-  const onCheck = (isCheck) => {
-    setIsCheck(isCheck)
-  }
+  const [isCheck1, setIsCheck1] = useState(false)
+  const [isCheck2, setIsCheck2] = useState(false)
 
   return (
     <div>
-      <h3>자식에서 부모로 데이터 전달</h3>
-      <p>함수를 이용</p>
+      <Circle
+        isCheck={isCheck1}
+        setIsCheck={setIsCheck1}>
+        <Circle
+          isCheck={isCheck2}
+          setIsCheck={setIsCheck2}>
+        </Circle>
+      </Circle>
 
       <Circle
-        isCheck={isCheck}
-        onCheck={onCheck}/>
+        isCheck={isCheck1}
+        setIsCheck={setIsCheck1}/>
 
       <Circle
-        isCheck={isCheck}
-        onCheck={onCheck}/>
-
-      <Circle
-        isCheck={isCheck}
-        onCheck={onCheck}/>
+        isCheck={isCheck2}
+        setIsCheck={setIsCheck2}/>
     </div>
   )
 }
