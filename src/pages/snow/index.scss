@@ -1,0 +1,21 @@
+.snow-page {
+  background-color: gray !important;
+}
+
+.snowflake {
+  position: absolute;
+  top: -8px;
+  left: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+@keyframes fall {
+  from {}
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
