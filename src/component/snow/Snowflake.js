@@ -3,7 +3,7 @@ const Snowflake = ({active}) => {
     left: `${Math.random() * window.screen.width}px`,
     backgroundColor: `blue`,
     opacity: Math.random(),
-    animation: `fall 10s linear`,
+    animation: `fall 10s linear infinite`,
     animationDelay: `${(Math.random() * 15)}s`
   }
 
@@ -11,7 +11,7 @@ const Snowflake = ({active}) => {
     left: `${Math.random() * window.screen.width}px`,
     backgroundColor: `red`,
     opacity: Math.random(),
-    animation: `fall 10s linear`,
+    animation: `fall 10s linear infinite`,
     animationDelay: `${(Math.random() * 15)}s`
   }
 

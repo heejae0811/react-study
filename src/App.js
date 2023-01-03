@@ -5,10 +5,13 @@ import PropsPage from './pages/props/index'
 import SnowPage from './pages/snow/index'
 import Header from './component/layout/Header'
 import Footer from './component/layout/Footer'
+import Snow from './component/snow/Snow'
 
 function App() {
   return (
     <div>
+      <Snow/>
+
       <Header/>
 
       <Routes>
