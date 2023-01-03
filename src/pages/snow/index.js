@@ -3,19 +3,20 @@ import Snow from '../../component/snow/Snow'
 import './index.scss'
 
 function SnowPage() {
-  const [active, isActive] = useState(false)
+  const [isShow, setIsShow] = useState(true)
 
-  const showThemeChange = () => {
-    isActive(!active)
+  const toggleSnow = () => {
+    setIsShow(!isShow)
   }
 
   return (
     <div className="snow-page">
-      <button onClick={showThemeChange}>Snow Color Change</button>
+      <button onClick={toggleSnow}>Show / Hide Snow</button>
 
-      <Snow
-        active={active}
-        isActive={isActive}/>
+      {
+        isShow &&
+        <Snow/>
+      }
     </div>
   )
 }

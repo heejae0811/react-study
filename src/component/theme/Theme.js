@@ -1,7 +1,7 @@
 export const lightTheme = {
   bgColor: '#dfdfdf',
   textColor: '#222',
-  snowColor: 'darkmagenta'
+  snowColor: 'darkblue'
 }
 
 export const darkTheme = {

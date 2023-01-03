@@ -1,15 +1,6 @@
-const Snowflake = ({active}) => {
-  const whiteSnowStyle = {
+const Snowflake = () => {
+  const snowStyle = {
     left: `${Math.random() * window.screen.width}px`,
-    // backgroundColor: `blue`,
-    opacity: Math.random(),
-    animation: `fall 10s linear infinite`,
-    animationDelay: `${(Math.random() * 15)}s`
-  }
-
-  const blackSnowStyle = {
-    left: `${Math.random() * window.screen.width}px`,
-    // backgroundColor: `red`,
     opacity: Math.random(),
     animation: `fall 10s linear infinite`,
     animationDelay: `${(Math.random() * 15)}s`
@@ -19,7 +10,7 @@ const Snowflake = ({active}) => {
     <>
       <div
         className="snowflake"
-        style={active ? whiteSnowStyle : blackSnowStyle}/>
+        style={snowStyle}/>
     </>
   )
 }
