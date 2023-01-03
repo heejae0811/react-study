@@ -1,8 +1,8 @@
 import {useState} from 'react'
 import {Routes, Route} from 'react-router-dom'
 import {ThemeProvider} from 'styled-components'
-import GlobalStyle from './component/theme/GlobalStyle'
 import {darkTheme, lightTheme} from './component/theme/Theme'
+import GlobalStyle from './component/theme/GlobalStyle'
 import MainPage from './pages/main/index'
 import TodoPage from './pages/todo/index'
 import PropsPage from './pages/props/index'
@@ -21,9 +21,7 @@ function App() {
 
         <Header/>
 
-        <ThemeButton
-          isDarkMode={isDarkMode}
-          setIsDarkMode={setIsDarkMode}/>
+        <ThemeButton setIsDarkMode={setIsDarkMode}/>
 
         <Routes isDarkMode={isDarkMode}>
           <Route path="/" element={<MainPage/>}/>

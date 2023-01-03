@@ -12,5 +12,9 @@ body {
 div[class$="-page"] {
   height: 100vh;
   padding: 80px 20px;
-  color: #222;
+
+  input,
+  button {
+    color: #222;
+  }
 }
