@@ -1,5 +1,19 @@
 .snow-page {
   background-color: gray !important;
+
+  button {
+    padding: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+  }
+
+  .snowflake {
+    position: absolute;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
 }
 
 @keyframes fall {
