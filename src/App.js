@@ -9,8 +9,8 @@ import PropsPage from './pages/props/index'
 import SnowPage from './pages/snow/index'
 import Header from './component/layout/Header'
 import Footer from './component/layout/Footer'
-import ThemeButton from './component/theme/ThemeButton'
 import Snow from './component/snow/Snow'
+import ThemeButton from './component/theme/ThemeButton'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -19,12 +19,10 @@ function App() {
     <>
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         <GlobalStyle/>
-
         <Snow/>
+        <ThemeButton setIsDarkMode={setIsDarkMode}/>
 
         <Header/>
-
-        <ThemeButton setIsDarkMode={setIsDarkMode}/>
 
         <Routes isDarkMode={isDarkMode}>
           <Route path="/" element={<MainPage/>}/>
