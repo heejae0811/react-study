@@ -10,6 +10,7 @@ import SnowPage from './pages/snow/index'
 import Header from './component/layout/Header'
 import Footer from './component/layout/Footer'
 import ThemeButton from './component/theme/ThemeButton'
+import Snow from './component/snow/Snow'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -18,6 +19,8 @@ function App() {
     <>
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         <GlobalStyle/>
+
+        <Snow/>
 
         <Header/>
 

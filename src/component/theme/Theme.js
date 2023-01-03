@@ -1,11 +1,13 @@
 export const lightTheme = {
   bgColor: '#dfdfdf',
-  textColor: '#222'
+  textColor: '#222',
+  snowColor: 'darkmagenta'
 }
 
 export const darkTheme = {
   bgColor: '#888',
-  textColor: '#fff'
+  textColor: '#fff',
+  snowColor: 'springgreen'
 }
 
 export const theme = {

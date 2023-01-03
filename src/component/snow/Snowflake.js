@@ -1,7 +1,7 @@
 const Snowflake = ({active}) => {
   const whiteSnowStyle = {
     left: `${Math.random() * window.screen.width}px`,
-    backgroundColor: `blue`,
+    // backgroundColor: `blue`,
     opacity: Math.random(),
     animation: `fall 10s linear infinite`,
     animationDelay: `${(Math.random() * 15)}s`
@@ -9,7 +9,7 @@ const Snowflake = ({active}) => {
 
   const blackSnowStyle = {
     left: `${Math.random() * window.screen.width}px`,
-    backgroundColor: `red`,
+    // backgroundColor: `red`,
     opacity: Math.random(),
     animation: `fall 10s linear infinite`,
     animationDelay: `${(Math.random() * 15)}s`
