@@ -1,36 +1,19 @@
+// import {useState} from 'react'
+import Snowflake from '../../component/snow/Snowflake'
 import './index.scss'
 
 function SnowPage() {
-  const body = document.querySelector('body')
-
-  const  makeSnowflake = () => {
-    const snowflake = document.createElement('div')
-    const delay = Math.random() * 10
-    const initialOpacity = Math.random()
-    const MIN_DURATION = 10
-    const duration = Math.random() * 20 + MIN_DURATION
-
-    snowflake.classList.add('snowflake')
-    snowflake.style.left = `${Math.random() * window.screen.width}px`
-    snowflake.style.animationDelay = `${delay}s`
-    snowflake.style.opacity = initialOpacity
-    snowflake.style.animation = `fall ${duration}s linear`
-
-    body.appendChild(snowflake)
-
-    setTimeout(() => {
-      body.removeChild(snowflake)
-      makeSnowflake()
-    }, (duration + delay) * 1000)
-  }
-
-  for(let index = 0; index < 50; index++) {
-    setTimeout(makeSnowflake, 500 * index)
-  }
+  const snowList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
   return (
     <div className="snow-page">
-      <div className="snowflake"></div>
+      <Snowflake/>
+
+      {
+        snowList.map((item, i) => (
+          <Snowflake key={`snow-${i}`}/>
+        ))
+      }
     </div>
   )
 }

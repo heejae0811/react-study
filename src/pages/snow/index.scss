@@ -2,16 +2,6 @@
   background-color: gray !important;
 }
 
-.snowflake {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #fff;
-}
-
 @keyframes fall {
   from {}
   to {
