@@ -1,29 +1,41 @@
+import {useState} from 'react'
 import {Routes, Route} from 'react-router-dom'
+import {ThemeProvider} from 'styled-components'
+import GlobalStyle from './component/theme/GlobalStyle'
+import {darkTheme, lightTheme} from './component/theme/Theme'
 import MainPage from './pages/main/index'
 import TodoPage from './pages/todo/index'
 import PropsPage from './pages/props/index'
 import SnowPage from './pages/snow/index'
 import Header from './component/layout/Header'
 import Footer from './component/layout/Footer'
-import Snow from './component/snow/Snow'
+import ThemeButton from './component/theme/ThemeButton'
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
   return (
-    <div>
-      <Snow/>
+    <>
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <GlobalStyle/>
 
-      <Header/>
+        <Header/>
 
-      <Routes>
-        <Route path="/" element={<MainPage/>} />
-        <Route path="/todo" element={<TodoPage/>} />
-        <Route path="/props" element={<PropsPage/>} />
-        <Route path="/snow" element={<SnowPage/>} />
-      </Routes>
+        <ThemeButton
+          isDarkMode={isDarkMode}
+          setIsDarkMode={setIsDarkMode}/>
 
-      <Footer/>
-    </div>
-  );
+        <Routes isDarkMode={isDarkMode}>
+          <Route path="/" element={<MainPage/>}/>
+          <Route path="/todo" element={<TodoPage/>}/>
+          <Route path="/props" element={<PropsPage/>}/>
+          <Route path="/snow" element={<SnowPage/>}/>
+        </Routes>
+
+        <Footer/>
+      </ThemeProvider>
+    </>
+  )
 }
 
-export default App;
+export default App

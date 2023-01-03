@@ -1,4 +1,4 @@
-import CircleList from '../../component/prop/CircleList'
+import CircleList from '../../component/props/CircleList'
 
 function PropsPage() {
   return (
