@@ -1,26 +1,18 @@
 const Snowflake = ({active}) => {
-  const makeSnowflake = () => {
-    const MIN_DURATION = 10
-    const duration = Math.random() * 20 + MIN_DURATION
-    const delay = Math.random() * 10
-
-    setTimeout(() => {
-      makeSnowflake()
-    }, (duration + delay) * 1000)
-  }
-
   const whiteSnowStyle = {
     left: `${Math.random() * window.screen.width}px`,
     backgroundColor: `blue`,
     opacity: Math.random(),
-    animation: `fall 10s linear`
+    animation: `fall 10s linear`,
+    animationDelay: `${(Math.random() * 15)}s`
   }
 
   const blackSnowStyle = {
     left: `${Math.random() * window.screen.width}px`,
     backgroundColor: `red`,
     opacity: Math.random(),
-    animation: `fall 10s linear`
+    animation: `fall 10s linear`,
+    animationDelay: `${(Math.random() * 15)}s`
   }
 
   return (
