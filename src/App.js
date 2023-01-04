@@ -12,8 +12,10 @@ import Header from './component/layout/Header'
 import Footer from './component/layout/Footer'
 import Snow from './component/snow/Snow'
 import ThemeButton from './component/theme/ThemeButton'
+import {useUserState} from './context/UserContext'
 
 function App() {
+  const {user} = useUserState()
   const [isDarkMode, setIsDarkMode] = useState(false)
 
   return (
@@ -25,13 +27,18 @@ function App() {
 
         <Header/>
 
-        <Routes isDarkMode={isDarkMode}>
-          <Route path="/" element={<MainPage/>}/>
-          <Route path="/todo" element={<TodoPage/>}/>
-          <Route path="/props" element={<PropsPage/>}/>
-          <Route path="/snow" element={<SnowPage/>}/>
-          <Route path="/login" element={<LoginPage/>}/>
-        </Routes>
+        {user ? (
+          <Routes isDarkMode={isDarkMode}>
+            <Route path="/" element={<MainPage/>}/>
+            <Route path="/todo" element={<TodoPage/>}/>
+            <Route path="/props" element={<PropsPage/>}/>
+            <Route path="/snow" element={<SnowPage/>}/>
+          </Routes>
+        ) : (
+          <Routes isDarkMode={isDarkMode}>
+            <Route path="/login" element={<LoginPage/>}/>
+          </Routes>
+        )}
 
         <Footer/>
       </ThemeProvider>
