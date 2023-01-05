@@ -3,42 +3,46 @@ import './header.scss'
 import {useUserDispatch, useUserState} from '../../context/UserContext'
 
 const Header = () => {
-  const { user } = useUserState();
-  const dispatch = useUserDispatch();
+  const {user} = useUserState()
+  const dispatch = useUserDispatch()
 
   const onLogOut = () => {
-    alert("로그아웃 되었습니다.");
+    alert('로그아웃 되었습니다.')
     dispatch({
-      type: "LOGOUT",
-    });
-  };
+      type: 'LOGOUT'
+    })
+  }
 
   return (
     <header className="header">
-      <ul>
-        <li>
-          <Link to="/intro">자기소개</Link>
-        </li>
-        <li>
-          <Link to="/todo">To Do List</Link>
-        </li>
-        <li>
-          <Link to="/props">부모/자식 Props</Link>
-        </li>
-        <li>
-          <Link to="/snow">눈 내리기</Link>
-        </li>
-      </ul>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/intro">자기소개</Link>
+          </li>
+          <li>
+            <Link to="/todo">To Do List</Link>
+          </li>
+          <li>
+            <Link to="/props">부모/자식 Props</Link>
+          </li>
+          <li>
+            <Link to="/snow">눈 내리기</Link>
+          </li>
+        </ul>
+      </nav>
 
       {
         user ? (
           <ul>
-            <li>{user.userId}님</li>
-            <li><button type="submit" value="로그아웃" onClick={onLogOut}>로그아웃</button></li>
+            <li>{user.userId} 님</li>
+            <li className="logout" onClick={onLogOut}>로그아웃</li>
           </ul>
         ) : (
           <ul>
-            <li><button type="submit" value="로그인">로그인</button></li>
+            <li>
+              <Link to="/">로그인</Link>
+            </li>
           </ul>
         )
       }
