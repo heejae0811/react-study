@@ -2,6 +2,7 @@
 import React, {useCallback, useState} from 'react'
 import useAuth from '../../hooks/useAuth'
 import {useUserDispatch, useUserState} from '../../context/UserContext'
+import './index.scss'
 
 function LoginPage() {
   const [id, onChangeId, setId] = useAuth('')
@@ -32,11 +33,15 @@ function LoginPage() {
 
   return (
     <div className="login-page">
-      <label htmlFor="user_id">아이디 : </label>
-      <input type="text" id="user_id" value={id} onChange={onChangeId} placeholder="아이디를 입력해주세요." required/>
+      <div>
+        <label htmlFor="user_id">아이디</label>
+        <input type="text" id="user_id" value={id} onChange={onChangeId} placeholder="아이디를 입력해주세요." required/>
+      </div>
 
-      <label htmlFor="user_pwd">비밀번호 : </label>
-      <input type="text" id="user_pwd" value={pwd} onChange={onChangePwd} placeholder="비밀번호를 입력해주세요." required/>
+      <div>
+        <label htmlFor="user_pwd">비밀번호</label>
+        <input type="text" id="user_pwd" value={pwd} onChange={onChangePwd} placeholder="비밀번호를 입력해주세요." required/>
+      </div>
 
       <button type="submit" value="로그인" onClick={onLogin}>확인</button>
     </div>

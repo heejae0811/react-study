@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 import {ThemeProvider} from 'styled-components'
 import {darkTheme, lightTheme} from './component/theme/Theme'
 import GlobalStyle from './component/theme/GlobalStyle'
-import MainPage from './pages/main/index'
+import IntroPage from './pages/intro/index'
 import TodoPage from './pages/todo/index'
 import PropsPage from './pages/props/index'
 import SnowPage from './pages/snow/index'
@@ -29,14 +29,14 @@ function App() {
 
         {user ? (
           <Routes isDarkMode={isDarkMode}>
-            <Route path="/" element={<MainPage/>}/>
+            <Route path="/intro" element={<IntroPage/>}/>
             <Route path="/todo" element={<TodoPage/>}/>
             <Route path="/props" element={<PropsPage/>}/>
             <Route path="/snow" element={<SnowPage/>}/>
           </Routes>
         ) : (
           <Routes isDarkMode={isDarkMode}>
-            <Route path="/login" element={<LoginPage/>}/>
+            <Route path="/" element={<LoginPage/>}/>
           </Routes>
         )}
 

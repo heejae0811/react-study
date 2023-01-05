@@ -1,0 +1,15 @@
+.login-page {
+  > div {
+    margin-bottom: 10px;
+
+    label {
+      display: inline-block;
+      width: 80px;
+    }
+
+    input[type="text"] {
+      width: 180px;
+      padding: 5px;
+    }
+  }
+}

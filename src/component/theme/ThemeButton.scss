@@ -1,7 +1,10 @@
 .themeButton {
   position: fixed;
-  top: 17px;
   right: 17px;
+  bottom: 17px;
   z-index: 9999;
-  color: #fff;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  color: #000;
 }

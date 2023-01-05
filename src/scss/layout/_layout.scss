@@ -13,8 +13,12 @@ div[class$="-page"] {
   height: 100vh;
   padding: 80px 20px;
 
-  input,
-  button {
+  input {
+    background-color: #fff;
     color: #222;
+  }
+
+  button {
+    padding: 5px;
   }
 }

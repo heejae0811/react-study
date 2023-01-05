@@ -7,11 +7,11 @@ import 'swiper/css/scrollbar'
 import './index.scss'
 import {useUserState} from '../../context/UserContext'
 
-function MainPage() {
+function IntroPage() {
   const {user} = useUserState()
 
   return (
-    <div className="main-page">
+    <div className="intro-page">
       <h1>자기소개 :)</h1>
       <h3>{user.userId}님 환영합니다.</h3>
 
@@ -42,4 +42,4 @@ function MainPage() {
   )
 }
 
-export default MainPage
+export default IntroPage

@@ -17,7 +17,7 @@ const Header = () => {
     <header className="header">
       <ul>
         <li>
-          <Link to="/">자기소개</Link>
+          <Link to="/intro">자기소개</Link>
         </li>
         <li>
           <Link to="/todo">To Do List</Link>
@@ -27,9 +27,6 @@ const Header = () => {
         </li>
         <li>
           <Link to="/snow">눈 내리기</Link>
-        </li>
-        <li>
-          <Link to="/login">로그인페이지</Link>
         </li>
       </ul>
 
