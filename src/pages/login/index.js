@@ -1,5 +1,4 @@
-// Login.jsx
-import React, {useCallback, useState} from 'react'
+import React, {useCallback} from 'react'
 import useAuth from '../../hooks/useAuth'
 import {useUserDispatch, useUserState} from '../../context/UserContext'
 import './index.scss'
@@ -15,11 +14,11 @@ function LoginPage() {
 
   const onLogin = () => {
     if (!id || !pwd) {
-      alert('모든 값을 정확하게 입력해주세요')
+      alert('아이디 또는 비밀번호를 입력해주세요.')
       return
     }
 
-    alert('로그인')
+    alert('로그인 성공!')
     onReset()
 
     dispatch({
@@ -28,7 +27,7 @@ function LoginPage() {
     })
   }
 
-  const {userList} = useUserState()
+  const {userData} = useUserState()
   const dispatch = useUserDispatch()
 
   return (
