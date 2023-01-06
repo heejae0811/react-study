@@ -4,13 +4,14 @@ import {useUserDispatch, useUserState} from '../../context/UserContext'
 import './index.scss'
 
 function LoginPage() {
-  const {userData, user} = useUserState()
+  const {userData} = useUserState()
   const dispatch = useUserDispatch()
 
   const [id, onChangeId, setId] = useAuth('')
   const [pwd, onChangePwd, setPwd] = useAuth('')
 
   const onLogin = () => {
+    console.log(userData)
     const user = userData.filter(list => list.loginId === id && list.password === pwd)
 
     if (!id || !pwd) {
@@ -21,7 +22,7 @@ function LoginPage() {
       alert('로그인 되었습니다.')
       dispatch({
         type: 'LOGIN',
-        userId: id
+        loginId: id
       })
     }
   }

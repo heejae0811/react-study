@@ -59,7 +59,7 @@ const Header = () => {
       {
         user ? (
           <ul>
-            <li>{user.userId} 님</li>
+            <li>{user.loginId} 님</li>
             <li className="logout" onClick={onLogOut}>로그아웃</li>
           </ul>
         ) : (

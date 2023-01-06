@@ -23,7 +23,7 @@ function App() {
     <>
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         <GlobalStyle/>
-        {/*<Snow/>*/}
+        <Snow/>
         <ThemeButton setIsDarkMode={setIsDarkMode}/>
 
         <Header/>

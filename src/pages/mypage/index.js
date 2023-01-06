@@ -1,16 +1,14 @@
 import {useUserState} from '../../context/UserContext'
 
 function MyPage() {
-  const {user} = useUserState()
-  // const {userData} = useUserState()
+  const {user, userData} = useUserState()
 
-  // const {userData} = useUserState()
-
-  // console.log(userData)
+  console.log(user)
+  console.log(userData)
 
   return (
     <div className="my-page">
-      <h2>{user.userId}님 환영합니다.</h2>
+      <h2>{user.loginId}님 환영합니다.</h2>
       <p>이름: {user.name}</p>
       <p>전화번호: {user.phoneNumber}</p>
     </div>

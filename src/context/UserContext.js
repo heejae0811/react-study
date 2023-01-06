@@ -68,7 +68,10 @@ const reducer = (state, action) => {
     case 'LOGIN':
       return {
         user: {
-         userId: action.userId
+          name: action.name,
+          loginId: action.loginId,
+          phoneNumber: action.phoneNumber,
+          isAdmin: action.isAdmin
         }
       }
     case 'LOGOUT':
