@@ -1,6 +1,6 @@
+import {useUserDispatch, useUserState} from '../../context/UserContext'
 import {Link} from 'react-router-dom'
 import './header.scss'
-import {useUserDispatch, useUserState} from '../../context/UserContext'
 
 const Header = () => {
   const {user} = useUserState()
@@ -17,18 +17,42 @@ const Header = () => {
     <header className="header">
       <nav>
         <ul>
-          <li>
-            <Link to="/intro">자기소개</Link>
-          </li>
-          <li>
-            <Link to="/todo">To Do List</Link>
-          </li>
-          <li>
-            <Link to="/props">부모/자식 Props</Link>
-          </li>
-          <li>
-            <Link to="/snow">눈 내리기</Link>
-          </li>
+          {
+            user ? (
+              <>
+                <li>
+                  <Link to="/intro">자기소개</Link>
+                </li>
+                <li>
+                  <Link to="/todo">To Do List</Link>
+                </li>
+                <li>
+                  <Link to="/props">부모/자식 Props</Link>
+                </li>
+                <li>
+                  <Link to="/snow">눈 내리기</Link>
+                </li>
+                <li>
+                  <Link to="/mypage">마이페이지</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/intro">자기소개</Link>
+                </li>
+                <li>
+                  <Link to="/todo">To Do List</Link>
+                </li>
+                <li>
+                  <Link to="/props">부모/자식 Props</Link>
+                </li>
+                <li>
+                  <Link to="/snow">눈 내리기</Link>
+                </li>
+              </>
+            )
+          }
         </ul>
       </nav>
 

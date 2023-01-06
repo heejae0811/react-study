@@ -5,8 +5,26 @@ import React, {createContext, useContext, useReducer} from 'react'
 const initialState = {
   userData: [
     {
-      userId: '정주호',
-      // userId: 'meju7015',
+      name: "이희재",
+      loginId: "test",
+      password: "123",
+      phoneNumber: "010-0000-0000",
+      isAdmin: true,
+      accessToken: "18c1asdf9d8e9999edf028182e3",
+      abilities: [
+        {
+          action: "dashboard",
+          permission: "manage"
+        },
+        {
+          action: "users",
+          permission: "read"
+        }
+      ]
+    },
+    {
+      name: '정주호',
+      loginId: 'meju7015',
       password: '123123123',
       phoneNumber: '010-2396-2036',
       isAdmin: true,
@@ -23,8 +41,8 @@ const initialState = {
       ]
     },
     {
-      userId: '스틱',
-      // userId: 'sticker',
+      name: '스틱',
+      loginId: 'sticker',
       password: '123123123',
       phoneNumber: '010-1243-1234',
       isAdmin: false,
@@ -44,18 +62,18 @@ const initialState = {
   user: null
 }
 
+// reducer는 현새 상태와 업데이트를 위해 필요한 정보를 담은 action 값을 전달받아 새로운 상태를 반환하는 함수이다.
 const reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
-        ...state,
         user: {
-          userId: action.userId
+         userId: action.userId
+
         }
       }
     case 'LOGOUT':
       return {
-        ...state,
         user: null
       }
     default:

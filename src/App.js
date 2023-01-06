@@ -8,6 +8,7 @@ import TodoPage from './pages/todo/index'
 import PropsPage from './pages/props/index'
 import SnowPage from './pages/snow/index'
 import LoginPage from './pages/login/index'
+import MyPage from './pages/mypage/index'
 import Header from './component/layout/Header'
 import Footer from './component/layout/Footer'
 import Snow from './component/snow/Snow'
@@ -33,6 +34,7 @@ function App() {
             <Route path="/todo" element={<TodoPage/>}/>
             <Route path="/props" element={<PropsPage/>}/>
             <Route path="/snow" element={<SnowPage/>}/>
+            <Route path="/mypage" element={<MyPage/>}/>
           </Routes>
         ) : (
           <Routes isDarkMode={isDarkMode}>

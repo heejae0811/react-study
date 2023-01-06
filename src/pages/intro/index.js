@@ -5,15 +5,11 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import './index.scss'
-import {useUserState} from '../../context/UserContext'
 
 function IntroPage() {
-  const {user} = useUserState()
-
   return (
     <div className="intro-page">
       <h1>자기소개 :)</h1>
-      <h3>{user.userId}님 환영합니다.</h3>
 
       <Swiper
         modules={[Navigation, Pagination, A11y]}
