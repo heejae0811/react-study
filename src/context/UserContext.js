@@ -1,24 +1,24 @@
 import React, {createContext, useContext, useReducer} from 'react'
 
-// context API를 사용하면 단 한 번에 원하는 값을 받아와 사용할 수 있다.
-// procider를 사용하면 context의 value를 변경할 수 있다.
+// context API를 사용하면 한 번에 원하는 값을 받아 사용할 수 있다.
+// provider를 사용하면 context의 value를 변경할 수 있다.
 const initialState = {
   userData: [
     {
-      name: "이희재",
-      loginId: "test",
-      password: "123",
-      phoneNumber: "010-0000-0000",
+      name: '이희재',
+      loginId: 'test',
+      password: '123',
+      phoneNumber: '010-0000-0000',
       isAdmin: true,
-      accessToken: "18c1asdf9d8e9999edf028182e3",
+      accessToken: '18c1asdf9d8e9999edf028182e3',
       abilities: [
         {
-          action: "dashboard",
-          permission: "manage"
+          action: 'dashboard',
+          permission: 'manage'
         },
         {
-          action: "users",
-          permission: "read"
+          action: 'users',
+          permission: 'read'
         }
       ]
     },
@@ -69,7 +69,6 @@ const reducer = (state, action) => {
       return {
         user: {
          userId: action.userId
-
         }
       }
     case 'LOGOUT':

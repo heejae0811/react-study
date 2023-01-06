@@ -2,6 +2,11 @@ import {useUserState} from '../../context/UserContext'
 
 function MyPage() {
   const {user} = useUserState()
+  // const {userData} = useUserState()
+
+  // const {userData} = useUserState()
+
+  // console.log(userData)
 
   return (
     <div className="my-page">
