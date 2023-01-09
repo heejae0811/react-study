@@ -62,16 +62,14 @@ const initialState = {
   user: null
 }
 
-// reducer는 현새 상태와 업데이트를 위해 필요한 정보를 담은 action 값을 전달받아 새로운 상태를 반환하는 함수이다.
+// reducer는 현재 상태와 업데이트를 위해 필요한 정보를 담은 action 값을 전달받아 새로운 상태를 반환하는 함수이다.
 const reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
+        ...state,
         user: {
-          name: action.name,
           loginId: action.loginId,
-          phoneNumber: action.phoneNumber,
-          isAdmin: action.isAdmin
         }
       }
     case 'LOGOUT':

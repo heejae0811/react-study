@@ -1,17 +1,21 @@
-import React from 'react'
-import useAuth from '../../hooks/useAuth'
-import {useUserDispatch, useUserState} from '../../context/UserContext'
+import React, {useCallback} from 'react'
+import {useUserState, useUserDispatch} from '../../context/UserContext'
+import useInput from '../../hooks/useInput'
 import './index.scss'
 
 function LoginPage() {
   const {userData} = useUserState()
   const dispatch = useUserDispatch()
 
-  const [id, onChangeId, setId] = useAuth('')
-  const [pwd, onChangePwd, setPwd] = useAuth('')
+  const [id, onChangeId, resetId] = useInput('')
+  const [pwd, onChangePwd, resetPwd] = useInput('')
+
+  const onReset = useCallback(() => {
+    resetId('')
+    resetPwd('')
+  }, [resetId, resetPwd])
 
   const onLogin = () => {
-    console.log(userData)
     const user = userData.filter(list => list.loginId === id && list.password === pwd)
 
     if (!id || !pwd) {
@@ -25,6 +29,8 @@ function LoginPage() {
         loginId: id
       })
     }
+
+    onReset()
   }
 
   return (
