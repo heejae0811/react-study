@@ -6,6 +6,7 @@ import App from './App'
 import './scss/common.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
+
 root.render(
   <AuthProvider>
     <BrowserRouter>

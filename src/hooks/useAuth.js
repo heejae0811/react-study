@@ -44,11 +44,13 @@ export function useAuth(){
   ]
 
   const isLogin = () => {
-    alert('로그인')
+    value.setLogin(true)
+    alert('로그인 되었습니다.')
   }
 
   const isLogout = () => {
-    alert('로그아웃')
+    value.setLogin(false)
+    alert('로그아웃 되었습니다.')
   }
 
   return [value, userList, isLogin, isLogout]
