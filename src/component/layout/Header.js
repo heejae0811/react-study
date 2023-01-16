@@ -7,6 +7,7 @@ const Header = () => {
 
   // TODO :: isLogout() 함수 호출 안됨
   const onLogout = () => {
+    value.setLogin(false)
     isLogout()
   }
 
