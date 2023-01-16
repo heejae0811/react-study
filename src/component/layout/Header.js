@@ -1,10 +1,14 @@
-import {useContext} from 'react'
 import {Link} from 'react-router-dom'
-import {AuthContext} from '../../context/AuthContext'
+import {useAuth} from '../../hooks/useAuth'
 import './header.scss'
 
 const Header = () => {
-  const value = useContext(AuthContext)
+  const [value, isLogout] = useAuth()
+
+  // TODO :: isLogout() 함수 호출 안됨
+  const onLogout = () => {
+    isLogout()
+  }
 
   return (
     <header className="header">
@@ -52,8 +56,8 @@ const Header = () => {
       {
         value.login ? (
           <ul>
-            {/*<li>{user.loginId} 님</li>*/}
-            <li className="logout">로그아웃</li>
+            <li>{value.loginUser[0].loginId} 님</li>
+            <li className="logout" onClick={onLogout}>로그아웃</li>
           </ul>
         ) : (
           <ul>

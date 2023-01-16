@@ -3,14 +3,14 @@ import {createContext, useState} from 'react'
 export const AuthContext = createContext(null)
 
 export const AuthProvider = ({children}) => {
-  const [user, setUser] = useState([])
   const [login, setLogin] = useState(false)
+  const [loginUser, setLoginUser] = useState([])
 
   const value = {
-    user: user,
-    setUser: setUser,
     login: login,
-    setLogin: setLogin
+    setLogin: setLogin,
+    loginUser: loginUser,
+    setLoginUser: setLoginUser
   }
 
   return (

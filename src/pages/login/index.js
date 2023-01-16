@@ -4,7 +4,7 @@ import useInput from '../../hooks/useInput'
 import './index.scss'
 
 function LoginPage() {
-  const [value, userList, isLogin, isLogout] = useAuth()
+  const [value, userList, isLogin] = useAuth()
   const [id, onChangeId, resetId] = useInput('')
   const [pwd, onChangePwd, resetPwd] = useInput('')
 
@@ -24,13 +24,13 @@ function LoginPage() {
       alert('로그인 권한이 없습니다.')
     } else {
       isLogin()
+      onReset()
+      value.setLoginUser(user)
     }
   }
 
   return (
     <div className="login-page">
-      {/*{userData}*/}
-
       <h4>아이디 = test, 비밀번호 = 123</h4>
       <h4>아이디 = sticker, 비밀번호 = 123123123 (false)</h4>
 
