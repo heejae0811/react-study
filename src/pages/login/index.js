@@ -1,11 +1,13 @@
-import React, {useCallback} from 'react'
-import {useUserState, useUserDispatch} from '../../context/UserContext'
+import React, {useCallback, useEffect} from 'react'
+import {useAuth} from '../../hooks/useAuth'
 import useInput from '../../hooks/useInput'
 import './index.scss'
 
 function LoginPage() {
-  const {userData} = useUserState()
-  const dispatch = useUserDispatch()
+  // const {userData} = AuthProvider()
+  // const dispatch = useUserDispatch()
+
+  const [value, userList, isLogin, isLogout] = useAuth()
 
   const [id, onChangeId, resetId] = useInput('')
   const [pwd, onChangePwd, resetPwd] = useInput('')
@@ -16,27 +18,31 @@ function LoginPage() {
   }, [resetId, resetPwd])
 
   const onLogin = () => {
-    const user = userData.filter(list => list.loginId === id && list.password === pwd)
+    console.log(userList)
 
-    if (!id || !pwd) {
-      alert('아이디 또는 비밀번호를 입력해주세요.')
-    } else if (user.length === 0) {
-      alert('아이디 또는 비밀번호가 틀렸습니다.')
-    } else if (user[0].isAdmin === false) {
-      alert('로그인 권한이 없습니다.')
-    } else {
-      alert('로그인 되었습니다.')
-      dispatch({
-        type: 'LOGIN',
-        loginId: id
-      })
-    }
+    // const user = userData.filter(list => list.loginId === id && list.password === pwd)
+
+    // if (!id || !pwd) {
+    //   alert('아이디 또는 비밀번호를 입력해주세요.')
+    // } else if (user.length === 0) {
+    //   alert('아이디 또는 비밀번호가 틀렸습니다.')
+    // } else if (user[0].isAdmin === false) {
+    //   alert('로그인 권한이 없습니다.')
+    // } else {
+    //   alert('로그인 되었습니다.')
+    // }
 
     onReset()
   }
 
+  // useEffect(() => {
+  //   isLogin()
+  // }, [value.isLogin])
+
   return (
     <div className="login-page">
+      {/*{userData}*/}
+
       <h4>아이디 = test, 비밀번호 = 123</h4>
       <h4>아이디 = sticker, 비밀번호 = 123123123 (false)</h4>
 

@@ -1,8 +1,8 @@
 import {useContext} from 'react'
 import {AuthContext} from '../context/AuthContext'
 
-const useAuth = () => {
-  const userData = useContext(AuthContext)
+export function useAuth(){
+  const value = useContext(AuthContext)
 
   const userList = [
     {
@@ -44,13 +44,12 @@ const useAuth = () => {
   ]
 
   const isLogin = () => {
+    alert('로그인')
   }
 
-  const onLogin = () => {
+  const isLogout = () => {
+    alert('로그아웃')
   }
 
-  const onLogout = () => {
-  }
+  return [value, userList, isLogin, isLogout]
 }
-
-export default useAuth
