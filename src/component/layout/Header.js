@@ -3,11 +3,10 @@ import {useAuth} from '../../hooks/useAuth'
 import './header.scss'
 
 const Header = () => {
-  const [value, isLogout] = useAuth()
+  const [value, userList, isLogin, isLogout] = useAuth()
 
-  // TODO :: isLogout() 함수 호출 안됨
+  // TODO :: userList, isLogin 작성하지 않으면 isLogout() 함수 호출 안됨
   const onLogout = () => {
-    value.setLogin(false)
     isLogout()
   }
 
