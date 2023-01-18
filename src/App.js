@@ -1,6 +1,5 @@
-import {useState, useContext} from 'react'
+import {useState} from 'react'
 import {Routes, Route} from 'react-router-dom'
-import {AuthContext} from './context/AuthContext'
 import {ThemeProvider} from 'styled-components'
 import {darkTheme, lightTheme} from './component/theme/Theme'
 import GlobalStyle from './component/theme/GlobalStyle'
@@ -14,9 +13,10 @@ import Header from './component/layout/Header'
 import Footer from './component/layout/Footer'
 import ThemeButton from './component/theme/ThemeButton'
 import Snow from './component/snow/Snow'
+import {useAuth} from './hooks/useAuth'
 
 function App() {
-  const value = useContext(AuthContext)
+  const [userList, loginValue, isLogin, isLogout] = useAuth()
   const [isDarkMode, setIsDarkMode] = useState(false)
 
   return (
@@ -27,8 +27,9 @@ function App() {
         <ThemeButton setIsDarkMode={setIsDarkMode}/>
         <Header/>
         {
-          value.login ? (
+          loginValue.login ? (
             <Routes isDarkMode={isDarkMode}>
+              <Route path="/" element={<LoginPage/>}/>
               <Route path="/intro" element={<IntroPage/>}/>
               <Route path="/todo" element={<TodoPage/>}/>
               <Route path="/props" element={<PropsPage/>}/>

@@ -8,7 +8,8 @@ function LoginPage() {
   // id의 경우 백앤드에서 예약어로 쓸 경우가 많기 때문에 loginId처럼 다른 네이밍으로 한다.
   const [loginId, onChangeId, resetId] = useInput('')
   const [loginPassword, onChangePwd, resetPassword] = useInput('')
-
+  
+  // TODO :: reset 안됨
   const onReset = useCallback(() => {
     resetId('')
     resetPassword('')
@@ -32,20 +33,30 @@ function LoginPage() {
 
   return (
     <div className="login-page">
-      <h4>아이디 = test, 비밀번호 = 123</h4>
-      <h4>아이디 = sticker, 비밀번호 = 123123123 (false)</h4>
+      {
+        loginValue.login ? (
+          <>
+            <h1>로그인에 성공했습니다! :)</h1>
+          </>
+        ) : (
+          <>
+            <h4>아이디 = test, 비밀번호 = 123</h4>
+            <h4>아이디 = sticker, 비밀번호 = 123123 (false)</h4>
 
-      <div>
-        <label htmlFor="userId">아이디</label>
-        <input type="text" id="userId" value={loginId} onChange={onChangeId} placeholder="아이디를 입력해주세요." required/>
-      </div>
+            <div>
+              <label htmlFor="userId">아이디</label>
+              <input type="text" id="userId" value={loginId} onChange={onChangeId} placeholder="아이디를 입력해주세요." required/>
+            </div>
 
-      <div>
-        <label htmlFor="userPassword">비밀번호</label>
-        <input type="text" id="userPassword" value={loginPassword} onChange={onChangePwd} placeholder="비밀번호를 입력해주세요." required/>
-      </div>
+            <div>
+              <label htmlFor="userPassword">비밀번호</label>
+              <input type="text" id="userPassword" value={loginPassword} onChange={onChangePwd} placeholder="비밀번호를 입력해주세요." required/>
+            </div>
 
-      <button type="submit" value="로그인" onClick={onLogin}>확인</button>
+            <button type="submit" value="로그인" onClick={onLogin}>확인</button>
+          </>
+        )
+      }
     </div>
   )
 }

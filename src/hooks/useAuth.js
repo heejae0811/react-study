@@ -24,7 +24,7 @@ const userList = [
   {
     name: '스틱',
     loginId: 'sticker',
-    password: '123123123',
+    password: '123123',
     phoneNumber: '010-1243-1234',
     isAdmin: false,
     accessToken: '43c1051a9b9d8e7779123328182e4',
