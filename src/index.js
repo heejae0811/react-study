@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import {Provider} from 'react-redux'
+import rootReducer from './reducers'
 import {BrowserRouter} from 'react-router-dom'
 import {AuthProvider} from './context/AuthContext'
 import App from './App'
@@ -13,4 +15,5 @@ root.render(
       <App/>
     </BrowserRouter>
   </AuthProvider>
+
 )

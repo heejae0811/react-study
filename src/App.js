@@ -40,6 +40,7 @@ function App() {
             </Routes>
           ) : (
             <Routes isDarkMode={isDarkMode}>
+              <Route path="/cat" element={<CatPage/>}/>
               <Route path="/" element={<LoginPage/>}/>
             </Routes>
           )

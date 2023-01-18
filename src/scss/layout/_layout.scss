@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap');
 
 body {
-  overflow: hidden;
   font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
 
   &::-webkit-scrollbar {
@@ -16,7 +15,7 @@ body {
 }
 
 div[class$="-page"] {
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
   padding: 80px 20px;
 
   input {
