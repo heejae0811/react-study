@@ -43,3 +43,17 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .header {
+    nav {
+      ul {
+        justify-content: start;
+
+        li {
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+}

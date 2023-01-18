@@ -14,42 +14,21 @@ const Header = () => {
     <header className="header">
       <nav>
         <ul>
-          {
-            loginValue.login ? (
-              <>
-                <li>
-                  <Link to="/intro">자기소개</Link>
-                </li>
-                <li>
-                  <Link to="/todo">To Do List</Link>
-                </li>
-                <li>
-                  <Link to="/props">부모/자식 Props</Link>
-                </li>
-                <li>
-                  <Link to="/snow">눈 내리기</Link>
-                </li>
-                <li>
-                  <Link to="/mypage">마이페이지</Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/intro">자기소개</Link>
-                </li>
-                <li>
-                  <Link to="/todo">To Do List</Link>
-                </li>
-                <li>
-                  <Link to="/props">부모/자식 Props</Link>
-                </li>
-                <li>
-                  <Link to="/snow">눈 내리기</Link>
-                </li>
-              </>
-            )
-          }
+          <li>
+            <Link to="/intro">자기소개</Link>
+          </li>
+          <li>
+            <Link to="/todo">To Do List</Link>
+          </li>
+          <li>
+            <Link to="/props">부모/자식 Props</Link>
+          </li>
+          <li>
+            <Link to="/snow">눈 내리기</Link>
+          </li>
+          <li>
+            <Link to="/cat">고양이 밥주기</Link>
+          </li>
         </ul>
       </nav>
 
@@ -57,6 +36,9 @@ const Header = () => {
         loginValue.login ? (
           <ul>
             <li>{loginValue.loginUser[0].loginId} 님</li>
+            <li>
+              <Link to="/mypage">마이페이지</Link>
+            </li>
             <li className="logout" onClick={onLogout}>로그아웃</li>
           </ul>
         ) : (
