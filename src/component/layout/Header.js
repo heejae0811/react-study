@@ -3,7 +3,7 @@ import {useAuth} from '../../hooks/useAuth'
 import './header.scss'
 
 const Header = () => {
-  const [value, userList, isLogin, isLogout] = useAuth()
+  const [userList, loginValue, isLogin, isLogout] = useAuth()
 
   // TODO :: userList, isLogin 작성하지 않으면 isLogout() 함수 호출 안됨
   const onLogout = () => {
@@ -15,7 +15,7 @@ const Header = () => {
       <nav>
         <ul>
           {
-            value.login ? (
+            loginValue.login ? (
               <>
                 <li>
                   <Link to="/intro">자기소개</Link>
@@ -54,9 +54,9 @@ const Header = () => {
       </nav>
 
       {
-        value.login ? (
+        loginValue.login ? (
           <ul>
-            <li>{value.loginUser[0].loginId} 님</li>
+            <li>{loginValue.loginUser[0].loginId} 님</li>
             <li className="logout" onClick={onLogout}>로그아웃</li>
           </ul>
         ) : (
