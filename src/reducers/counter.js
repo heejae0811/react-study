@@ -1,8 +1,6 @@
 export const FOOD = 'COUNT/FOOD'
-export const AGE = 'COUNT/AGE'
 
-export const increaseFood = foodCount => ({type: FOOD, foodCount})
-export const increaseAge = ageCount => ({type: AGE, ageCount})
+export const increaseFood = (foodCount, weightCount, ageCount) => ({type: FOOD, foodCount, weightCount, ageCount})
 
 export const initialState = {
   catList: [
@@ -40,7 +38,10 @@ export const initialState = {
       live: true
     }
   ],
-  cat: {}
+  cat: {},
+  foodCount: 0,
+  weightCount: 0,
+  ageCount: 0
 }
 
 // action = 객체, payload = 변화하는 값, reducer = 변화시키는 함수?
@@ -49,12 +50,8 @@ const counter = (state = initialState, action) => {
     case FOOD:
       return {
         ...state,
-        cat: {
-          catId: action.catId
-        }
-      }
-    case AGE:
-      return {
+        foodCount: action.foodCount,
+        weightCount: action.weightCount,
         ageCount: action.ageCount
       }
     default:

@@ -1,36 +1,27 @@
 import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import counter, {initialState, increaseFood, increaseAge} from '../../reducers/counter'
+import {initialState, increaseFood} from '../../reducers/counter'
 import './index.scss'
 
 function CatDetailPage() {
   const {id} = useParams()
   const cat = new Array(initialState.catList[id])
 
+  const dispatch = useDispatch()
+  const {foodCount, weightCount, ageCount} = useSelector(state => state.counter)
+
   const onFood = () => {
-    console.log(cat)
+    dispatch(increaseFood(foodCount + 1))
+    console.log(foodCount)
+
+    if (parseInt(foodCount % 2) === 0) {
+      dispatch(increaseFood(weightCount + 1))
+    }
+
+    if (parseInt(foodCount % 3) === 0) {
+      dispatch(increaseFood(ageCount + 1))
+    }
   }
-
-  // const cat = initialState.catList.filter(list => list.id === cat.id)
-  //
-  // const {id} = useParams()
-  // const currentCat = initialState.catList[id]
-  //
-  // const dispatch = useDispatch()
-  // const {foodCount} = useSelector(state => state.counter)
-  //
-  // const onFood = () => {
-  //   dispatch({
-  //       type: 'FOOD'
-  //     }
-  //   )
-  //   // console.log(initialState.catList)
-  //   // console.log(initialState.cat)
-  //
-  //   console.log(initialState.catList[id])
-  //   console.log(counter)
-  // }
-
 
   return (
     <div className="cat-detail-page">
@@ -42,14 +33,14 @@ function CatDetailPage() {
               <img src={list.imgSrc} alt="cat"/>
               <p>이름: {list.name}</p>
               <p>성별: {list.gender}</p>
-              <p>나이: {list.age}살</p>
-              <p>몸무게: {list.weight}kg</p>
+              <p>나이: {ageCount}살</p>
+              <p>몸무게: {weightCount}kg</p>
               <p>상태: {list.state}</p>
-              <p>밥: {list.foodCount}번</p>
-              <button onClick={onFood}>밥주기</button>
+              <p>밥: {foodCount}번</p>
             </li>
           ))
         }
+        <button onClick={onFood}>밥주기</button>
       </ul>
 
       고양이 배열로 3마리
