@@ -7,7 +7,7 @@ export const increaseAge = ageCount => ({type: AGE, ageCount})
 export const initialState = {
   catList: [
     {
-      id: 0,
+      catId: 0,
       imgSrc: '/react-study/images/cat/cat01.jpg',
       name: '가가',
       gender: '여자',
@@ -18,7 +18,7 @@ export const initialState = {
       live: true
     },
     {
-      id: 1,
+      catId: 1,
       imgSrc: '/react-study/images/cat/cat02.jpg',
       name: '나나',
       gender: '여자',
@@ -29,7 +29,7 @@ export const initialState = {
       live: true
     },
     {
-      id: 2,
+      catId: 2,
       imgSrc: '/react-study/images/cat/cat03.jpg',
       name: '다다',
       gender: '남자',
@@ -49,7 +49,9 @@ const counter = (state = initialState, action) => {
     case FOOD:
       return {
         ...state,
-        cat: action.cat
+        cat: {
+          catId: action.catId
+        }
       }
     case AGE:
       return {

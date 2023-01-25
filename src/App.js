@@ -16,6 +16,7 @@ import Footer from './component/layout/Footer'
 import ThemeButton from './component/theme/ThemeButton'
 import Snow from './component/snow/Snow'
 import {useAuth} from './hooks/useAuth'
+import {initialState} from './reducers/counter'
 
 function App() {
   const [userList, loginValue, isLogin, isLogout] = useAuth()

@@ -6,9 +6,21 @@
       align-items: center;
       margin-bottom: 20px;
 
-      img {
+      a {
+        overflow: hidden;
+        display: block;
         width: 200px;
         margin-right: 20px;
+
+        img {
+          width: 100%;
+
+          &:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+            transition: all .3s;
+          }
+        }
       }
 
       p {

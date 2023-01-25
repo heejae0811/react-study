@@ -1,38 +1,51 @@
+import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import {initialState, increaseFood, increaseAge} from '../../reducers/counter'
+import counter, {initialState, increaseFood, increaseAge} from '../../reducers/counter'
 import './index.scss'
 
 function CatDetailPage() {
-  const dispatch = useDispatch()
-  const {foodCount} = useSelector(state => state.counter)
+  const {id} = useParams()
+  const cat = new Array(initialState.catList[id])
 
   const onFood = () => {
-    dispatch({
-        type: 'FOOD'
-      }
-    )
-    console.log(initialState.catList)
-    console.log(initialState.cat)
+    console.log(cat)
   }
+
+  // const cat = initialState.catList.filter(list => list.id === cat.id)
+  //
+  // const {id} = useParams()
+  // const currentCat = initialState.catList[id]
+  //
+  // const dispatch = useDispatch()
+  // const {foodCount} = useSelector(state => state.counter)
+  //
+  // const onFood = () => {
+  //   dispatch({
+  //       type: 'FOOD'
+  //     }
+  //   )
+  //   // console.log(initialState.catList)
+  //   // console.log(initialState.cat)
+  //
+  //   console.log(initialState.catList[id])
+  //   console.log(counter)
+  // }
+
 
   return (
     <div className="cat-detail-page">
-      <h1>고양이</h1>
+      <h1>고양이 디테일</h1>
       <ul>
         {
-          initialState.catList.map((list, key) => (
+          cat.map((list, key) => (
             <li key={`cat-${key}`}>
-              {foodCount}
               <img src={list.imgSrc} alt="cat"/>
-              <div>
-                <p>이름: {list.name}</p>
-                <p>성별: {list.gender}</p>
-                <br/>
-                <p>나이: {list.age}살</p>
-                <p>몸무게: {list.weight}kg</p>
-                <p>상태: {list.state}</p>
-                <p>밥: {list.foodCount}번</p>
-              </div>
+              <p>이름: {list.name}</p>
+              <p>성별: {list.gender}</p>
+              <p>나이: {list.age}살</p>
+              <p>몸무게: {list.weight}kg</p>
+              <p>상태: {list.state}</p>
+              <p>밥: {list.foodCount}번</p>
               <button onClick={onFood}>밥주기</button>
             </li>
           ))
