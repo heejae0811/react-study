@@ -1,8 +1,18 @@
 import {useCat} from '../../hooks/useCat'
 import './index.scss'
 
+import { useSelector, useDispatch } from 'react-redux';
+import {increaseFoodCount} from '../../reducers/index'
+
 function CatPage() {
   const [catList] = useCat()
+
+  const dispatch = useDispatch();
+  const { count, foodCount } = useSelector(state => state.counter);
+
+  const food = () => {
+    dispatch(increaseFoodCount(foodCount + 1));
+  }
 
   return (
     <div className="cat-page">
@@ -17,8 +27,9 @@ function CatPage() {
                 <p>나이: {list.age}살</p>
                 <p>몸무게: {list.weight}kg</p>
                 <p>상태: {list.state}</p>
-                <p>밥: {list.eat}번</p>
+                <p>밥: {foodCount}번</p>
               </div>
+              <button onClick={food}>밥주기</button>
             </li>
           ))
         }

@@ -1,11 +1,21 @@
-import {combineReducers} from 'redux'
-// import counter from './counter'
+export const FOOD = 'COUNT/FOOD'
 
+export const increaseFoodCount = foodCount => ({type: FOOD, foodCount})
 
-// 여러 reducer를 사용하는 경우 reducer를 하나로 묶어주는 메소드.
-// store에 저장되는 리듀서는 오직 1개
-const rootReducer = combineReducers({
-  // counter
-})
+const initialState = {
+  foodCount: 0
+}
 
-export default rootReducer
+// action = 객체, payload = 변화하는 값, reducer = 변화시키는 함수?
+const counter = (state = initialState, action) => {
+  switch (action.type) {
+    case FOOD:
+      return {
+        foodCount: action.foodCount
+      }
+    default:
+      return state
+  }
+}
+
+export default counter
