@@ -8,6 +8,7 @@ import TodoPage from './pages/todo/index'
 import PropsPage from './pages/props/index'
 import SnowPage from './pages/snow/index'
 import CatPage from './pages/cat/index'
+import CatDetailPage from './pages/catDetail/index'
 import LoginPage from './pages/login/index'
 import MyPage from './pages/mypage/index'
 import Header from './component/layout/Header'
@@ -36,11 +37,13 @@ function App() {
               <Route path="/props" element={<PropsPage/>}/>
               <Route path="/snow" element={<SnowPage/>}/>
               <Route path="/cat" element={<CatPage/>}/>
+              <Route path="/catDetail/:id" element={<CatDetailPage/>}/>
               <Route path="/mypage" element={<MyPage/>}/>
             </Routes>
           ) : (
             <Routes isDarkMode={isDarkMode}>
               <Route path="/cat" element={<CatPage/>}/>
+              <Route path="/catDetail/:id" element={<CatDetailPage/>}/>
               <Route path="/" element={<LoginPage/>}/>
             </Routes>
           )

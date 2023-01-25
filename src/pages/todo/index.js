@@ -31,7 +31,6 @@ function TodoPage() {
     setToDos(sortTodos.sort((a, b) => -a.localeCompare(b)))
   }
 
-
   return (
     <div className="todo-page">
       <h1>My To Dos({toDos.length})</h1>
