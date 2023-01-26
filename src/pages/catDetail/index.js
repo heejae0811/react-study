@@ -1,6 +1,6 @@
 import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import {initialState, increaseFood, increaseWeight, increaseAge} from '../../reducers/counter'
+import counter, {initialState, increaseFood, increaseWeight, increaseAge, FOOD, WEIGHT, AGE} from '../../reducers/counter'
 import './index.scss'
 
 function CatDetailPage() {
@@ -20,8 +20,6 @@ function CatDetailPage() {
     if ((foodCount % 3) === 0) {
       dispatch(increaseAge(ageCount + 1))
     }
-
-    console.log(initialState)
   }
 
   return (
