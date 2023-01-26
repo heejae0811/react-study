@@ -15,7 +15,7 @@ function CatDetailPage() {
     console.log(cat)
     dispatch({
       type: CAT,
-      foodCount: cat[0].foodCount,
+      foodCount: cat[0].food,
       weight: cat[0].weight,
       age: cat[0].age
     })

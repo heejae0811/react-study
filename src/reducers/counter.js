@@ -6,7 +6,7 @@ export const AGE = 'AGE'
 
 // 액션 생성 함수 정의
 export const cat = (catId, foodCount) => ({type: FOOD, catId, foodCount})
-export const increaseFood = (catId, foodCount, weightCount, ageCount) => ({type: FOOD, catId, foodCount, weightCount, ageCount})
+export const increaseFood = (foodCount) => ({type: FOOD, foodCount})
 export const increaseWeight = (weightCount) => ({type: WEIGHT, weightCount})
 export const increaseAge = (ageCount) => ({type: AGE, ageCount})
 
@@ -21,7 +21,7 @@ export const initialState = {
       age: 1,
       weight: 7,
       state: '정상',
-      foodCount: 10,
+      food: 10,
       live: true
     },
     {
@@ -32,7 +32,7 @@ export const initialState = {
       age: 7,
       weight: 15,
       state: '과체중',
-      foodCount: 15,
+      food: 15,
       live: true
     },
     {
@@ -43,7 +43,7 @@ export const initialState = {
       age: 12,
       weight: 30,
       state: '비만',
-      foodCount: 30,
+      food: 30,
       live: true
     }
   ]
@@ -67,12 +67,12 @@ const counter = (state = initialState, action) => {
     case WEIGHT:
       return {
         ...state,
-        weightCount: state.weight + 1
+        weightCount: state.weightCount + 1
       }
     case AGE:
       return {
         ...state,
-        ageCount: state.age + 1
+        ageCount: state.ageCount + 1
       }
     default:
       return state
