@@ -1,26 +1,27 @@
 import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import {initialState, increaseFood} from '../../reducers/counter'
+import {initialState, increaseFood, increaseWeight, increaseAge} from '../../reducers/counter'
 import './index.scss'
 
 function CatDetailPage() {
   const {id} = useParams()
-  const cat = new Array(initialState.catList[id])
+  const cat = [initialState.catList[id]]
 
   const dispatch = useDispatch()
   const {foodCount, weightCount, ageCount} = useSelector(state => state.counter)
 
   const onFood = () => {
     dispatch(increaseFood(foodCount + 1))
-    console.log(foodCount)
 
-    if (parseInt(foodCount % 2) === 0) {
-      dispatch(increaseFood(weightCount + 1))
+    if ((foodCount % 2) === 0) {
+      dispatch(increaseWeight(weightCount + 1))
     }
 
-    if (parseInt(foodCount % 3) === 0) {
-      dispatch(increaseFood(ageCount + 1))
+    if ((foodCount % 3) === 0) {
+      dispatch(increaseAge(ageCount + 1))
     }
+
+    console.log(initialState)
   }
 
   return (

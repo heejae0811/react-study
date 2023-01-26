@@ -1,6 +1,10 @@
 export const FOOD = 'COUNT/FOOD'
+export const WEIGHT = 'COUNT/FOOD'
+export const AGE = 'COUNT/FOOD'
 
-export const increaseFood = (foodCount, weightCount, ageCount) => ({type: FOOD, foodCount, weightCount, ageCount})
+export const increaseFood = (foodCount) => ({type: FOOD, foodCount})
+export const increaseWeight = (weightCount) => ({type: FOOD, weightCount})
+export const increaseAge = (ageCount) => ({type: FOOD, ageCount})
 
 export const initialState = {
   catList: [
@@ -38,7 +42,7 @@ export const initialState = {
       live: true
     }
   ],
-  cat: {},
+  cat: null,
   foodCount: 0,
   weightCount: 0,
   ageCount: 0
@@ -50,9 +54,17 @@ const counter = (state = initialState, action) => {
     case FOOD:
       return {
         ...state,
-        foodCount: action.foodCount,
-        weightCount: action.weightCount,
-        ageCount: action.ageCount
+        foodCount: state.foodCount + 1,
+      }
+    case WEIGHT:
+      return {
+        ...state,
+        weightCount: state.weightCount + 1
+      }
+    case AGE:
+      return {
+        ...state,
+        ageCount: state.ageCount + 1
       }
     default:
       return state
