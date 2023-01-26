@@ -1,12 +1,12 @@
 // 액션 타입 정의, 액션은 대문자로 작성한다.
-import {useParams} from 'react-router-dom'
-
+export const CAT = 'CAT'
 export const FOOD = 'FOOD'
 export const WEIGHT = 'WEIGHT'
 export const AGE = 'AGE'
 
 // 액션 생성 함수 정의
-export const increaseFood = (catId, foodCount) => ({type: FOOD, catId, foodCount})
+export const cat = (catId, foodCount) => ({type: FOOD, catId, foodCount})
+export const increaseFood = (catId, foodCount, weightCount, ageCount) => ({type: FOOD, catId, foodCount, weightCount, ageCount})
 export const increaseWeight = (weightCount) => ({type: WEIGHT, weightCount})
 export const increaseAge = (ageCount) => ({type: AGE, ageCount})
 
@@ -21,7 +21,7 @@ export const initialState = {
       age: 1,
       weight: 7,
       state: '정상',
-      foodCount: 0,
+      foodCount: 10,
       live: true
     },
     {
@@ -46,31 +46,34 @@ export const initialState = {
       foodCount: 30,
       live: true
     }
-  ],
-  cat: {}
+  ]
 }
 
 // 리듀서 만들기
 // action = 객체, payload = 변화하는 값, reducer = 변화시키는 함수?
 const counter = (state = initialState, action) => {
   switch (action.type) {
+    case CAT:
+      return {
+        foodCount: action.foodCount,
+        weightCount: action.weight,
+        ageCount: action.age
+      }
     case FOOD:
       return {
         ...state,
-        cat: {
-          catId: action.catId
-        }
+        foodCount: state.foodCount + 1
       }
-    // case WEIGHT:
-    //   return {
-    //     ...state,
-    //     weightCount: state.weightCount + 1
-    //   }
-    // case AGE:
-    //   return {
-    //     ...state,
-    //     ageCount: state.ageCount + 1
-    //   }
+    case WEIGHT:
+      return {
+        ...state,
+        weightCount: state.weight + 1
+      }
+    case AGE:
+      return {
+        ...state,
+        ageCount: state.age + 1
+      }
     default:
       return state
   }
