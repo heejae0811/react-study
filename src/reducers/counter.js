@@ -5,7 +5,7 @@ export const WEIGHT = 'WEIGHT'
 export const AGE = 'AGE'
 
 // 액션 생성 함수 정의
-export const cat = (catId, foodCount) => ({type: FOOD, catId, foodCount})
+export const cat = () => ({type: FOOD})
 export const increaseFood = (foodCount) => ({type: FOOD, foodCount})
 export const increaseWeight = (weightCount) => ({type: WEIGHT, weightCount})
 export const increaseAge = (ageCount) => ({type: AGE, ageCount})
@@ -56,8 +56,8 @@ const counter = (state = initialState, action) => {
     case CAT:
       return {
         foodCount: action.foodCount,
-        weightCount: action.weight,
-        ageCount: action.age
+        weightCount: action.weightCount,
+        ageCount: action.ageCount
       }
     case FOOD:
       return {

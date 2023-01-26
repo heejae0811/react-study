@@ -16,8 +16,9 @@ function CatDetailPage() {
     dispatch({
       type: CAT,
       foodCount: cat[0].food,
-      weight: cat[0].weight,
-      age: cat[0].age
+      weightCount: cat[0].weight,
+      ageCount: cat[0].age,
+
     })
   }, [])
 
