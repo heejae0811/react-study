@@ -1,9 +1,12 @@
 // 액션 타입 정의, 액션은 대문자로 작성한다.
+import {useParams} from 'react-router-dom'
+
 export const FOOD = 'FOOD'
 export const WEIGHT = 'WEIGHT'
 export const AGE = 'AGE'
 
-export const increaseFood = (foodCount) => ({type: FOOD, foodCount})
+// 액션 생성 함수 정의
+export const increaseFood = (catId, foodCount) => ({type: FOOD, catId, foodCount})
 export const increaseWeight = (weightCount) => ({type: WEIGHT, weightCount})
 export const increaseAge = (ageCount) => ({type: AGE, ageCount})
 
@@ -44,10 +47,7 @@ export const initialState = {
       live: true
     }
   ],
-  cat: null,
-  foodCount: 0,
-  weightCount: 0,
-  ageCount: 0
+  cat: {}
 }
 
 // 리듀서 만들기
@@ -57,19 +57,20 @@ const counter = (state = initialState, action) => {
     case FOOD:
       return {
         ...state,
-        cat: {},
-        foodCount: state.foodCount + 1,
+        cat: {
+          catId: action.catId
+        }
       }
-    case WEIGHT:
-      return {
-        ...state,
-        weightCount: state.weightCount + 1
-      }
-    case AGE:
-      return {
-        ...state,
-        ageCount: state.ageCount + 1
-      }
+    // case WEIGHT:
+    //   return {
+    //     ...state,
+    //     weightCount: state.weightCount + 1
+    //   }
+    // case AGE:
+    //   return {
+    //     ...state,
+    //     ageCount: state.ageCount + 1
+    //   }
     default:
       return state
   }

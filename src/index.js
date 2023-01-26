@@ -10,8 +10,17 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import rootReducer from './redux/index'
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+// 스토어 만들기
 const store = createStore(rootReducer)
+
+// 스토어 안에 들어있는 상태가 바뀔 때 마다 함수 호출
+const listener = () => {
+  const state = store.getState()
+  console.log(state)
+}
+const unsubscribe = store.subscribe(listener)
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <Provider store={store}>
