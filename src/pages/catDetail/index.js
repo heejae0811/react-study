@@ -17,7 +17,7 @@ function CatDetailPage() {
       type: CAT,
       foodCount: cat[0].food,
       weightCount: cat[0].weight,
-      ageCount: cat[0].age,
+      ageCount: cat[0].age
 
     })
   }, [])
@@ -27,10 +27,18 @@ function CatDetailPage() {
 
     if (foodCount % 2 === 0) {
       dispatch({type: WEIGHT})
+
+      if (weightCount > 15) {
+        alert('비만입니다. 밥을 그만주세요.')
+      }
     }
 
     if (foodCount % 3 === 0) {
       dispatch({type: AGE})
+
+      if (ageCount > 15) {
+        alert('하늘나라로 떠났습니다.')
+      }
     }
   }
 

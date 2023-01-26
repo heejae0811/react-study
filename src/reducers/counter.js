@@ -20,7 +20,7 @@ export const initialState = {
       gender: '여자',
       age: 1,
       weight: 7,
-      state: '정상',
+      state: '정상체중',
       food: 10,
       live: true
     },
