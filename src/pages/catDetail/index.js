@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import {handleCat, handleFoodCount, handleWight, handleLoseWight, handleAge, HANDLESTATE} from '../../reducers/cat'
+import {handleCat, handleFoodCount, handleWeight1, handleWeight2, handleWeight3, handleLoseWight, handleAge, HANDLESTATE} from '../../reducers/cat'
 import './index.scss'
 
 function CatDetailPage() {
@@ -24,13 +24,10 @@ function CatDetailPage() {
   // 재랜더링이 되는 단점이 있다.(비효율적)
   if (!selectedCat) return null
 
-  // 밥 2번 = 체중 + 1, 밥 3번 = 나이 + 1
-  const onFood = () => {
+  // 고기 먹으면 + 3kg
+  const onFoodMeat = () => {
     dispatch(handleFoodCount())
-
-    if (selectedCat.foodCount % 2 === 0) {
-      dispatch(handleWight())
-    }
+    dispatch(handleWeight1())
 
     if (selectedCat.foodCount % 3 === 0) {
       dispatch(handleAge())
@@ -45,6 +42,43 @@ function CatDetailPage() {
     }
   }
 
+  // 사료 먹으면 +1kg
+  const onFoodFeed = () => {
+    dispatch(handleFoodCount())
+    dispatch(handleWeight2())
+
+    if (selectedCat.foodCount % 3 === 0) {
+      dispatch(handleAge())
+    }
+
+    if (selectedCat.weight >= 15) {
+      dispatch({type: HANDLESTATE, state: '비만'})
+    }
+
+    if (selectedCat.age >= 10) {
+      dispatch({type: HANDLESTATE, state: '사망'})
+    }
+  }
+
+  // 물 먹으면 +0.1kg
+  const onFoodWater = () => {
+    dispatch(handleFoodCount())
+    dispatch(handleWeight3())
+
+    if (selectedCat.foodCount % 3 === 0) {
+      dispatch(handleAge())
+    }
+
+    if (selectedCat.weight >= 15) {
+      dispatch({type: HANDLESTATE, state: '비만'})
+    }
+
+    if (selectedCat.age >= 10) {
+      dispatch({type: HANDLESTATE, state: '사망'})
+    }
+  }
+
+  // 운동하면 -2kg
   const onLoseWeight = () => {
     dispatch(handleLoseWight())
 
@@ -77,16 +111,16 @@ function CatDetailPage() {
         selectedCat.state === '사망'
           ?
           <>
-            <button className="disabled" disabled>육류 주기</button>
-            <button className="disabled" disabled>사료 주기</button>
-            <button className="disabled" disabled>물 주기</button>
+            <button className="disabled" disabled>고기 먹기</button>
+            <button className="disabled" disabled>사료 먹기</button>
+            <button className="disabled" disabled>물 먹기</button>
             <button className="disabled" disabled>운동 시키기</button>
           </>
           :
           <>
-            <button onClick={() => onFood()}>육류 주기</button>
-            <button onClick={() => onFood()}>사료 주기</button>
-            <button onClick={() => onFood()}>물 주기</button>
+            <button onClick={() => onFoodMeat()}>고기 먹기</button>
+            <button onClick={() => onFoodFeed()}>사료 먹기</button>
+            <button onClick={() => onFoodWater()}>물 먹기</button>
             <button onClick={() => onLoseWeight()}>운동 시키기</button>
           </>
       }

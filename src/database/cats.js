@@ -7,7 +7,7 @@ export const cats = [
     age: 1,
     weight: 7,
     state: '보통',
-    foodCount: 10,
+    foodCount: 0,
     firstTime: null,
     lastTime: null
   },
@@ -19,7 +19,7 @@ export const cats = [
     age: 7,
     weight: 15,
     state: '비만',
-    foodCount: 15,
+    foodCount: 0,
     firstTime: null,
     lastTime: null
   },
