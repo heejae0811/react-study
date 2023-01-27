@@ -6,9 +6,10 @@ export const cats = [
     gender: '여자',
     age: 1,
     weight: 7,
-    state: '정상체중',
+    state: '보통',
     foodCount: 10,
-    live: true
+    live: true,
+    time: []
   },
   {
     id: 1,
@@ -17,9 +18,10 @@ export const cats = [
     gender: '여자',
     age: 7,
     weight: 15,
-    state: '과체중',
+    state: '보통',
     foodCount: 15,
-    live: true
+    live: true,
+    time: []
   },
   {
     id: 2,
@@ -30,6 +32,7 @@ export const cats = [
     weight: 30,
     state: '비만',
     foodCount: 30,
-    live: true
+    live: true,
+    time: []
   }
 ]

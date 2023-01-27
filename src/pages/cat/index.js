@@ -12,7 +12,7 @@ function CatPage() {
         {
           catList.map((list, key) => (
             <li key={`catlist-${key}`}>
-              <Link to={`/catDetail/${key}`}>
+              <Link to={`/catDetail/${list.id}`}>
                 <img src={list.imgSrc} alt="cat"/>
               </Link>
               <div>

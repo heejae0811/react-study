@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import {handleCat} from '../../reducers/cat'
+import {handleCat, handleFood} from '../../reducers/cat'
 import './index.scss'
 
 function CatDetailPage() {
@@ -9,42 +9,19 @@ function CatDetailPage() {
   const paramsId = Number(params.id)
 
   const dispatch = useDispatch()
+  const cat = useSelector(state => state.cat)
   const selectedCat = useSelector(state => state.cat.selectedCat)
 
-  dispatch(handleCat(paramsId))
+  useEffect(() => {
+    dispatch(handleCat(paramsId))
 
-  // const {foodCount, weightCount, ageCount} = useSelector(state => state.counter)
+    console.log(cat)
+    console.log(selectedCat)
+  })
 
-  // useEffect(() => {
-  //   console.log(cat)
-  //   dispatch({
-  //     type: CAT,
-  //     foodCount: cat[0].food,
-  //     weightCount: cat[0].weight,
-  //     ageCount: cat[0].age
-  //
-  //   })
-  // }, [])
-  //
-  // const onFood = () => {
-  //   dispatch({type: FOOD})
-  //
-  //   if (foodCount % 2 === 0) {
-  //     dispatch({type: WEIGHT})
-  //
-  //     if (weightCount > 15) {
-  //       alert('비만입니다. 밥을 그만주세요.')
-  //     }
-  //   }
-  //
-  //   if (foodCount % 3 === 0) {
-  //     dispatch({type: AGE})
-  //
-  //     if (ageCount > 15) {
-  //       alert('하늘나라로 떠났습니다.')
-  //     }
-  //   }
-  // }
+  const onFood = () => {
+    console.log('밥')
+  }
 
   return (
     <div className="cat-detail-page">
@@ -59,7 +36,7 @@ function CatDetailPage() {
           <p>상태: {selectedCat.state}</p>
           <p>밥: {selectedCat.foodCount}번</p>
         </li>
-        {/*<button onClick={onFood}>밥주기</button>*/}
+        <button onClick={onFood}>밥주기</button>
       </ul>
     </div>
   )
