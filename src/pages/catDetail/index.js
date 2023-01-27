@@ -28,13 +28,13 @@ function CatDetailPage() {
       <h1>고양이 디테일</h1>
       <ul>
         <li>
-          <img src={selectedCat.imgSrc} alt="cat"/>
-          <p>이름: {selectedCat.name}</p>
-          <p>성별: {selectedCat.gender}</p>
-          <p>나이: {selectedCat.age}살</p>
-          <p>몸무게: {selectedCat.weight}kg</p>
-          <p>상태: {selectedCat.state}</p>
-          <p>밥: {selectedCat.foodCount}번</p>
+          {/*<img src={selectedCat.imgSrc} alt="cat"/>*/}
+          {/*<p>이름: {selectedCat.name}</p>*/}
+          {/*<p>성별: {selectedCat.gender}</p>*/}
+          {/*<p>나이: {selectedCat.age}살</p>*/}
+          {/*<p>몸무게: {selectedCat.weight}kg</p>*/}
+          {/*<p>상태: {selectedCat.state}</p>*/}
+          {/*<p>밥: {selectedCat.foodCount}번</p>*/}
         </li>
         <button onClick={onFood}>밥주기</button>
       </ul>

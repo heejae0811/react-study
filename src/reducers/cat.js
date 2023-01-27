@@ -19,7 +19,7 @@ export const initialState = {
 const cat = (state = initialState, action) => {
   switch (action.type) {
     case HANDLECAT:
-      state.selectedCat = state.catList[action.paramsId]
+      state.selectedCat = state.catList.find(cat => cat.id === action.paramsId)
       return {
         ...state
       }
