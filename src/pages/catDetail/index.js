@@ -76,9 +76,11 @@ function CatDetailPage() {
     if (selectedCat.age >= 10) {
       dispatch({type: HANDLESTATE, state: '사망'})
     }
+
+    console.log(typeof selectedCat.weight)
   }
 
-  // 운동하면 -2kg
+  // 운동하면 -2kg s
   const onLoseWeight = () => {
     dispatch(handleLoseWight())
 

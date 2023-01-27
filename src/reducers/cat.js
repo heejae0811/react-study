@@ -51,7 +51,7 @@ const cat = (state = initialState, action) => {
         ...state
       }
     case HANDLEWEIGHT3:
-      state.selectedCat.weight = state.selectedCat.weight + 0.1
+      state.selectedCat.weight = Math.floor(state.selectedCat.weight) + 0.1
       return {
         ...state
       }
