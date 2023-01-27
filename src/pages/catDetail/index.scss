@@ -1,13 +1,29 @@
 .cat-detail-page {
   ul {
+    margin-bottom: 10px;
+
     li {
       img {
         width: 200px;
+
+        &.disabled {
+          filter: brightness(50%);
+        }
       }
 
       p {
         margin: 3px 0;
       }
+
+    }
+  }
+
+  button {
+    margin-right: 3px;
+
+    &.disabled {
+      background-color: #aaa;
+      cursor: inherit;
     }
   }
 }

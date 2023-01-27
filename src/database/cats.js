@@ -8,8 +8,8 @@ export const cats = [
     weight: 7,
     state: '보통',
     foodCount: 10,
-    live: true,
-    time: []
+    firstTime: null,
+    lastTime: null
   },
   {
     id: 1,
@@ -18,21 +18,21 @@ export const cats = [
     gender: '여자',
     age: 7,
     weight: 15,
-    state: '보통',
+    state: '비만',
     foodCount: 15,
-    live: true,
-    time: []
+    firstTime: null,
+    lastTime: null
   },
   {
     id: 2,
     imgSrc: '/react-study/images/cat/cat03.jpg',
     name: '다다',
     gender: '남자',
-    age: 12,
+    age: 15,
     weight: 30,
-    state: '비만',
-    foodCount: 30,
-    live: true,
-    time: []
+    state: '사망',
+    foodCount: 0,
+    firstTime: null,
+    lastTime: null
   }
 ]

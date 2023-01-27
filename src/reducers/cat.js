@@ -2,11 +2,19 @@ import * as database from '../database/cats'
 
 // 액션 타입 정의, 액션은 대문자로 작성한다.
 export const HANDLECAT = 'HANDLECAT'
-// export const HANDLEFOOD = 'HANDLEFOOD'
+export const HANDLEFOODCOUNT = 'HANDLEFOODCOUNT'
+export const HANDLEWEIGHT = 'HANDLEWEIGHT'
+export const HANDLELOSEWEIGHT = 'HANDLELOSEWEIGHT'
+export const HANDLEAGE = 'HANDLEAGE'
+export const HANDLESTATE = 'HANDLESTATE'
 
 // 액션 생성 함수 정의
 export const handleCat = (paramsId) => ({type: HANDLECAT, paramsId})
-// export const handleFood = () => ({type: HANDLEFOOD})
+export const handleFoodCount = () => ({type: HANDLEFOODCOUNT})
+export const handleWight = () => ({type: HANDLEWEIGHT})
+export const handleLoseWight = () => ({type: HANDLELOSEWEIGHT})
+export const handleAge = () => ({type: HANDLEAGE})
+export const handleState = (state) => ({type: HANDLESTATE, state})
 
 // 리덕스에서 관리할 상태 정의
 export const initialState = {
@@ -23,13 +31,31 @@ const cat = (state = initialState, action) => {
       return {
         ...state
       }
-    // case HANDLEFOOD:
-    //   state.catList = state.catList.map(cat => {
-    //     cat.foodCount = cat.foodCount + 1
-    //   })
-    //   return {
-    //     ...state
-    //   }
+    case HANDLEFOODCOUNT:
+      state.selectedCat.foodCount = state.selectedCat.foodCount + 1
+      return {
+        ...state
+      }
+    case HANDLEWEIGHT:
+      state.selectedCat.weight = state.selectedCat.weight + 1
+      return {
+        ...state
+      }
+    case HANDLELOSEWEIGHT:
+      state.selectedCat.weight = state.selectedCat.weight - 2
+      return {
+        ...state
+      }
+    case HANDLEAGE:
+      state.selectedCat.age = state.selectedCat.age + 1
+      return {
+        ...state
+      }
+    case HANDLESTATE:
+      state.selectedCat.state = action.state
+      return {
+        ...state
+      }
     default:
       return state
   }

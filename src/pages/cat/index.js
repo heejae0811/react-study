@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import './index.scss'
 
+// FIXME :: useNavigate()를 쓰는 이유는?
 function CatPage() {
   const catList = useSelector(state => state.cat.catList)
 
@@ -12,9 +13,11 @@ function CatPage() {
         {
           catList.map((cat, key) => (
             <li key={`catlist-${key}`}>
-              <Link to={`/catDetail/${cat.id}`}>
-                <img src={cat.imgSrc} alt="cat"/>
-              </Link>
+              {
+                cat.state === '사망'
+                  ? <img className="disabled" src={cat.imgSrc} alt="cat"/>
+                  : <Link to={`/catDetail/${cat.id}`}><img src={cat.imgSrc} alt="cat"/></Link>
+              }
               <div>
                 <p>이름: {cat.name}</p>
                 <p>성별: {cat.gender}</p>
