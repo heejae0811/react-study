@@ -8,8 +8,7 @@ export const cats = [
     weight: 7,
     state: '보통',
     foodCount: 0,
-    firstTime: null,
-    lastTime: null
+    eatTime: []
   },
   {
     id: 1,
@@ -20,8 +19,7 @@ export const cats = [
     weight: 15,
     state: '비만',
     foodCount: 0,
-    firstTime: null,
-    lastTime: null
+    eatTime: []
   },
   {
     id: 2,
@@ -32,7 +30,6 @@ export const cats = [
     weight: 30,
     state: '사망',
     foodCount: 0,
-    firstTime: null,
-    lastTime: null
+    eatTime: []
   }
 ]

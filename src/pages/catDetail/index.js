@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {
   handleCat,
+  HANDLETIME,
   handleFoodCount,
   handleMeatWeight,
   handleFeedWeight,
@@ -18,6 +19,16 @@ function CatDetailPage() {
   const [isFeedClick, setFeedClick] = useState(false)
   const [isWaterClick, setWaterClick] = useState(false)
   const [isWorkoutClick, setWorkoutClick] = useState(false)
+
+  let date = new Date()
+  let time = {
+    month: date.getMonth() + 1,
+    date: date.getDate(),
+    hours: date.getHours(),
+    minutes: date.getMinutes(),
+    seconds: date.getSeconds()
+  }
+  let timeString = `${time.month}/${time.date} ${time.hours}:${time.minutes}:${time.seconds}`
 
   const random = Math.round(Math.random() * 100)
 
@@ -43,6 +54,7 @@ function CatDetailPage() {
   // 고기 먹으면 + 3kg
   const onFoodMeat = () => {
     if (random % 2 === 0) {
+      dispatch({type: HANDLETIME, eatTime: timeString})
       dispatch(handleFoodCount())
       dispatch(handleMeatWeight())
 
@@ -72,6 +84,7 @@ function CatDetailPage() {
   // 사료 먹으면 +1kg
   const onFoodFeed = () => {
     if (random % 2 === 0) {
+      dispatch({type: HANDLETIME, eatTime: timeString})
       dispatch(handleFoodCount())
       dispatch(handleFeedWeight())
 
@@ -101,6 +114,7 @@ function CatDetailPage() {
   // 물 먹으면 +0.1kg
   const onFoodWater = () => {
     if (random % 2 === 0) {
+      dispatch({type: HANDLETIME, eatTime: timeString})
       dispatch(handleFoodCount())
       dispatch(handleWaterWeight())
 
@@ -149,22 +163,6 @@ function CatDetailPage() {
     <div className="cat-detail-page">
       <h1>고양이 디테일</h1>
 
-      <ul>
-        <li>
-          {
-            selectedCat.state === '사망'
-              ? <img className="disabled" src={selectedCat.imgSrc} alt="cat"/>
-              : <img src={selectedCat.imgSrc} alt="cat"/>
-          }
-          <p>이름: {selectedCat.name}</p>
-          <p>성별: {selectedCat.gender}</p>
-          <p>나이: {selectedCat.age}살</p>
-          <p>몸무게: {selectedCat.weight}kg</p>
-          <p>상태: {selectedCat.state}</p>
-          <p>밥: {selectedCat.foodCount}번</p>
-        </li>
-      </ul>
-
       {
         selectedCat.state === '사망'
           ?
@@ -180,10 +178,39 @@ function CatDetailPage() {
             <button className={'feedBtn' + (isFeedClick ? ' disabled' : '')} onClick={() => onFoodFeed()}>사료 먹기</button>
             <button className={'waterBtn' + (isWaterClick ? ' disabled' : '')} onClick={() => onFoodWater()}>물 먹기
             </button>
-            <button className={(isWorkoutClick ? 'loseWeightBtn disabled' : 'loseWeightBtn')} onClick={() => onLoseWeight()}>운동 시키기
+            <button className={(isWorkoutClick ? 'loseWeightBtn disabled' : 'loseWeightBtn')}
+                    onClick={() => onLoseWeight()}>운동 시키기
             </button>
           </>
       }
+
+      <ul>
+        <li>
+          {
+            selectedCat.state === '사망'
+              ? <img className="disabled" src={selectedCat.imgSrc} alt="cat"/>
+              : <img src={selectedCat.imgSrc} alt="cat"/>
+          }
+          <div className="info">
+            <div>
+              <p>이름: {selectedCat.name}</p>
+              <p>성별: {selectedCat.gender}</p>
+              <p>나이: {selectedCat.age}살</p>
+              <p>몸무게: {selectedCat.weight}kg</p>
+              <p>상태: {selectedCat.state}</p>
+              <p>밥: {selectedCat.foodCount}번</p>
+            </div>
+            <div>
+              <p>밥 먹은 시간</p>
+              {
+                selectedCat.eatTime.map((time, key) => (
+                  <p key={`eatTime-${key}`}>{time}</p>
+                ))
+              }
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   )
 }

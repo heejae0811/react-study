@@ -2,6 +2,7 @@ import * as database from '../database/cats'
 
 // 액션 타입 정의, 액션은 대문자로 작성한다.
 export const HANDLECAT = 'HANDLECAT'
+export const HANDLETIME = 'HANDLETIME'
 export const HANDLEFOODCOUNT = 'HANDLEFOODCOUNT'
 export const HANDLEMEATWEIGHT = 'HANDLEMEATWEIGHT'
 export const HANDLEFEEDWEIGHT = 'HANDLEFEEDWEIGHT'
@@ -12,6 +13,7 @@ export const HANDLESTATE = 'HANDLESTATE'
 
 // 액션 생성 함수 정의
 export const handleCat = (paramsId) => ({type: HANDLECAT, paramsId})
+export const handleTime = (eatTime) => ({type: HANDLETIME, eatTime})
 export const handleFoodCount = () => ({type: HANDLEFOODCOUNT})
 export const handleMeatWeight = () => ({type: HANDLEMEATWEIGHT})
 export const handleFeedWeight = () => ({type: HANDLEFEEDWEIGHT})
@@ -32,6 +34,11 @@ const cat = (state = initialState, action) => {
   switch (action.type) {
     case HANDLECAT:
       state.selectedCat = state.catList.find(cat => cat.id === action.paramsId)
+      return {
+        ...state
+      }
+    case HANDLETIME:
+      state.selectedCat.eatTime = [...state.selectedCat.eatTime, action.eatTime]
       return {
         ...state
       }
