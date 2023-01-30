@@ -48,8 +48,12 @@ function App() {
               <Route path="/todo" element={<ErrorPage/>}/>
               <Route path="/props" element={<ErrorPage/>}/>
               <Route path="/snow" element={<ErrorPage/>}/>
-              <Route path="/cat" element={<ErrorPage/>}/>
-              <Route path="/catDetail/:id" element={<ErrorPage/>}/>
+              {/*<Route path="/cat" element={<ErrorPage/>}/>*/}
+              {/*<Route path="/catDetail/:id" element={<ErrorPage/>}/>*/}
+
+              <Route path="/cat" element={<CatPage/>}/>
+              <Route path="/catDetail/:id" element={<CatDetailPage/>}/>
+
               <Route path="/mypage" element={<ErrorPage/>}/>
             </Routes>
           )

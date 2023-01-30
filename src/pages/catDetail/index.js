@@ -12,23 +12,25 @@ import {
   handleAge,
   HANDLESTATE
 } from '../../reducers/cat'
+import {useAuth} from '../../hooks/useAuth'
 import './index.scss'
 
 function CatDetailPage() {
+  const [userList, loginValue] = useAuth()
   const [isMeatClick, setMeatClick] = useState(false)
   const [isFeedClick, setFeedClick] = useState(false)
   const [isWaterClick, setWaterClick] = useState(false)
   const [isWorkoutClick, setWorkoutClick] = useState(false)
 
-  let date = new Date()
-  let time = {
+  const date = new Date()
+  const time = {
     month: date.getMonth() + 1,
     date: date.getDate(),
     hours: date.getHours(),
     minutes: date.getMinutes(),
     seconds: date.getSeconds()
   }
-  let timeString = `${time.month}/${time.date} ${time.hours}:${time.minutes}:${time.seconds}`
+  const timeString = `${time.month}/${time.date} ${time.hours}:${time.minutes}:${time.seconds}`
 
   const random = Math.round(Math.random() * 100)
 
@@ -143,6 +145,8 @@ function CatDetailPage() {
 
   // 운동하면 -2kg
   const onLoseWeight = () => {
+    dispatch(handleLoseWeight())
+
     const loseWeightBtn = document.querySelector('.loseWeightBtn')
     loseWeightBtn.disabled = true
     setWorkoutClick(true)
@@ -151,8 +155,6 @@ function CatDetailPage() {
       loseWeightBtn.disabled = false
       setWorkoutClick(false)
     }, 10000)
-
-    dispatch(handleLoseWeight())
 
     if (selectedCat.age * 0.9 >= selectedCat.weight) {
       dispatch({type: HANDLESTATE, state: '사망'})
@@ -178,7 +180,7 @@ function CatDetailPage() {
             <button className={'feedBtn' + (isFeedClick ? ' disabled' : '')} onClick={() => onFoodFeed()}>사료 먹기</button>
             <button className={'waterBtn' + (isWaterClick ? ' disabled' : '')} onClick={() => onFoodWater()}>물 먹기
             </button>
-            <button className={(isWorkoutClick ? 'loseWeightBtn disabled' : 'loseWeightBtn')}
+            <button className={'loseWeightBtn' + (isWorkoutClick ? ' disabled' : '')}
                     onClick={() => onLoseWeight()}>운동 시키기
             </button>
           </>
@@ -207,6 +209,9 @@ function CatDetailPage() {
                   <p key={`eatTime-${key}`}>{time}</p>
                 ))
               }
+            </div>
+            <div>
+              {/*<p>집사: {loginValue.loginUser[0].name}</p>*/}
             </div>
           </div>
         </li>
