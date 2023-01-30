@@ -24,7 +24,7 @@ function CatPage() {
                 <p>나이: {cat.age}살</p>
                 <p>몸무게: {cat.weight}kg</p>
                 <p>상태: {cat.state}</p>
-                <p>밥: {cat.foodCount}번</p>
+                <p>밥: {cat.eatCount}번</p>
               </div>
             </li>
           ))

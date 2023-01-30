@@ -3,14 +3,13 @@ import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {
   handleCat,
-  HANDLETIME,
-  handleFoodCount,
+  HANDLEEATTIME,
   handleMeatWeight,
   handleFeedWeight,
   handleWaterWeight,
-  handleLoseWeight,
+  handleWorkout,
   handleAge,
-  HANDLESTATE
+  HANDLESTATE, HANDLEWORKOUTTIME
 } from '../../reducers/cat'
 import {useAuth} from '../../hooks/useAuth'
 import './index.scss'
@@ -56,11 +55,10 @@ function CatDetailPage() {
   // 고기 먹으면 + 3kg
   const onFoodMeat = () => {
     if (random % 2 === 0) {
-      dispatch({type: HANDLETIME, eatTime: timeString})
-      dispatch(handleFoodCount())
+      dispatch({type: HANDLEEATTIME, eatTime: timeString})
       dispatch(handleMeatWeight())
 
-      if (selectedCat.foodCount % 3 === 0) {
+      if (selectedCat.eatCount % 3 === 0) {
         dispatch(handleAge())
       }
 
@@ -86,11 +84,10 @@ function CatDetailPage() {
   // 사료 먹으면 +1kg
   const onFoodFeed = () => {
     if (random % 2 === 0) {
-      dispatch({type: HANDLETIME, eatTime: timeString})
-      dispatch(handleFoodCount())
+      dispatch({type: HANDLEEATTIME, eatTime: timeString})
       dispatch(handleFeedWeight())
 
-      if (selectedCat.foodCount % 3 === 0) {
+      if (selectedCat.eatCount % 3 === 0) {
         dispatch(handleAge())
       }
 
@@ -116,11 +113,10 @@ function CatDetailPage() {
   // 물 먹으면 +0.1kg
   const onFoodWater = () => {
     if (random % 2 === 0) {
-      dispatch({type: HANDLETIME, eatTime: timeString})
-      dispatch(handleFoodCount())
+      dispatch({type: HANDLEEATTIME, eatTime: timeString})
       dispatch(handleWaterWeight())
 
-      if (selectedCat.foodCount % 3 === 0) {
+      if (selectedCat.eatCount % 3 === 0) {
         dispatch(handleAge())
       }
 
@@ -145,7 +141,8 @@ function CatDetailPage() {
 
   // 운동하면 -2kg
   const onLoseWeight = () => {
-    dispatch(handleLoseWeight())
+    dispatch({type: HANDLEWORKOUTTIME, workoutTime: timeString})
+    dispatch(handleWorkout())
 
     const loseWeightBtn = document.querySelector('.loseWeightBtn')
     loseWeightBtn.disabled = true
@@ -200,13 +197,22 @@ function CatDetailPage() {
               <p>나이: {selectedCat.age}살</p>
               <p>몸무게: {selectedCat.weight}kg</p>
               <p>상태: {selectedCat.state}</p>
-              <p>밥: {selectedCat.foodCount}번</p>
             </div>
             <div>
-              <p>밥 먹은 시간</p>
+              <p>밥: {selectedCat.eatCount}번</p>
+              <h3>밥 먹은 시간</h3>
               {
                 selectedCat.eatTime.map((time, key) => (
                   <p key={`eatTime-${key}`}>{time}</p>
+                ))
+              }
+            </div>
+            <div>
+              <p>운동: {selectedCat.workoutCount}번</p>
+              <h3>운동한 시간</h3>
+              {
+                selectedCat.workoutTime.map((time, key) => (
+                  <p key={`workoutTime-${key}`}>{time}</p>
                 ))
               }
             </div>

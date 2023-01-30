@@ -7,8 +7,10 @@ export const cats = [
     age: 1,
     weight: 7,
     state: '보통',
-    foodCount: 0,
-    eatTime: []
+    eatTime: [],
+    eatCount: 0,
+    workoutTime: [],
+    workoutCount: 0
   },
   {
     id: 1,
@@ -18,8 +20,10 @@ export const cats = [
     age: 7,
     weight: 15,
     state: '비만',
-    foodCount: 0,
-    eatTime: []
+    eatTime: [],
+    eatCount: 0,
+    workoutTime: [],
+    workoutCount: 0
   },
   {
     id: 2,
@@ -29,7 +33,9 @@ export const cats = [
     age: 15,
     weight: 30,
     state: '사망',
-    foodCount: 0,
-    eatTime: []
+    eatTime: [],
+    eatCount: 0,
+    workoutTime: [],
+    workoutCount: 0
   }
 ]
