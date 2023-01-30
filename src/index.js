@@ -10,6 +10,7 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import {persistStore} from 'redux-persist'
 import {PersistGate} from 'redux-persist/integration/react'
+import configureStore from './reducers/cat'
 import {rootReducer} from './redux/index'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -18,21 +19,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 const store = createStore(rootReducer)
 const persistor = persistStore(store)
 
-// 스토어 안에 들어있는 상태가 바뀔 때 마다 함수 호출
-// const listener = () => {
-//   const state = store.getState()
-//   console.log(state)
-// }
-// const unsubscribe = store.subscribe(listener)
-
 root.render(
   <Provider store={store}>
-
+    {/*<PersistGate loading={null} persistor={persistor}>*/}
       <AuthProvider>
         <BrowserRouter>
           <App/>
         </BrowserRouter>
       </AuthProvider>
-
+    {/*</PersistGate>*/}
   </Provider>
 )

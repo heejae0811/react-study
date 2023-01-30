@@ -8,7 +8,7 @@ function LoginPage() {
   // id의 경우 백앤드에서 예약어로 쓸 경우가 많기 때문에 loginId처럼 다른 네이밍으로 한다.
   const [loginId, onChangeId, resetId] = useInput('')
   const [loginPassword, onChangePwd, resetPassword] = useInput('')
-  
+
   // TODO :: reset 안됨
   const onReset = useCallback(() => {
     resetId('')
@@ -17,6 +17,10 @@ function LoginPage() {
 
   const onLogin = () => {
     const loginUser = userList.filter(user => user.loginId === loginId && user.password === loginPassword)
+
+    if (loginUser.length > 0) {
+      localStorage.setItem('login', JSON.stringify(loginUser))
+    }
 
     if (!loginId || !loginPassword) {
       alert('아이디 또는 비밀번호를 입력해주세요.')

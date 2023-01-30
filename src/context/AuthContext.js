@@ -1,9 +1,11 @@
-import {createContext, useState} from 'react'
+import {createContext, useState, useEffect} from 'react'
 
 export const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
-  const [login, setLogin] = useState(false)
+  const [login, setLogin] = useState(
+    () => JSON.parse(window.localStorage.getItem('login'))
+  )
   const [loginUser, setLoginUser] = useState([])
 
   // key, value가 같으면 하나로 써도 된다.(login: login X)
