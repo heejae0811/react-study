@@ -1,10 +1,26 @@
-import {useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import {handleCat, handleFoodCount, handleWeight1, handleWeight2, handleWeight3, handleLoseWight, handleAge, HANDLESTATE} from '../../reducers/cat'
+import {
+  handleCat,
+  handleFoodCount,
+  handleWeight1,
+  handleWeight2,
+  handleWeight3,
+  handleLoseWight,
+  handleAge,
+  HANDLESTATE
+} from '../../reducers/cat'
 import './index.scss'
 
 function CatDetailPage() {
+  const [isMeatClick, setMeatClick] = useState(false)
+  const [isFeedClick, setFeedClick] = useState(false)
+  const [isWaterClick, setWaterClick] = useState(false)
+  const [isWorkoutClick, setWorkoutClick] = useState(false)
+
+  const random = Math.round(Math.random() * 1000)
+
   const params = useParams()
   const paramsId = Number(params.id)
 
@@ -26,62 +42,102 @@ function CatDetailPage() {
 
   // 고기 먹으면 + 3kg
   const onFoodMeat = () => {
-    dispatch(handleFoodCount())
-    dispatch(handleWeight1())
+    if (random % 2 === 0) {
+      dispatch(handleFoodCount())
+      dispatch(handleWeight1())
 
-    if (selectedCat.foodCount % 3 === 0) {
-      dispatch(handleAge())
-    }
+      if (selectedCat.foodCount % 3 === 0) {
+        dispatch(handleAge())
+      }
 
-    if (selectedCat.weight >= 15) {
-      dispatch({type: HANDLESTATE, state: '비만'})
-    }
+      if (selectedCat.weight >= 15) {
+        dispatch({type: HANDLESTATE, state: '비만'})
+      }
 
-    if (selectedCat.age >= 10) {
-      dispatch({type: HANDLESTATE, state: '사망'})
+      if (selectedCat.age >= 10) {
+        dispatch({type: HANDLESTATE, state: '사망'})
+      }
+    } else {
+      const eatBtn = document.querySelector('.eatBtn')
+      eatBtn.disabled = true
+      setMeatClick(true)
+
+      setTimeout(() => {
+        eatBtn.disabled = false
+        setMeatClick(false)
+      }, 2000)
     }
   }
 
   // 사료 먹으면 +1kg
   const onFoodFeed = () => {
-    dispatch(handleFoodCount())
-    dispatch(handleWeight2())
+    if (random % 2 === 0) {
+      dispatch(handleFoodCount())
+      dispatch(handleWeight2())
 
-    if (selectedCat.foodCount % 3 === 0) {
-      dispatch(handleAge())
-    }
+      if (selectedCat.foodCount % 3 === 0) {
+        dispatch(handleAge())
+      }
 
-    if (selectedCat.weight >= 15) {
-      dispatch({type: HANDLESTATE, state: '비만'})
-    }
+      if (selectedCat.weight >= 15) {
+        dispatch({type: HANDLESTATE, state: '비만'})
+      }
 
-    if (selectedCat.age >= 10) {
-      dispatch({type: HANDLESTATE, state: '사망'})
+      if (selectedCat.age >= 10) {
+        dispatch({type: HANDLESTATE, state: '사망'})
+      }
+    } else {
+      const eatBtn = document.querySelector('.eatBtn')
+      eatBtn.disabled = true
+      setFeedClick(true)
+
+      setTimeout(() => {
+        eatBtn.disabled = false
+        setFeedClick(false)
+      }, 2000)
     }
   }
 
   // 물 먹으면 +0.1kg
   const onFoodWater = () => {
-    dispatch(handleFoodCount())
-    dispatch(handleWeight3())
+    if (random % 2 === 0) {
+      dispatch(handleFoodCount())
+      dispatch(handleWeight3())
 
-    if (selectedCat.foodCount % 3 === 0) {
-      dispatch(handleAge())
+      if (selectedCat.foodCount % 3 === 0) {
+        dispatch(handleAge())
+      }
+
+      if (selectedCat.weight >= 15) {
+        dispatch({type: HANDLESTATE, state: '비만'})
+      }
+
+      if (selectedCat.age >= 10) {
+        dispatch({type: HANDLESTATE, state: '사망'})
+      }
+    } else {
+      const eatBtn = document.querySelector('.eatBtn')
+      eatBtn.disabled = true
+      setWaterClick(true)
+
+      setTimeout(() => {
+        eatBtn.disabled = false
+        setWaterClick(false)
+      }, 2000)
     }
-
-    if (selectedCat.weight >= 15) {
-      dispatch({type: HANDLESTATE, state: '비만'})
-    }
-
-    if (selectedCat.age >= 10) {
-      dispatch({type: HANDLESTATE, state: '사망'})
-    }
-
-    console.log(typeof selectedCat.weight)
   }
 
-  // 운동하면 -2kg s
+  // 운동하면 -2kg
   const onLoseWeight = () => {
+    const loseWeightBtn = document.querySelector('.loseWeightBtn')
+    loseWeightBtn.disabled = true
+    setWorkoutClick(true)
+
+    setTimeout(() => {
+      loseWeightBtn.disabled = false
+      setWorkoutClick(false)
+    }, 10000)
+
     dispatch(handleLoseWight())
 
     if (selectedCat.age * 0.9 >= selectedCat.weight) {
@@ -120,10 +176,13 @@ function CatDetailPage() {
           </>
           :
           <>
-            <button onClick={() => onFoodMeat()}>고기 먹기</button>
-            <button onClick={() => onFoodFeed()}>사료 먹기</button>
-            <button onClick={() => onFoodWater()}>물 먹기</button>
-            <button onClick={() => onLoseWeight()}>운동 시키기</button>
+            <button className={(isMeatClick ? 'eatBtn disabled' : 'eatBtn')} onClick={() => onFoodMeat()}>고기 먹기</button>
+            <button className={(isFeedClick ? 'eatBtn disabled' : 'eatBtn')} onClick={() => onFoodFeed()}>사료 먹기</button>
+            <button className={(isWaterClick ? 'eatBtn disabled' : 'eatBtn')} onClick={() => onFoodWater()}>물 먹기
+            </button>
+            <button className={(isWorkoutClick ? 'loseWeightBtn disabled' : 'loseWeightBtn')}
+                    onClick={() => onLoseWeight()}>운동 시키기
+            </button>
           </>
       }
     </div>
