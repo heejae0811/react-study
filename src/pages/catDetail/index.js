@@ -1,16 +1,14 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import storage from 'redux-persist/lib/storage'
 import {
   handleCat,
-  HANDLEEATTIME,
-  handleMeatWeight,
-  handleFeedWeight,
-  handleWaterWeight,
-  handleWorkout,
+  HANDLEMEAT,
+  HANDLEFEED,
+  HANDLEWATER,
+  HANDLEWORKOUT,
   handleAge,
-  HANDLESTATE, HANDLEWORKOUTTIME
+  HANDLESTATE
 } from '../../reducers/cat'
 import {useAuth} from '../../hooks/useAuth'
 import './index.scss'
@@ -49,13 +47,6 @@ function CatDetailPage() {
     }
   }, [])
 
-  localStorage.setItem('cat', JSON.stringify(cat))
-
-  useEffect(() => {
-    localStorage.setItem('cat', JSON.stringify(cat))
-    console.log(cat)
-  }, [cat])
-
   // 랜더링 순서가 html을 return 한 다음에 useEffect가 실행되는데 처음에 selectedCat이 없기 때문에 에러가 발생하는 것이다.
   // 재랜더링이 되는 단점이 있다.(비효율적)
   if (!selectedCat) return null
@@ -63,8 +54,7 @@ function CatDetailPage() {
   // 고기 먹으면 + 3kg
   const onFoodMeat = () => {
     if (random % 2 === 0) {
-      dispatch({type: HANDLEEATTIME, eatTime: timeString})
-      dispatch(handleMeatWeight())
+      dispatch({type: HANDLEMEAT, eatTime: timeString})
 
       if (selectedCat.eatCount % 3 === 0) {
         dispatch(handleAge())
@@ -92,8 +82,7 @@ function CatDetailPage() {
   // 사료 먹으면 +1kg
   const onFoodFeed = () => {
     if (random % 2 === 0) {
-      dispatch({type: HANDLEEATTIME, eatTime: timeString})
-      dispatch(handleFeedWeight())
+      dispatch({type: HANDLEFEED, eatTime: timeString})
 
       if (selectedCat.eatCount % 3 === 0) {
         dispatch(handleAge())
@@ -121,8 +110,7 @@ function CatDetailPage() {
   // 물 먹으면 +0.1kg
   const onFoodWater = () => {
     if (random % 2 === 0) {
-      dispatch({type: HANDLEEATTIME, eatTime: timeString})
-      dispatch(handleWaterWeight())
+      dispatch({type: HANDLEWATER, eatTime: timeString})
 
       if (selectedCat.eatCount % 3 === 0) {
         dispatch(handleAge())
@@ -149,8 +137,7 @@ function CatDetailPage() {
 
   // 운동하면 -2kg
   const onLoseWeight = () => {
-    dispatch({type: HANDLEWORKOUTTIME, workoutTime: timeString})
-    dispatch(handleWorkout())
+    dispatch({type: HANDLEWORKOUT, workoutTime: timeString})
 
     const loseWeightBtn = document.querySelector('.loseWeightBtn')
     loseWeightBtn.disabled = true
@@ -159,7 +146,7 @@ function CatDetailPage() {
     setTimeout(() => {
       loseWeightBtn.disabled = false
       setWorkoutClick(false)
-    }, 10000)
+    }, 1000)
 
     if (selectedCat.age * 0.9 >= selectedCat.weight) {
       dispatch({type: HANDLESTATE, state: '사망'})
