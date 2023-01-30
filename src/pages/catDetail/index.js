@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
+import storage from 'redux-persist/lib/storage'
 import {
   handleCat,
   HANDLEEATTIME,
@@ -47,6 +48,13 @@ function CatDetailPage() {
       alert('잘못된 접근입니다.')
     }
   }, [])
+
+  localStorage.setItem('cat', JSON.stringify(cat))
+
+  useEffect(() => {
+    localStorage.setItem('cat', JSON.stringify(cat))
+    console.log(cat)
+  }, [cat])
 
   // 랜더링 순서가 html을 return 한 다음에 useEffect가 실행되는데 처음에 selectedCat이 없기 때문에 에러가 발생하는 것이다.
   // 재랜더링이 되는 단점이 있다.(비효율적)
