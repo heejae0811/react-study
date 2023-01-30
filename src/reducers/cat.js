@@ -3,9 +3,9 @@ import * as database from '../database/cats'
 // 액션 타입 정의, 액션은 대문자로 작성한다.
 export const HANDLECAT = 'HANDLECAT'
 export const HANDLEFOODCOUNT = 'HANDLEFOODCOUNT'
-export const HANDLEWEIGHT1 = 'HANDLEWEIGHT1'
-export const HANDLEWEIGHT2 = 'HANDLEWEIGHT2'
-export const HANDLEWEIGHT3 = 'HANDLEWEIGHT3'
+export const HANDLEMEATWEIGHT = 'HANDLEMEATWEIGHT'
+export const HANDLEFEEDWEIGHT = 'HANDLEFEEDWEIGHT'
+export const HANDLEWATERWEIGHT = 'HANDLEWATERWEIGHT'
 export const HANDLELOSEWEIGHT = 'HANDLELOSEWEIGHT'
 export const HANDLEAGE = 'HANDLEAGE'
 export const HANDLESTATE = 'HANDLESTATE'
@@ -13,10 +13,10 @@ export const HANDLESTATE = 'HANDLESTATE'
 // 액션 생성 함수 정의
 export const handleCat = (paramsId) => ({type: HANDLECAT, paramsId})
 export const handleFoodCount = () => ({type: HANDLEFOODCOUNT})
-export const handleWeight1 = () => ({type: HANDLEWEIGHT1})
-export const handleWeight2 = () => ({type: HANDLEWEIGHT2})
-export const handleWeight3 = () => ({type: HANDLEWEIGHT3})
-export const handleLoseWight = () => ({type: HANDLELOSEWEIGHT})
+export const handleMeatWeight = () => ({type: HANDLEMEATWEIGHT})
+export const handleFeedWeight = () => ({type: HANDLEFEEDWEIGHT})
+export const handleWaterWeight = () => ({type: HANDLEWATERWEIGHT})
+export const handleLoseWeight = () => ({type: HANDLELOSEWEIGHT})
 export const handleAge = () => ({type: HANDLEAGE})
 export const handleState = (state) => ({type: HANDLESTATE, state})
 
@@ -40,17 +40,17 @@ const cat = (state = initialState, action) => {
       return {
         ...state
       }
-    case HANDLEWEIGHT1:
+    case HANDLEMEATWEIGHT:
       state.selectedCat.weight = state.selectedCat.weight + 3
       return {
         ...state
       }
-    case HANDLEWEIGHT2:
+    case HANDLEFEEDWEIGHT:
       state.selectedCat.weight = state.selectedCat.weight + 1
       return {
         ...state
       }
-    case HANDLEWEIGHT3:
+    case HANDLEWATERWEIGHT:
       state.selectedCat.weight = Number((state.selectedCat.weight + 0.1).toFixed(1))
       return {
         ...state

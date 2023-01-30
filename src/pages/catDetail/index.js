@@ -4,10 +4,10 @@ import {useSelector, useDispatch} from 'react-redux'
 import {
   handleCat,
   handleFoodCount,
-  handleWeight1,
-  handleWeight2,
-  handleWeight3,
-  handleLoseWight,
+  handleMeatWeight,
+  handleFeedWeight,
+  handleWaterWeight,
+  handleLoseWeight,
   handleAge,
   HANDLESTATE
 } from '../../reducers/cat'
@@ -19,7 +19,7 @@ function CatDetailPage() {
   const [isWaterClick, setWaterClick] = useState(false)
   const [isWorkoutClick, setWorkoutClick] = useState(false)
 
-  const random = Math.round(Math.random() * 1000)
+  const random = Math.round(Math.random() * 100)
 
   const params = useParams()
   const paramsId = Number(params.id)
@@ -44,7 +44,7 @@ function CatDetailPage() {
   const onFoodMeat = () => {
     if (random % 2 === 0) {
       dispatch(handleFoodCount())
-      dispatch(handleWeight1())
+      dispatch(handleMeatWeight())
 
       if (selectedCat.foodCount % 3 === 0) {
         dispatch(handleAge())
@@ -58,12 +58,12 @@ function CatDetailPage() {
         dispatch({type: HANDLESTATE, state: '사망'})
       }
     } else {
-      const eatBtn = document.querySelector('.eatBtn')
-      eatBtn.disabled = true
+      const meatBtn = document.querySelector('.meatBtn')
+      meatBtn.disabled = true
       setMeatClick(true)
 
       setTimeout(() => {
-        eatBtn.disabled = false
+        meatBtn.disabled = false
         setMeatClick(false)
       }, 2000)
     }
@@ -73,7 +73,7 @@ function CatDetailPage() {
   const onFoodFeed = () => {
     if (random % 2 === 0) {
       dispatch(handleFoodCount())
-      dispatch(handleWeight2())
+      dispatch(handleFeedWeight())
 
       if (selectedCat.foodCount % 3 === 0) {
         dispatch(handleAge())
@@ -87,12 +87,12 @@ function CatDetailPage() {
         dispatch({type: HANDLESTATE, state: '사망'})
       }
     } else {
-      const eatBtn = document.querySelector('.eatBtn')
-      eatBtn.disabled = true
+      const feedBtn = document.querySelector('.feedBtn')
+      feedBtn.disabled = true
       setFeedClick(true)
 
       setTimeout(() => {
-        eatBtn.disabled = false
+        feedBtn.disabled = false
         setFeedClick(false)
       }, 2000)
     }
@@ -102,7 +102,7 @@ function CatDetailPage() {
   const onFoodWater = () => {
     if (random % 2 === 0) {
       dispatch(handleFoodCount())
-      dispatch(handleWeight3())
+      dispatch(handleWaterWeight())
 
       if (selectedCat.foodCount % 3 === 0) {
         dispatch(handleAge())
@@ -116,12 +116,12 @@ function CatDetailPage() {
         dispatch({type: HANDLESTATE, state: '사망'})
       }
     } else {
-      const eatBtn = document.querySelector('.eatBtn')
-      eatBtn.disabled = true
+      const waterBtn = document.querySelector('.waterBtn')
+      waterBtn.disabled = true
       setWaterClick(true)
 
       setTimeout(() => {
-        eatBtn.disabled = false
+        waterBtn.disabled = false
         setWaterClick(false)
       }, 2000)
     }
@@ -138,7 +138,7 @@ function CatDetailPage() {
       setWorkoutClick(false)
     }, 10000)
 
-    dispatch(handleLoseWight())
+    dispatch(handleLoseWeight())
 
     if (selectedCat.age * 0.9 >= selectedCat.weight) {
       dispatch({type: HANDLESTATE, state: '사망'})
@@ -176,12 +176,11 @@ function CatDetailPage() {
           </>
           :
           <>
-            <button className={(isMeatClick ? 'eatBtn disabled' : 'eatBtn')} onClick={() => onFoodMeat()}>고기 먹기</button>
-            <button className={(isFeedClick ? 'eatBtn disabled' : 'eatBtn')} onClick={() => onFoodFeed()}>사료 먹기</button>
-            <button className={(isWaterClick ? 'eatBtn disabled' : 'eatBtn')} onClick={() => onFoodWater()}>물 먹기
+            <button className={'meatBtn' + (isMeatClick ? ' disabled' : '')} onClick={() => onFoodMeat()}>고기 먹기</button>
+            <button className={'feedBtn' + (isFeedClick ? ' disabled' : '')} onClick={() => onFoodFeed()}>사료 먹기</button>
+            <button className={'waterBtn' + (isWaterClick ? ' disabled' : '')} onClick={() => onFoodWater()}>물 먹기
             </button>
-            <button className={(isWorkoutClick ? 'loseWeightBtn disabled' : 'loseWeightBtn')}
-                    onClick={() => onLoseWeight()}>운동 시키기
+            <button className={(isWorkoutClick ? 'loseWeightBtn disabled' : 'loseWeightBtn')} onClick={() => onLoseWeight()}>운동 시키기
             </button>
           </>
       }
