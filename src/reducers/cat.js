@@ -11,12 +11,6 @@ export const HANDLESTATE = 'HANDLESTATE'
 
 // 액션 생성 함수 정의
 export const handleCat = (paramsId) => ({type: HANDLECAT, paramsId})
-export const handleMeat = () => ({type: HANDLEMEAT})
-export const handleFeed = () => ({type: HANDLEFEED})
-export const handleWater = () => ({type: HANDLEWATER})
-export const handleWorkout = () => ({type: HANDLEWORKOUT})
-export const handleAge = () => ({type: HANDLEAGE})
-export const handleState = () => ({type: HANDLESTATE})
 
 // 리덕스에서 관리할 상태 정의
 export const initialState = {

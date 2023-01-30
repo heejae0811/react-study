@@ -7,7 +7,7 @@ import {
   HANDLEFEED,
   HANDLEWATER,
   HANDLEWORKOUT,
-  handleAge,
+  HANDLEAGE,
   HANDLESTATE
 } from '../../reducers/cat'
 import {useAuth} from '../../hooks/useAuth'
@@ -57,7 +57,7 @@ function CatDetailPage() {
       dispatch({type: HANDLEMEAT, eatTime: timeString})
 
       if (selectedCat.eatCount % 3 === 0) {
-        dispatch(handleAge())
+        dispatch({type: HANDLEAGE})
       }
 
       if (selectedCat.weight >= 15) {
@@ -85,7 +85,7 @@ function CatDetailPage() {
       dispatch({type: HANDLEFEED, eatTime: timeString})
 
       if (selectedCat.eatCount % 3 === 0) {
-        dispatch(handleAge())
+        dispatch({type: HANDLEAGE})
       }
 
       if (selectedCat.weight >= 15) {
@@ -113,7 +113,7 @@ function CatDetailPage() {
       dispatch({type: HANDLEWATER, eatTime: timeString})
 
       if (selectedCat.eatCount % 3 === 0) {
-        dispatch(handleAge())
+        dispatch({type: HANDLEAGE})
       }
 
       if (selectedCat.weight >= 15) {
