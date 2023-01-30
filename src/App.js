@@ -3,14 +3,15 @@ import {Routes, Route} from 'react-router-dom'
 import {ThemeProvider} from 'styled-components'
 import {darkTheme, lightTheme} from './component/theme/Theme'
 import GlobalStyle from './component/theme/GlobalStyle'
+import LoginPage from './pages/login/index'
+import MyPage from './pages/mypage/index'
+import ErrorPage from './pages/error/index'
 import IntroPage from './pages/intro/index'
 import TodoPage from './pages/todo/index'
 import PropsPage from './pages/props/index'
 import SnowPage from './pages/snow/index'
 import CatPage from './pages/cat/index'
 import CatDetailPage from './pages/catDetail/index'
-import LoginPage from './pages/login/index'
-import MyPage from './pages/mypage/index'
 import Header from './component/layout/Header'
 import Footer from './component/layout/Footer'
 import ThemeButton from './component/theme/ThemeButton'
@@ -42,9 +43,14 @@ function App() {
             </Routes>
           ) : (
             <Routes isDarkMode={isDarkMode}>
-              <Route path="/cat" element={<CatPage/>}/>
-              <Route path="/catDetail/:id" element={<CatDetailPage/>}/>
               <Route path="/" element={<LoginPage/>}/>
+              <Route path="/intro" element={<ErrorPage/>}/>
+              <Route path="/todo" element={<ErrorPage/>}/>
+              <Route path="/props" element={<ErrorPage/>}/>
+              <Route path="/snow" element={<ErrorPage/>}/>
+              <Route path="/cat" element={<ErrorPage/>}/>
+              <Route path="/catDetail/:id" element={<ErrorPage/>}/>
+              <Route path="/mypage" element={<ErrorPage/>}/>
             </Routes>
           )
         }
