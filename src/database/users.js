@@ -22,7 +22,7 @@ export const users = [
     loginId: 'sticker',
     password: '123',
     phoneNumber: '010-1243-1234',
-    isAdmin: true,
+    isAdmin: false,
     accessToken: '43c1051a9b9d8e7779123328182e4',
     abilities: [
       {

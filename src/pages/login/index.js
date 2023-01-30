@@ -18,6 +18,7 @@ function LoginPage() {
   const onLogin = () => {
     const loginUser = userList.filter(user => user.loginId === loginId && user.password === loginPassword)
 
+    // 로컬스토리지에 저장하기
     if (loginUser.length > 0) {
       localStorage.setItem('login', JSON.stringify(loginUser))
     }
@@ -45,7 +46,7 @@ function LoginPage() {
         ) : (
           <>
             <h4>아이디 = test, 비밀번호 = 123</h4>
-            <h4>아이디 = sticker, 비밀번호 = 123123 (false)</h4>
+            <h4>아이디 = sticker, 비밀번호 = 123 (false)</h4>
 
             <div>
               <label htmlFor="userId">아이디</label>
@@ -54,7 +55,8 @@ function LoginPage() {
 
             <div>
               <label htmlFor="userPassword">비밀번호</label>
-              <input type="text" id="userPassword" value={loginPassword} onChange={onChangePwd} placeholder="비밀번호를 입력해주세요." required/>
+              <input type="text" id="userPassword" value={loginPassword} onChange={onChangePwd}
+                     placeholder="비밀번호를 입력해주세요." required/>
             </div>
 
             <button type="submit" value="로그인" onClick={onLogin}>확인</button>
