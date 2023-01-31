@@ -47,7 +47,7 @@ function CatDetailPage() {
     }
   }, [])
 
-  // 랜더링 순서가 html을 return 한 다음에 useEffect가 실행되는데 처음에 selectedCat이 없기 때문에 에러가 발생하는 것이다.
+  // 랜더링 순서가 html을 return 한 다음에 useEffect가 실행되기 때문에 처음에 selectedCat이 없어 에러가 발생하는 것이다.
   // 재랜더링이 되는 단점이 있다.(비효율적)
   if (!selectedCat) return null
 
@@ -212,7 +212,7 @@ function CatDetailPage() {
               }
             </div>
             <div>
-              {/*<p>집사: {loginValue.loginUser[0].name}</p>*/}
+              <p>집사: {loginValue.loginUser[0].name}</p>
             </div>
           </div>
         </li>
