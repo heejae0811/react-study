@@ -1,12 +1,8 @@
-import {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {useAuth} from '../../hooks/useAuth'
 import './header.scss'
 
 const Header = () => {
-  const [login, setLogin] = useState(
-    () => JSON.parse(window.localStorage.getItem('login'))
-  )
   const [userList, loginValue, isLogin, isLogout] = useAuth()
 
   // TODO :: userList, isLogin 작성하지 않으면 isLogout() 함수 호출 안됨
@@ -39,7 +35,7 @@ const Header = () => {
       {
         loginValue.login ? (
           <ul>
-            <li>{login[0].loginId} 님</li>
+            <li>{loginValue.loginUser[0].loginId} 님</li>
             <li>
               <Link to="/mypage">마이페이지</Link>
             </li>

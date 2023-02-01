@@ -5,8 +5,7 @@ import './index.scss'
 
 function LoginPage() {
   const [userList, loginValue, isLogin] = useAuth()
-  // id의 경우 백앤드에서 예약어로 쓸 경우가 많기 때문에 loginId처럼 다른 네이밍으로 한다.
-  const [loginId, onChangeId, resetId] = useInput('')
+  const [loginId, onChangeId, resetId] = useInput('') // id의 경우 백앤드에서 예약어로 쓸 경우가 많기 때문에 loginId처럼 다른 네이밍으로 한다.
   const [loginPassword, onChangePwd, resetPassword] = useInput('')
 
   // TODO :: reset 안됨
@@ -20,7 +19,7 @@ function LoginPage() {
 
     // 로컬스토리지에 저장하기
     if (loginUser.length > 0) {
-      localStorage.setItem('login', JSON.stringify(loginUser))
+      window.localStorage.setItem('login', JSON.stringify(loginUser))
     }
 
     if (!loginId || !loginPassword) {
