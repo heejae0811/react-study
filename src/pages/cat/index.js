@@ -1,37 +1,28 @@
-import {Link} from 'react-router-dom'
-import {useSelector} from 'react-redux'
-import './index.scss'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
-// FIXME :: useNavigate()를 쓰는 이유는?
-function CatPage() {
-  const catList = useSelector(state => state.cat.catList)
+const ListCat = () => {
+  const navigate = useNavigate()
+
+  const catList = useSelector(state => state.cat.cats)
+
+  const handleDetailNavigate = (name) => {
+    navigate(`/cat-detail/${name}`)
+  }
 
   return (
-    <div className="cat-page">
-      <h1>고양이 리스트</h1>
+    <div>
+      <h1>🎆고양이 키우기🎇</h1>
       <ul>
-        {
-          catList.map((cat, key) => (
-            <li key={`catlist-${key}`}>
-              {
-                cat.state === '사망'
-                  ? <img className="disabled" src={cat.imgSrc} alt="cat"/>
-                  : <Link to={`/catDetail/${cat.id}`}><img src={cat.imgSrc} alt="cat"/></Link>
-              }
-              <div>
-                <p>이름: {cat.name}</p>
-                <p>성별: {cat.gender}</p>
-                <p>나이: {cat.age}살</p>
-                <p>몸무게: {cat.weight}kg</p>
-                <p>상태: {cat.state}</p>
-                <p>밥: {cat.eatCount}번</p>
-              </div>
-            </li>
-          ))
-        }
+        {catList.map((cat, index) => (
+          <li key={index} onClick={() => handleDetailNavigate(cat.name)} style={{cursor: 'pointer'}}>
+            <img src={cat.profileImage} width="100" height="100"  alt={cat.name}/>
+            {cat.name} {cat.age}세 체중 {cat.weight} 현재상태 : {cat.status}
+          </li>
+        ))}
       </ul>
     </div>
   )
 }
 
-export default CatPage
+export default ListCat

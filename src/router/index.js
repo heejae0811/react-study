@@ -1,49 +1,19 @@
-import {useRoutes} from 'react-router'
+import { useRoutes } from 'react-router'
 import App from '../App'
-import IntroPage from '../pages/intro'
-import TodoPage from '../pages/todo'
-import PropsPage from '../pages/props'
-import SnowPage from '../pages/snow'
-import CatPage from '../pages/cat'
-import CatDetailPage from '../pages/catDetail'
+import DetailCat from '../pages/catDetail'
+
 
 const Router = () => {
   const routes = useRoutes([
     {
       path: '/',
       index: true,
-      element: <App/>
+      element: <App />
     },
     {
-      path: '/intro',
-      index: true,
-      element: <IntroPage/>
-    },
-    {
-      path: '/todo',
-      index: true,
-      element: <TodoPage/>
-    },
-    {
-      path: '/props',
-      index: true,
-      element: <PropsPage/>
-    },
-    {
-      path: '/snow',
-      index: true,
-      element: <SnowPage/>
-    },
-    {
-      path: '/cat',
-      index: true,
-      element: <CatPage/>
-    },
-    {
-      path: '/catDetail',
-      index: true,
-      element: <CatDetailPage/>
-    },
+      path: '/cat-detail/:name',
+      element: <DetailCat />,
+    }
   ])
 
   return routes

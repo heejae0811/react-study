@@ -1,41 +1,41 @@
+export const CatStatus = {
+  s1: '너무 마름',
+  s2: '마름',
+  s3: '보통',
+  s4: '통통',
+  s5: '비만',
+  s6: '고도비만',
+  s7: '초고도비만'
+}
+
 export const cats = [
   {
-    id: 0,
-    imgSrc: '/react-study/images/cat/cat01.jpg',
-    name: '가가',
-    gender: '여자',
+    name: '김하영',
+    weight: 1,
     age: 1,
-    weight: 7,
-    state: '보통',
-    eatTime: [],
-    eatCount: 0,
-    workoutTime: [],
-    workoutCount: 0
-  },
-  {
-    id: 1,
-    imgSrc: '/react-study/images/cat/cat02.jpg',
-    name: '나나',
     gender: '여자',
-    age: 7,
-    weight: 15,
-    state: '비만',
-    eatTime: [],
+    status: CatStatus.s3,
+    profileImage: require('../assets/img/cat01.jpg'),
     eatCount: 0,
-    workoutTime: [],
-    workoutCount: 0
+    history: []
   },
   {
-    id: 2,
-    imgSrc: '/react-study/images/cat/cat03.jpg',
-    name: '다다',
-    gender: '남자',
-    age: 15,
-    weight: 30,
-    state: '사망',
-    eatTime: [],
-    eatCount: 0,
-    workoutTime: [],
-    workoutCount: 0
+    name: '이휘재',
+    weight: 1,
+    age: 1,
+    gender: '여자',
+    status: CatStatus.s3,
+    profileImage: require('../assets/img/cat02.jpg'),
+    history: []
+  },
+  {
+
+    name: '강다연',
+    weight: 1,
+    age: 1,
+    gender: '여자',
+    status: CatStatus.s3,
+    profileImage: require('../assets/img/cat03.jpg'),
+    history: []
   }
 ]
