@@ -33,24 +33,27 @@ function App() {
           loginValue.login ? (
             <Routes isDarkMode={isDarkMode}>
               <Route path="/" element={<LoginPage/>}/>
+              <Route path="/mypage" element={<MyPage/>}/>
               <Route path="/intro" element={<IntroPage/>}/>
               <Route path="/todo" element={<TodoPage/>}/>
               <Route path="/props" element={<PropsPage/>}/>
               <Route path="/snow" element={<SnowPage/>}/>
               <Route path="/cat" element={<CatPage/>}/>
               <Route path="/catDetail/:id" element={<CatDetailPage/>}/>
-              <Route path="/mypage" element={<MyPage/>}/>
             </Routes>
           ) : (
             <Routes isDarkMode={isDarkMode}>
               <Route path="/" element={<LoginPage/>}/>
+              <Route path="/mypage" element={<ErrorPage/>}/>
               <Route path="/intro" element={<ErrorPage/>}/>
               <Route path="/todo" element={<ErrorPage/>}/>
               <Route path="/props" element={<ErrorPage/>}/>
               <Route path="/snow" element={<ErrorPage/>}/>
-              <Route path="/cat" element={<ErrorPage/>}/>
-              <Route path="/catDetail/:id" element={<ErrorPage/>}/>
-              <Route path="/mypage" element={<ErrorPage/>}/>
+              {/*<Route path="/cat" element={<ErrorPage/>}/>*/}
+              {/*<Route path="/catDetail/:id" element={<ErrorPage/>}/>*/}
+
+              <Route path="/cat" element={<CatPage/>}/>
+              <Route path="/catDetail/:id" element={<CatDetailPage/>}/>
             </Routes>
           )
         }

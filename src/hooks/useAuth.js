@@ -9,13 +9,11 @@ export function useAuth(){
   const loginValue = useContext(AuthContext)
 
   const isLogin = () => {
-    // window.localStorage.getItem('login')
     loginValue.setLogin(true)
     alert('로그인 되었습니다.')
   }
 
   const isLogout = () => {
-    window.localStorage.removeItem('login')
     loginValue.setLogin(false)
     alert('로그아웃 되었습니다.')
   }
