@@ -7,7 +7,7 @@ const ListCat = () => {
   const catList = useSelector(state => state.cat.cats)
 
   const handleDetailNavigate = (name) => {
-    navigate(`/cat-detail/${name}`)
+    navigate(`/catDetail/${name}`)
   }
 
   return (

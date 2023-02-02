@@ -11,7 +11,7 @@ import {
 } from '../../redux/cat'
 import {catStatus} from '../../database/cats'
 
-const DetailCat = () => {
+const CatDetail = () => {
   const [isEatCount, setEatCount] = useState(1)
   const [isMeatClick, setMeatClick] = useState(false)
   const [isFeedClick, setFeedClick] = useState(false)
@@ -169,4 +169,4 @@ const DetailCat = () => {
   )
 }
 
-export default DetailCat
+export default CatDetail
