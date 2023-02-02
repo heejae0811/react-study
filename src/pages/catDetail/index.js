@@ -1,32 +1,145 @@
-import { useNavigate, useParams } from 'react-router'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { handleSelectedCat, addHistory } from '../../redux/cat'
+import {useNavigate, useParams} from 'react-router'
+import {useState, useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {
+  handleSelectedCat,
+  addHistory,
+  handleStatus,
+  handleGainWeight,
+  handleLoseWeight,
+  handleAge
+} from '../../redux/cat'
+import {catStatus} from '../../database/cats'
 
 const DetailCat = () => {
-  const params = useParams();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [isEatCount, setEatCount] = useState(1)
+  const [isMeatClick, setMeatClick] = useState(false)
+  const [isFeedClick, setFeedClick] = useState(false)
+  const [isWaterClick, setWaterClick] = useState(false)
+  const [isWorkoutClick, setWorkoutClick] = useState(false)
+
+  const params = useParams()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const catList = useSelector(state => state.cat.cats)
   const selectedCat = useSelector(state => state.cat.selectedCat)
 
-  const addEatCount = () => {
-    dispatch(addHistory({
-      type: 'eat',
-      timestamp: new Date()
-    }))
+  const randomEat = Math.round(Math.random() * 10)
+  const randomSeconds = ((Math.random() * (10 - 2)) + 2) * 1000
+
+  // 고기 먹으면 +3kg
+  const eatMeat = () => {
+    if (randomEat % 2 === 0) {
+      setEatCount(isEatCount + 1)
+
+      dispatch(addHistory({
+        type: 'EatCount',
+        eatCount: isEatCount
+      }))
+      dispatch(addHistory({
+        type: 'Meat',
+        time: new Date().toLocaleString()
+      }))
+      dispatch(handleGainWeight(3))
+
+      catListStatus()
+    } else {
+      setMeatClick(true)
+      setTimeout(() => {
+        setMeatClick(false)
+      }, randomSeconds)
+    }
   }
 
-  // 선택된 고양이를 불러온다
-  // 찾아봤는데 없으면 메인화면으로 이동
+  // 사료 먹으면 +1kg
+  const eatFeed = () => {
+    if (randomEat % 2 === 0) {
+      setEatCount(isEatCount + 1)
+
+      dispatch(addHistory({
+        type: 'EatCount',
+        eatCount: isEatCount
+      }))
+      dispatch(addHistory({
+        type: 'Feed',
+        time: new Date().toLocaleString()
+      }))
+      dispatch(handleGainWeight(1))
+
+      catListStatus()
+    } else {
+      setFeedClick(true)
+      setTimeout(() => {
+        setFeedClick(false)
+      }, randomSeconds)
+    }
+  }
+
+  // 물 먹으면 +0.1kg
+  const eatWater = () => {
+    if (randomEat % 2 === 0) {
+      setEatCount(isEatCount + 1)
+
+      dispatch(addHistory({
+        type: 'EatCount',
+        eatCount: isEatCount
+      }))
+      dispatch(addHistory({
+        type: 'Water',
+        time: new Date().toLocaleString()
+      }))
+      dispatch(handleGainWeight(0.1))
+
+      catListStatus()
+    } else {
+      setWaterClick(true)
+      setTimeout(() => {
+        setWaterClick(false)
+      }, randomSeconds)
+    }
+  }
+
+  // 운동하면 -2kg
+  const workout = () => {
+    setWorkoutClick(true)
+    setTimeout(() => {
+      setWorkoutClick(false)
+    }, 10000)
+
+    dispatch(addHistory({
+      type: 'Workout',
+      time: new Date().toLocaleString()
+    }))
+    dispatch(handleLoseWeight(2))
+
+    catListStatus()
+  }
+
+  // 나이, 몸무게에 따른 상태 체크
+  const catListStatus = () => {
+    if (isEatCount % 3 === 0) {
+      dispatch(handleAge())
+    }
+
+    if (selectedCat.age > 15 || (selectedCat.age * 0.1) > selectedCat.weight) {
+      dispatch(handleStatus(catStatus.die))
+    } else if (selectedCat.weight > 20) {
+      dispatch(handleStatus(catStatus.fat))
+    } else if (selectedCat.weight > 0) {
+      dispatch(handleStatus(catStatus.normal))
+    } else {
+      dispatch(handleStatus(catStatus.die))
+    }
+  }
+
   useEffect(() => {
     if (params.name && catList.find(cat => cat.name === params.name)) {
       dispatch(handleSelectedCat(params.name))
     } else {
-      navigate('/')
+      // navigate('/')
     }
-  })
+  }, [])
 
   if (!selectedCat) return null
 
@@ -35,21 +148,22 @@ const DetailCat = () => {
       저는 <b>{selectedCat.name}</b> 입니다. <br/>
       {selectedCat.age} 살이구요 체중은 {selectedCat.weight}kg 입니다. <br/>
       저는 현재 {selectedCat.status} 상태입니다. <br/>
-      {selectedCat.history?.[selectedCat.history.length]?.user ? '마지막으로 밥준 사람은 {selectedCat.last} 입니다.' : ''} <br/>
+
       <div>
-        <button onClick={addEatCount}>밥주기</button>
-        <button>놀아주기</button>
-        <button>묻어주기</button>
+        <button onClick={eatMeat} disabled={isMeatClick || selectedCat.status === catStatus.die}>고기 먹기</button>
+        <button onClick={eatFeed} disabled={isFeedClick || selectedCat.status === catStatus.die}>사료 먹기</button>
+        <button onClick={eatWater} disabled={isWaterClick || selectedCat.status === catStatus.die}>물 먹기</button>
+        <button onClick={workout} disabled={isWorkoutClick || selectedCat.status === catStatus.die}>운동하기</button>
       </div>
 
       <ul>
-        {selectedCat?.history?.map((item, index) => {
-          return (
-            <li key={`${item.name}${index}`}>
-              {item.type} {item.timestamp.toString()}
-            </li>
-          )
-        })}
+        {
+          selectedCat?.history?.map((item, index) => {
+            return (
+              <li key={index}>{item.type}: {item.eatCount} {item.time}</li>
+            )
+          })
+        }
       </ul>
     </div>
   )

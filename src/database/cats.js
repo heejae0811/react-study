@@ -1,41 +1,35 @@
-export const CatStatus = {
-  s1: '너무 마름',
-  s2: '마름',
-  s3: '보통',
-  s4: '통통',
-  s5: '비만',
-  s6: '고도비만',
-  s7: '초고도비만'
+export const catStatus = {
+  normal: '보통',
+  fat: '비만',
+  die: '사망',
 }
 
 export const cats = [
   {
-    name: '김하영',
-    weight: 1,
-    age: 1,
-    gender: '여자',
-    status: CatStatus.s3,
     profileImage: require('../assets/img/cat01.jpg'),
-    eatCount: 0,
+    name: '가가',
+    gender: '여자',
+    age: 1,
+    weight: 3,
+    status: catStatus.normal,
     history: []
   },
   {
-    name: '이휘재',
-    weight: 1,
-    age: 1,
-    gender: '여자',
-    status: CatStatus.s3,
     profileImage: require('../assets/img/cat02.jpg'),
+    name: '나나',
+    gender: '여자',
+    age: 7,
+    weight: 15,
+    status: catStatus.fat,
     history: []
   },
   {
-
-    name: '강다연',
-    weight: 1,
-    age: 1,
-    gender: '여자',
-    status: CatStatus.s3,
     profileImage: require('../assets/img/cat03.jpg'),
+    name: '다다',
+    gender: '여자',
+    age: 15,
+    weight: 12,
+    status: catStatus.die,
     history: []
   }
 ]
