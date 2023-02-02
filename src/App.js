@@ -1,8 +1,8 @@
-import CatPage from './pages/cat'
+import CatList from './pages/cat'
 
 function App() {
   return (
-    <CatPage/>
+    <CatList/>
   )
 }
 

@@ -1,9 +1,8 @@
-import {useSelector} from 'react-redux'
 import {useNavigate} from 'react-router'
+import {useSelector} from 'react-redux'
 
-const ListCat = () => {
+const CatList = () => {
   const navigate = useNavigate()
-
   const catList = useSelector(state => state.cat.cats)
 
   const handleDetailNavigate = (name) => {
@@ -12,7 +11,7 @@ const ListCat = () => {
 
   return (
     <div>
-      <h1>🎆고양이 키우기🎇</h1>
+      <h1>CAT LIST</h1>
       <ul>
         {
           catList.map((cat, index) => (
@@ -20,8 +19,12 @@ const ListCat = () => {
               <div onClick={() => handleDetailNavigate(cat.name)}>
                 <img src={cat.profileImage} width="100" height="100" alt={cat.name}/>
               </div>
-
-              {cat.name} {cat.age}세 체중 {cat.weight} 현재상태 : {cat.status}
+              <div>
+                <p>이름: {cat.name}</p>
+                <p>나이: {cat.age}살</p>
+                <p>체중: {cat.weight}</p>
+                <p>상태: {cat.status}</p>
+              </div>
             </li>
           ))
         }
@@ -30,4 +33,4 @@ const ListCat = () => {
   )
 }
 
-export default ListCat
+export default CatList

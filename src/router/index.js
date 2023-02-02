@@ -1,4 +1,4 @@
-import { useRoutes } from 'react-router'
+import {useRoutes} from 'react-router'
 import App from '../App'
 import CatDetail from '../pages/catDetail'
 
@@ -8,11 +8,11 @@ const Router = () => {
     {
       path: '/',
       index: true,
-      element: <App />
+      element: <App/>
     },
     {
       path: '/catDetail/:name',
-      element: <CatDetail />,
+      element: <CatDetail/>
     }
   ])
 
