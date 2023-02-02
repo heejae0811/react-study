@@ -145,15 +145,21 @@ const CatDetail = () => {
 
   return (
     <div>
-      저는 <b>{selectedCat.name}</b> 입니다. <br/>
-      {selectedCat.age} 살이구요 체중은 {selectedCat.weight}kg 입니다. <br/>
-      저는 현재 {selectedCat.status} 상태입니다. <br/>
+      <h1>CAT DETAIL</h1>
 
       <div>
         <button onClick={eatMeat} disabled={isMeatClick || selectedCat.status === catStatus.die}>고기 먹기</button>
         <button onClick={eatFeed} disabled={isFeedClick || selectedCat.status === catStatus.die}>사료 먹기</button>
         <button onClick={eatWater} disabled={isWaterClick || selectedCat.status === catStatus.die}>물 먹기</button>
         <button onClick={workout} disabled={isWorkoutClick || selectedCat.status === catStatus.die}>운동하기</button>
+      </div>
+
+      <div>
+        <img src={selectedCat.profileImage} width="200" height="200" alt={selectedCat.name}/>
+        <p>이름: {selectedCat.name}</p>
+        <p>나이: {selectedCat.age}살</p>
+        <p>체중: {selectedCat.weight}</p>
+        <p>상태: {selectedCat.status}</p>
       </div>
 
       <ul>

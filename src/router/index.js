@@ -1,6 +1,7 @@
 import {useRoutes} from 'react-router'
 import App from '../App'
 import CatDetail from '../pages/catDetail'
+import CatCreate from '../pages/catCreate'
 
 
 const Router = () => {
@@ -13,6 +14,10 @@ const Router = () => {
     {
       path: '/catDetail/:name',
       element: <CatDetail/>
+    },
+    {
+      path: '/catCreate',
+      element: <CatCreate/>
     }
   ])
 
