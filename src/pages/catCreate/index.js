@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
-import {handleCreateCat} from '../../redux/cat'
+import {handleCreatedCat} from '../../redux/cat'
 
 const CatCreate = () => {
   const [isProfile, setProfile] = useState('')
@@ -24,11 +24,7 @@ const CatCreate = () => {
       status: isStatus
     }
 
-    dispatch(handleCreateCat({
-      createdCat: createCat
-    }))
-  }
-  const handleListNavigate = () => {
+    dispatch(handleCreatedCat(createCat))
     navigate('/')
   }
 
@@ -36,7 +32,7 @@ const CatCreate = () => {
     <div>
       <h1>CAT CREATE</h1>
 
-      <form action="">
+      <form>
         <div>
           <label htmlFor="profileImage">프로필 이미지</label>
           <input type="text" name="profileImage" value={isProfile} onChange={e => setProfile(e.target.value)} placeholder="이미지 경로를 입력해주세요."/>
@@ -59,16 +55,16 @@ const CatCreate = () => {
         </div>
         <div>
           <label htmlFor="normal">보통</label>
-          <input type="checkbox" name="status" value="normal" onChange={e => setStatus(e.target.value)}/>
+          <input type="checkbox" name="status" value="보통" onChange={e => setStatus(e.target.value)}/>
           <label htmlFor="fat">비만</label>
-          <input type="checkbox" name="status" value="fat" onChange={e => setStatus(e.target.value)}/>
+          <input type="checkbox" name="status" value="비만" onChange={e => setStatus(e.target.value)}/>
           <label htmlFor="die">사망</label>
-          <input type="checkbox" name="status" value="die" onChange={e => setStatus(e.target.value)}/>
+          <input type="checkbox" name="status" value="사망" onChange={e => setStatus(e.target.value)}/>
         </div>
       </form>
       
       <button onClick={createCat}>만들기</button>
-      <button onClick={handleListNavigate}>취소</button>
+      <button onClick={() => navigate('/')}>취소</button>
     </div>
   )
 }
