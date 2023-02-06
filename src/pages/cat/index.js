@@ -17,7 +17,11 @@ const CatList = () => {
     const deletedCat = catList.map(cat => cat.name)
     const deletedCatName = deletedCat[index]
 
-    dispatch(handleDeletedCat(deletedCatName))
+    if (window.confirm('삭제하시겠습니까?')) {
+      dispatch(handleDeletedCat(deletedCatName))
+    } else {
+      return false
+    }
   }
 
   return (
