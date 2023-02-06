@@ -12,7 +12,7 @@ const CatList = () => {
 
   return (
     <div className="cat-list">
-      <button className="btn-create" onClick={() => navigate('/catCreate')}>고양이 등록하기</button>
+      <button className="btn-create" onClick={() => navigate('/catCreate')}>Cat Create</button>
 
       <ul>
         {
@@ -21,6 +21,11 @@ const CatList = () => {
               <h3>{cat.name}</h3>
 
               <img src={cat.profileImage} alt={cat.name}/>
+
+              <div>
+                <p>Gender</p>
+                <p>{cat.gender}</p>
+              </div>
 
               <div>
                 <p>Age</p>

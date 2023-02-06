@@ -2,6 +2,7 @@ import {useState} from 'react'
 import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleCreatedCat} from '../../redux/cat'
+import './index.scss'
 
 const CatCreate = () => {
   const [isProfile, setProfile] = useState('')
@@ -24,47 +25,94 @@ const CatCreate = () => {
       status: isStatus
     }
 
-    dispatch(handleCreatedCat(createCat))
-    navigate('/')
+    if (isProfile === '') {
+      alert('이미지 경로를 입력해주세요.')
+    } else if (isName === '') {
+      alert('이름을 입력해주세요.')
+    } else if (isGender === '') {
+      alert('성별을 선택해주세요.')
+    } else if (isAge === '') {
+      alert('나이를 입력해주세요.')
+    } else if (isWeight === '') {
+      alert('체중을 입력해주세요.')
+    } else if (isStatus === '') {
+      alert('상태를 선택해주세요.')
+    } else {
+      dispatch(handleCreatedCat(createCat))
+      navigate('/')
+    }
   }
 
   return (
-    <div>
+    <div className="cat-create">
       <h1>CAT CREATE</h1>
 
       <form>
         <div>
-          <label htmlFor="profileImage">프로필 이미지</label>
-          <input type="text" name="profileImage" value={isProfile} onChange={e => setProfile(e.target.value)} placeholder="이미지 경로를 입력해주세요."/>
+          <p>Image</p>
+          <label>
+            <input type="text" name="image" value={isProfile} onChange={e => setProfile(e.target.value)}
+                   placeholder="이미지 경로를 입력해주세요."/>
+          </label>
         </div>
+
         <div>
-          <label htmlFor="name">이름</label>
-          <input type="text" name="name" value={isName} onChange={e => setName(e.target.value)} placeholder="이름을 입력해주세요."/>
+          <p>Name</p>
+          <label>
+            <input type="text" name="name" value={isName} onChange={e => setName(e.target.value)}
+                   placeholder="이름을 입력해주세요."/>
+          </label>
         </div>
+
         <div>
-          <label htmlFor="gender">성별</label>
-          <input type="text" name="gender" value={isGender} onChange={e => setGender(e.target.value)} placeholder="성별을 입력해주세요."/>
+          <p>Gender</p>
+          <label>
+            <input type="radio" name="gender" value="Male" onChange={e => setGender(e.target.value)}/>
+            Male
+          </label>
+          <label>
+            <input type="radio" name="gender" value="Female" onChange={e => setGender(e.target.value)}/>
+            Female
+          </label>
         </div>
+
         <div>
-          <label htmlFor="age">나이</label>
-          <input type="text" name="age" value={isAge} onChange={e => setAge(e.target.value)} placeholder="나이를 입력해주세요."/>
+          <p>Age</p>
+          <label>
+            <input type="number" name="age" value={isAge} onChange={e => setAge(e.target.value)}
+                   placeholder="나이를 입력해주세요."/>
+          </label>
         </div>
+
         <div>
-          <label htmlFor="weight">체중</label>
-          <input type="text" name="weight" value={isWeight} onChange={e => setWeight(e.target.value)} placeholder="체중을 입력해주세요."/>
+          <p>Weight</p>
+          <label>
+            <input type="number" name="weight" value={isWeight} onChange={e => setWeight(e.target.value)}
+                   placeholder="체중을 입력해주세요."/>
+          </label>
         </div>
+
         <div>
-          <label htmlFor="normal">보통</label>
-          <input type="checkbox" name="status" value="보통" onChange={e => setStatus(e.target.value)}/>
-          <label htmlFor="fat">비만</label>
-          <input type="checkbox" name="status" value="비만" onChange={e => setStatus(e.target.value)}/>
-          <label htmlFor="die">사망</label>
-          <input type="checkbox" name="status" value="사망" onChange={e => setStatus(e.target.value)}/>
+          <p>Status</p>
+          <label>
+            <input type="radio" name="status" value="Normal" onChange={e => setStatus(e.target.value)}/>
+            Normal
+          </label>
+          <label>
+            <input type="radio" name="status" value="Fat" onChange={e => setStatus(e.target.value)}/>
+            Fat
+          </label>
+          <label>
+            <input type="radio" name="status" value="Die" onChange={e => setStatus(e.target.value)}/>
+            Die
+          </label>
         </div>
       </form>
-      
-      <button onClick={createCat}>만들기</button>
-      <button onClick={() => navigate('/')}>취소</button>
+
+      <div>
+        <button onClick={createCat}>Create</button>
+        <button onClick={() => navigate('/')}>Cancel</button>
+      </div>
     </div>
   )
 }
