@@ -6,7 +6,6 @@ export const catStatus = {
 
 export const cats = [
   {
-    id: 0,
     profileImage: require('../assets/img/cat01.jpg'),
     name: '가가',
     gender: 'Female',
@@ -16,7 +15,6 @@ export const cats = [
     history: []
   },
   {
-    id: 1,
     profileImage: require('../assets/img/cat02.jpg'),
     name: '나나',
     gender: 'Female',
@@ -26,7 +24,6 @@ export const cats = [
     history: []
   },
   {
-    id: 2,
     profileImage: require('../assets/img/cat03.jpg'),
     name: '다다',
     gender: 'Male',

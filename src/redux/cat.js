@@ -16,8 +16,13 @@ export const catSlice = createSlice({
         state.selectedCat
       ]
     },
-    handleRemovedCat: (state, action) => {
-      state.cats = [...state.cats.filter((cat) => cat.id !== action.payload)]
+    handleDeletedCat: (state, action) => {
+      state.cats = state.cats.filter(cat => cat.name !== action.payload)
+
+      state.cats = [
+        ...state.cats.filter(cat => cat.name !== state.selectedCat.name),
+        state.selectedCat
+      ]
     },
     handleSelectedCat: (state, action) => {
       state.selectedCat = state.cats.find(cat => cat.name === action.payload)
@@ -64,5 +69,5 @@ export const catSlice = createSlice({
     }
   }
 })
-export const {handleCreatedCat, handleRemovedCat, handleSelectedCat, addHistory, handleStatus, handleGainWeight, handleLoseWeight, handleAge} = catSlice.actions
+export const {handleCreatedCat, handleDeletedCat, handleSelectedCat, addHistory, handleStatus, handleGainWeight, handleLoseWeight, handleAge} = catSlice.actions
 export default catSlice.reducer

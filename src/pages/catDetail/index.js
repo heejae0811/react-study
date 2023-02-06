@@ -29,6 +29,8 @@ const CatDetail = () => {
   const randomEat = Math.round(Math.random() * 10)
   const randomSeconds = ((Math.random() * (10 - 2)) + 2) * 1000
 
+  console.log(selectedCat)
+
   // 고기 먹으면 +3kg
   const eatMeat = () => {
     if (randomEat % 2 === 0) {
@@ -47,6 +49,7 @@ const CatDetail = () => {
       catListStatus()
     } else {
       alert('안먹어!')
+
       setMeatClick(true)
       setTimeout(() => {
         setMeatClick(false)
@@ -72,6 +75,7 @@ const CatDetail = () => {
       catListStatus()
     } else {
       alert('안먹어!')
+
       setFeedClick(true)
       setTimeout(() => {
         setFeedClick(false)
@@ -97,6 +101,7 @@ const CatDetail = () => {
       catListStatus()
     } else {
       alert('안먹어!')
+
       setWaterClick(true)
       setTimeout(() => {
         setWaterClick(false)

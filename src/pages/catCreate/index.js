@@ -22,7 +22,8 @@ const CatCreate = () => {
       age: isAge,
       weight: isWeight,
       status: isStatus,
-      gender: isGender
+      gender: isGender,
+      history: []
     }
 
     if (isProfile === '') {

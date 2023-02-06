@@ -1,14 +1,23 @@
 import {useNavigate} from 'react-router'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import './index.scss'
 import {catStatus} from '../../database/cats'
+import {handleDeletedCat} from '../../redux/cat'
 
 const CatList = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const catList = useSelector(state => state.cat.cats)
 
   const handleDetailNavigate = (name) => {
     navigate(`/catDetail/${name}`)
+  }
+
+  const handelDelete = (index) => {
+    const deletedCat = catList.map(cat => cat.name)
+    const deletedCatName = deletedCat[index]
+
+    dispatch(handleDeletedCat(deletedCatName))
   }
 
   return (
@@ -19,7 +28,7 @@ const CatList = () => {
         {
           catList.map((cat, index) => (
             <li key={index}>
-              <h3>{cat.name}</h3>
+              <h2>{cat.name}</h2>
 
               <img className={cat.status === catStatus.die ? 'disabled' : ''} src={cat.profileImage} alt={cat.name}/>
 
@@ -45,7 +54,7 @@ const CatList = () => {
 
               <div>
                 <button onClick={() => handleDetailNavigate(cat.name)}>Detail</button>
-                <button>Delete</button>
+                <button onClick={() => handelDelete(index)}>Delete</button>
               </div>
             </li>
           ))
