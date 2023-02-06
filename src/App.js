@@ -1,4 +1,5 @@
 import CatList from './pages/cat'
+import './app.scss'
 
 function App() {
   return (

@@ -1,0 +1,18 @@
+body {
+  width: calc(100% - 8vw);
+  margin: 0;
+  padding: 4vw;
+  background-color: #383a3f;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  body {
+    width: calc(100% - 16vw);
+    padding: 8vw;
+  }
+}
