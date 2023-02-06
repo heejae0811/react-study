@@ -12,6 +12,16 @@ body {
       list-style: none;
     }
   }
+
+  button {
+    border: none;
+    transition: all .3s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
 }
 
 @media screen and (max-width: 720px) {

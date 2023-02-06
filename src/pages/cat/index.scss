@@ -1,4 +1,18 @@
 .cat-list {
+  .btn-create {
+    position: fixed;
+    top: 2vw;
+    right: 2vw;
+    height: 40px;
+    padding: 0 15px;
+    background-color: #257623;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all .3s;
+  }
+
   ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -37,12 +51,9 @@
 
           button {
             height: 40px;
-            border: none;
             color: #fff;
             font-size: 14px;
             font-weight: 500;
-            transition: all .3s;
-            cursor: pointer;
 
             &:first-child {
               background-color: #f6b352;
@@ -50,10 +61,6 @@
 
             &:last-child {
               background-color: #484643;
-            }
-
-            &:hover {
-              opacity: .8;
             }
           }
         }

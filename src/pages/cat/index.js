@@ -12,7 +12,7 @@ const CatList = () => {
 
   return (
     <div className="cat-list">
-      {/*<button onClick={() => navigate('/catCreate')}>고양이 등록하기</button>*/}
+      <button className="btn-create" onClick={() => navigate('/catCreate')}>고양이 등록하기</button>
 
       <ul>
         {

@@ -34,13 +34,10 @@
     height: 40px;
     margin-right: 10px;
     padding: 0 15px;
-    border: none;
     border-radius: 5px;
     color: #fff;
     font-size: 14px;
     font-weight: 500;
-    transition: all .3s;
-    cursor: pointer;
 
     &:nth-child(1) {
       background-color: #f65252;
@@ -56,10 +53,6 @@
 
     &:nth-child(4) {
       background-color: #ab52f6;
-    }
-
-    &:hover {
-      opacity: .8;
     }
   }
 
