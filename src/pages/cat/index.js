@@ -1,8 +1,8 @@
 import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
-import './index.scss'
-import {catStatus} from '../../database/cats'
 import {handleDeletedCat} from '../../redux/cat'
+import {catStatus} from '../../database/cats'
+import './index.scss'
 
 const CatList = () => {
   const dispatch = useDispatch()

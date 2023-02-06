@@ -3,28 +3,18 @@
     position: fixed;
     top: 2vw;
     right: 2vw;
-    height: 40px;
-    padding: 0 15px;
     background-color: #2576B5;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all .3s;
   }
 
   ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2vw;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
 
     li {
       padding: 1.33vw;
       background-color: #1f2124;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-      color: #fff;
 
       h2 {
         margin: 0 auto 20px;
@@ -53,11 +43,6 @@
           margin-top: 15px;
 
           button {
-            height: 40px;
-            color: #fff;
-            font-size: 14px;
-            font-weight: 500;
-
             &:first-child {
               background-color: #f6b352;
             }

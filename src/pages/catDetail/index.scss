@@ -1,6 +1,4 @@
 .cat-detail {
-  color: #fff;
-
   h1 {
     margin: 0;
   }
@@ -37,13 +35,8 @@
   }
 
   button {
-    height: 40px;
     margin-right: 10px;
-    padding: 0 15px;
     border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
 
     &:nth-child(1) {
       background-color: #f65252;

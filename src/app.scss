@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 4vw;
   background-color: #383a3f;
+  color: #fff;
   font-family: 'Open Sans', 'Noto Sans KR', sans-serif;
 
   ul {
@@ -18,7 +19,12 @@ body {
   }
 
   button {
+    height: 40px;
+    padding: 0 15px;
     border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
     font-family: 'Open Sans', 'Noto Sans KR', sans-serif;
     transition: all .3s;
     cursor: pointer;
@@ -30,6 +36,11 @@ body {
 
   input {
     outline: none;
+  }
+
+  div[class*='cat-'] {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }
 

@@ -29,8 +29,6 @@ const CatDetail = () => {
   const randomEat = Math.round(Math.random() * 10)
   const randomSeconds = ((Math.random() * (10 - 2)) + 2) * 1000
 
-  console.log(selectedCat)
-
   // 고기 먹으면 +3kg
   const eatMeat = () => {
     if (randomEat % 2 === 0) {
@@ -157,7 +155,8 @@ const CatDetail = () => {
       <h1>{selectedCat.name}</h1>
 
       <div className="cat-info">
-        <img className={selectedCat.status === catStatus.die ? 'disabled' : ''} src={selectedCat.profileImage} alt={selectedCat.name}/>
+        <img className={selectedCat.status === catStatus.die ? 'disabled' : ''} src={selectedCat.profileImage}
+             alt={selectedCat.name}/>
 
         <div className="cat-text">
           <div>
