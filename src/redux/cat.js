@@ -69,5 +69,6 @@ export const catSlice = createSlice({
     }
   }
 })
+
 export const {handleCreatedCat, handleDeletedCat, handleSelectedCat, addHistory, handleStatus, handleGainWeight, handleLoseWeight, handleAge} = catSlice.actions
 export default catSlice.reducer

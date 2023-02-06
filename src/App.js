@@ -1,9 +1,9 @@
-import CatList from './pages/cat'
+import Login from './pages/login'
 import './app.scss'
 
 function App() {
   return (
-    <CatList/>
+    <Login/>
   )
 }
 

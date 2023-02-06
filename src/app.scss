@@ -9,6 +9,11 @@ body {
   color: #fff;
   font-family: 'Open Sans', 'Noto Sans KR', sans-serif;
 
+  h1,
+  h4 {
+    margin: 0;
+  }
+
   ul {
     margin: 0;
     padding: 0;
@@ -39,7 +44,8 @@ body {
     outline: none;
   }
 
-  div[class*='cat-'] {
+  div[class*='cat-'],
+  .inner {
     max-width: 1200px;
     margin: 0 auto;
   }

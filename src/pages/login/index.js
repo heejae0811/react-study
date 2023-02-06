@@ -1,69 +1,78 @@
-import React, {useCallback} from 'react'
-import {useAuth} from '../../hooks/useAuth'
-import useInput from '../../hooks/useInput'
+import {useState, useEffect} from 'react'
+import {useNavigate} from 'react-router'
+import {useDispatch, useSelector} from 'react-redux'
+import {handleLogin} from '../../redux/user'
 import './index.scss'
 
-function LoginPage() {
-  const [userList, loginValue, isLogin] = useAuth()
-  const [loginId, onChangeId, resetId] = useInput('') // id의 경우 백앤드에서 예약어로 쓸 경우가 많기 때문에 loginId처럼 다른 네이밍으로 한다.
-  const [loginPassword, onChangePwd, resetPassword] = useInput('')
+function Login() {
+  const [isId, setId] = useState('')
+  const [isPassword, setPassword] = useState('')
 
-  // TODO :: reset 안됨
-  const onReset = useCallback(() => {
-    resetId('')
-    resetPassword('')
-  }, [resetId, resetPassword])
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
+  const loginUser = useSelector(state => state.user.loginUser)
+
+  console.log(user)
 
   const onLogin = () => {
-    const loginUser = userList.filter(user => user.loginId === loginId && user.password === loginPassword)
-
-    // 로컬스토리지에 저장하기
-    if (loginUser.length > 0) {
-      window.localStorage.setItem('login', JSON.stringify(loginUser))
-    }
-
-    if (!loginId || !loginPassword) {
-      alert('아이디 또는 비밀번호를 입력해주세요.')
-    } else if (loginUser.length === 0) {
-      alert('아이디 또는 비밀번호가 틀렸습니다.')
-    } else if (loginUser[0].isAdmin === false) {
-      alert('로그인 권한이 없습니다.')
+    if (isId === '') {
+      alert('아이디를 입력해주세요.')
+    } else if (isPassword === '') {
+      alert('비밀번호를 입력해주세요.')
     } else {
-      isLogin()
-      onReset()
-      loginValue.setLoginUser(loginUser)
+      dispatch(handleLogin({
+        loginId: isId,
+        password: isPassword
+      }))
     }
   }
 
+  useEffect(() => {
+    if (loginUser !== null) {
+      navigate('/catList')
+    }
+  }, [loginUser])
+
   return (
-    <div className="login-page">
-      {
-        loginValue.login ? (
-          <>
-            <h1>로그인에 성공했습니다! :)</h1>
-          </>
-        ) : (
-          <>
-            <h4>아이디 = test, 비밀번호 = 123</h4>
-            <h4>아이디 = sticker, 비밀번호 = 123 (false)</h4>
+    <div className="login inner">
+      <h1>LOGIN</h1>
+      <h4>아이디 = test, 비밀번호 = 123</h4>
+      <h4>아이디 = sticker, 비밀번호 = 123 (false)</h4>
 
-            <div>
-              <label htmlFor="userId">아이디</label>
-              <input type="text" id="userId" value={loginId} onChange={onChangeId} placeholder="아이디를 입력해주세요." required/>
-            </div>
+      <form>
+        <div>
+          <p>ID</p>
+          <label>
+            <input type="text" value={isId} onChange={e => setId(e.target.value)} placeholder="아이디를 입력해주세요."/>
+          </label>
+        </div>
 
-            <div>
-              <label htmlFor="userPassword">비밀번호</label>
-              <input type="text" id="userPassword" value={loginPassword} onChange={onChangePwd}
-                     placeholder="비밀번호를 입력해주세요." required/>
-            </div>
+        <div>
+          <p>PASSWORD</p>
+          <label>
+            <input type="text" value={isPassword} onChange={e => setPassword(e.target.value)}
+                   placeholder="비밀번호를 입력해주세요."/>
+          </label>
+        </div>
 
-            <button type="submit" value="로그인" onClick={onLogin}>확인</button>
-          </>
-        )
-      }
+        <button onClick={() => onLogin()}>확인</button>
+      </form>
+
+      {/*<div>*/}
+      {/*  <label htmlFor="userId">아이디</label>*/}
+      {/*  <input type="text" id="userId" value={loginId} onChange={onChangeId} placeholder="아이디를 입력해주세요." required/>*/}
+      {/*</div>*/}
+
+      {/*<div>*/}
+      {/*  <label htmlFor="userPassword">비밀번호</label>*/}
+      {/*  <input type="text" id="userPassword" value={loginPassword} onChange={onChangePwd}*/}
+      {/*         placeholder="비밀번호를 입력해주세요." required/>*/}
+      {/*</div>*/}
+
+      {/*<button type="submit" value="로그인" onClick={onLogin}>확인</button>*/}
     </div>
   )
 }
 
-export default LoginPage
+export default Login

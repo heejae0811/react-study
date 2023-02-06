@@ -108,12 +108,12 @@ const CatCreate = () => {
             Female
           </label>
         </div>
-      </form>
 
-      <div>
-        <button onClick={createCat}>Create</button>
-        <button onClick={() => navigate('/')}>Cancel</button>
-      </div>
+        <div>
+          <button onClick={createCat}>Create</button>
+          <button onClick={() => navigate('/')}>Cancel</button>
+        </div>
+      </form>
     </div>
   )
 }

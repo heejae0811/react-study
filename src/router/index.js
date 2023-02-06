@@ -1,7 +1,10 @@
 import {useRoutes} from 'react-router'
 import App from '../App'
-import CatDetail from '../pages/catDetail'
+import Login from '../pages/login'
 import CatCreate from '../pages/catCreate'
+import CatList from '../pages/catList'
+import CatDetail from '../pages/catDetail'
+
 
 
 const Router = () => {
@@ -12,13 +15,21 @@ const Router = () => {
       element: <App/>
     },
     {
-      path: '/catDetail/:name',
-      element: <CatDetail/>
+      path: '/login',
+      element: <Login/>
     },
     {
       path: '/catCreate',
       element: <CatCreate/>
-    }
+    },
+    {
+      path: '/catList',
+      element: <CatList/>
+    },
+    {
+      path: '/catDetail/:name',
+      element: <CatDetail/>
+    },
   ])
 
   return routes
