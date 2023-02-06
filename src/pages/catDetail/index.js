@@ -46,6 +46,7 @@ const CatDetail = () => {
 
       catListStatus()
     } else {
+      alert('안먹어!')
       setMeatClick(true)
       setTimeout(() => {
         setMeatClick(false)
@@ -70,6 +71,7 @@ const CatDetail = () => {
 
       catListStatus()
     } else {
+      alert('안먹어!')
       setFeedClick(true)
       setTimeout(() => {
         setFeedClick(false)
@@ -94,6 +96,7 @@ const CatDetail = () => {
 
       catListStatus()
     } else {
+      alert('안먹어!')
       setWaterClick(true)
       setTimeout(() => {
         setWaterClick(false)
@@ -149,7 +152,7 @@ const CatDetail = () => {
       <h1>{selectedCat.name}</h1>
 
       <div className="cat-info">
-        <img src={selectedCat.profileImage} alt={selectedCat.name}/>
+        <img className={selectedCat.status === catStatus.die ? 'disabled' : ''} src={selectedCat.profileImage} alt={selectedCat.name}/>
 
         <div className="cat-text">
           <div>
@@ -165,6 +168,11 @@ const CatDetail = () => {
           <div>
             <p>Status</p>
             <p>{selectedCat.status}</p>
+          </div>
+
+          <div>
+            <p>Gender</p>
+            <p>{selectedCat.gender}</p>
           </div>
         </div>
       </div>

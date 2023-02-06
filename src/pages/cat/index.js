@@ -1,6 +1,7 @@
 import {useNavigate} from 'react-router'
 import {useSelector} from 'react-redux'
 import './index.scss'
+import {catStatus} from '../../database/cats'
 
 const CatList = () => {
   const navigate = useNavigate()
@@ -20,12 +21,7 @@ const CatList = () => {
             <li key={index}>
               <h3>{cat.name}</h3>
 
-              <img src={cat.profileImage} alt={cat.name}/>
-
-              <div>
-                <p>Gender</p>
-                <p>{cat.gender}</p>
-              </div>
+              <img className={cat.status === catStatus.die ? 'disabled' : ''} src={cat.profileImage} alt={cat.name}/>
 
               <div>
                 <p>Age</p>
@@ -40,6 +36,11 @@ const CatList = () => {
               <div>
                 <p>Status</p>
                 <p>{cat.status}</p>
+              </div>
+
+              <div>
+                <p>Gender</p>
+                <p>{cat.gender}</p>
               </div>
 
               <div>
