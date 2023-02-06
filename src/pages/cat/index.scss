@@ -12,7 +12,6 @@
       background-color: #1f2124;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
       color: #fff;
-      list-style: none;
 
       h3 {
         margin: 0 auto 20px;
@@ -35,27 +34,27 @@
 
         &:last-child {
           margin-top: 15px;
-        }
 
-        button {
-          height: 40px;
-          border: none;
-          color: #fff;
-          font-size: 14px;
-          font-weight: 500;
-          cursor: pointer;
-          transition: all .3s;
+          button {
+            height: 40px;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all .3s;
+            cursor: pointer;
 
-          &:first-child {
-            background-color: #f6b352;
-          }
+            &:first-child {
+              background-color: #f6b352;
+            }
 
-          &:last-child {
-            background-color: #484643;
-          }
+            &:last-child {
+              background-color: #484643;
+            }
 
-          &:hover {
-            opacity: .8;
+            &:hover {
+              opacity: .8;
+            }
           }
         }
       }
@@ -86,35 +85,6 @@
       li {
         width: calc(100% - 13.34vw);
         padding: 6.67vw;
-
-        img {
-          display: block;
-          margin: 0 auto;
-          border: 2px solid #fff;
-          border-radius: 50%;
-        }
-
-        div {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-
-          button {
-            height: 40px;
-            border: none;
-            color: #fff;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-
-            &:first-child {
-              background-color: #f6b352;
-            }
-
-            &:last-child {
-              background-color: #484643;
-            }
-          }
-        }
       }
     }
   }

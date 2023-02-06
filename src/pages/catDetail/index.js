@@ -10,6 +10,7 @@ import {
   handleAge
 } from '../../redux/cat'
 import {catStatus} from '../../database/cats'
+import './index.scss'
 
 const CatDetail = () => {
   const [isEatCount, setEatCount] = useState(1)
@@ -144,22 +145,35 @@ const CatDetail = () => {
   if (!selectedCat) return null
 
   return (
-    <div>
-      <h1>CAT DETAIL</h1>
+    <div className="cat-detail">
+      <h1>{selectedCat.name}</h1>
+
+      <div className="cat-info">
+        <img src={selectedCat.profileImage} alt={selectedCat.name}/>
+
+        <div className="cat-text">
+          <div>
+            <p>Age</p>
+            <p>{selectedCat.age}</p>
+          </div>
+
+          <div>
+            <p>Weight</p>
+            <p>{selectedCat.weight}kg</p>
+          </div>
+
+          <div>
+            <p>Status</p>
+            <p>{selectedCat.status}</p>
+          </div>
+        </div>
+      </div>
 
       <div>
         <button onClick={eatMeat} disabled={isMeatClick || selectedCat.status === catStatus.die}>고기 먹기</button>
         <button onClick={eatFeed} disabled={isFeedClick || selectedCat.status === catStatus.die}>사료 먹기</button>
         <button onClick={eatWater} disabled={isWaterClick || selectedCat.status === catStatus.die}>물 먹기</button>
         <button onClick={workout} disabled={isWorkoutClick || selectedCat.status === catStatus.die}>운동하기</button>
-      </div>
-
-      <div>
-        <img src={selectedCat.profileImage} width="200" height="200" alt={selectedCat.name}/>
-        <p>이름: {selectedCat.name}</p>
-        <p>나이: {selectedCat.age}살</p>
-        <p>체중: {selectedCat.weight}</p>
-        <p>상태: {selectedCat.status}</p>
       </div>
 
       <ul>

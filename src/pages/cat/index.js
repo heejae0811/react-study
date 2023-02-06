@@ -26,10 +26,12 @@ const CatList = () => {
                 <p>Age</p>
                 <p>{cat.age}</p>
               </div>
+
               <div>
                 <p>Weight</p>
                 <p>{cat.weight}kg</p>
               </div>
+
               <div>
                 <p>Status</p>
                 <p>{cat.status}</p>
