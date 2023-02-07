@@ -38,7 +38,7 @@ function Login() {
     <div className="login inner">
       <h1>LOGIN</h1>
       <h4>아이디 = test, 비밀번호 = 123</h4>
-      <h4>아이디 = sticker, 비밀번호 = 123 (false)</h4>
+      <h4>아이디 = sticker, 비밀번호 = 123</h4>
 
       <form>
         <div>

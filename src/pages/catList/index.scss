@@ -1,12 +1,12 @@
 .cat-list {
   .btn-create {
     position: fixed;
-    top: 2vw;
     right: 2vw;
+    bottom: 2vw;
     background-color: #2576B5;
   }
 
-  ul {
+  .cat-card {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2vw;

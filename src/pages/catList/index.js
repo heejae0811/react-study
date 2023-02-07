@@ -2,7 +2,8 @@ import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleDeletedCat} from '../../redux/cat'
 import {catStatus} from '../../database/cats'
-import Access from '../access'
+import Header from '../../component/layout/Header'
+import Access from '../../component/access'
 import './index.scss'
 
 const CatList = () => {
@@ -31,9 +32,11 @@ const CatList = () => {
       {
         loginUser !== null ? (
           <>
+            <Header/>
+
             <button className="btn-create" onClick={() => navigate('/catCreate')}>Cat Create</button>
 
-            <ul>
+            <ul className="cat-card">
               {
                 catList.map((cat, index) => (
                   <li key={index}>

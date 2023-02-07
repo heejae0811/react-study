@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleCreatedCat} from '../../redux/cat'
 import './index.scss'
-import Access from '../access'
+import Access from '../../component/access'
 
 const CatCreate = () => {
   const [isProfile, setProfile] = useState('')

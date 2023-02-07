@@ -10,7 +10,7 @@ import {
   handleAge
 } from '../../redux/cat'
 import {catStatus} from '../../database/cats'
-import Access from '../access'
+import Access from '../../component/access'
 import './index.scss'
 
 const CatDetail = () => {
