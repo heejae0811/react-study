@@ -1,10 +1,10 @@
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleCreatedCat} from '../../redux/cat'
-import './index.scss'
-import Access from '../../component/access'
 import Header from '../../component/layout/Header'
+import Access from '../../component/access'
+import './index.scss'
 
 const CatCreate = () => {
   const [isProfile, setProfile] = useState('')
@@ -14,13 +14,28 @@ const CatCreate = () => {
   const [isStatus, setStatus] = useState('')
   const [isGender, setGender] = useState('')
 
+  const fileInputRef = useRef(null)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const loginUser = useSelector(state => state.user.loginUser)
 
+  const uploadImage = (e) => {
+    const fileList = e.target.files
+
+    if (fileList && fileList[0]) {
+      const url = URL.createObjectURL(fileList[0])
+
+      setProfile({
+        file: fileList[0],
+        thumbnail: url,
+        type: fileList[0].type.slice(0, 5)
+      })
+    }
+  }
+
   const createCat = () => {
     const createCat = {
-      profileImage: isProfile,
+      profileImage: isProfile.thumbnail,
       name: isName,
       age: isAge,
       weight: isWeight,
@@ -30,7 +45,7 @@ const CatCreate = () => {
     }
 
     if (isProfile === '') {
-      alert('이미지 경로를 입력해주세요.')
+      alert('이미지를 등록해주세요.')
     } else if (isName === '') {
       alert('이름을 입력해주세요.')
     } else if (isAge === '') {
@@ -59,9 +74,18 @@ const CatCreate = () => {
             <form>
               <div>
                 <p>Image</p>
+                {
+                  isProfile === '' ? (
+                    <>
+                    </>
+                  ) : (
+                    <>
+                      <img src={isProfile.thumbnail} alt=""/>
+                    </>
+                  )
+                }
                 <label>
-                  <input type="text" name="image" value={isProfile} onChange={e => setProfile(e.target.value)}
-                         placeholder="이미지 경로를 입력해주세요."/>
+                  <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" ref={fileInputRef} onChange={uploadImage}/>
                 </label>
               </div>
 

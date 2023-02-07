@@ -10,9 +10,9 @@ import {
   handleAge
 } from '../../redux/cat'
 import {catStatus} from '../../database/cats'
+import Header from '../../component/layout/Header'
 import Access from '../../component/access'
 import './index.scss'
-import Header from '../../component/layout/Header'
 
 const CatDetail = () => {
   const [isEatCount, setEatCount] = useState(1)

@@ -23,9 +23,8 @@
 
       img {
         display: block;
-        max-width: 150px;
-        min-height: 150px;
-        width: 100%;
+        width: 150px;
+        height: 150px;
         margin: 0 auto 15px;
         border: 2px solid #fff;
         border-radius: 50%;
@@ -80,6 +79,11 @@
       li {
         width: calc(100% - 13.34vw);
         padding: 6.67vw;
+
+        img {
+          width: 80px;
+          height: 80px;
+        }
       }
     }
   }
