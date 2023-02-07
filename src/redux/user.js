@@ -16,9 +16,17 @@ export const userSlice = createSlice({
         ...state.users.filter(user => user.loginId !== state.loginUser.loginId),
         state.loginUser
       ]
+    },
+    handleLogout: (state, action) => {
+      state.loginUser = null
+
+      state.users = [
+        ...state.users,
+        state.loginUser
+      ]
     }
   }
 })
 
-export const {handleLogin} = userSlice.actions
+export const {handleLogin, handleLogout} = userSlice.actions
 export default userSlice.reducer

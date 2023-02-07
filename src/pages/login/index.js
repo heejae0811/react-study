@@ -25,9 +25,10 @@ function Login() {
     }
   }
 
+  // TODO :: 아이디, 비밀번호 틀렸을 때 alert
   useEffect(() => {
     if (loginUser !== null) {
-      alert('로그인에 성공했습니다.')
+      alert('로그인인 되었습니다.')
       navigate('/catList')
     } else {
       // alert('아이디 또는 비밀번호가 틀렸습니다.')
