@@ -27,6 +27,7 @@ const CatList = () => {
     }
   }
 
+  // TODO :: 리스트에 순서대로 안들어감
   return (
     <div className="cat-list">
       {

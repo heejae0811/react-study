@@ -115,7 +115,7 @@ const CatDetail = () => {
     setWorkoutClick(true)
     setTimeout(() => {
       setWorkoutClick(false)
-    }, 10000)
+    }, 1000)
 
     dispatch(addHistory({
       type: 'Workout',
@@ -132,7 +132,7 @@ const CatDetail = () => {
       dispatch(handleAge())
     }
 
-    if (selectedCat.age > 15 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
+    if (selectedCat.age > 10 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
       dispatch(handleStatus(catStatus.die))
     } else if (selectedCat.weight > 20) {
       dispatch(handleStatus(catStatus.fat))
@@ -153,6 +153,7 @@ const CatDetail = () => {
 
   if (!selectedCat) return null
 
+  // TODO :: 타입별로 CSS 작성하기
   return (
     <div className="cat-detail">
       {

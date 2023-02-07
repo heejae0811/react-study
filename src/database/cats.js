@@ -4,6 +4,7 @@ export const catStatus = {
   die: 'Die',
 }
 
+// TODO :: 가가 삭제 안됨, id를 추가해야하나?
 export const cats = [
   {
     profileImage: require('../assets/img/cat01.jpg'),
