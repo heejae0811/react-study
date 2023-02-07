@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {handleCreatedCat} from '../../redux/cat'
 import './index.scss'
 import Access from '../../component/access'
+import Header from '../../component/layout/Header'
 
 const CatCreate = () => {
   const [isProfile, setProfile] = useState('')
@@ -51,6 +52,8 @@ const CatCreate = () => {
       {
         loginUser !== null ? (
           <>
+            <Header/>
+
             <h1>CAT CREATE</h1>
 
             <form>

@@ -52,7 +52,7 @@ function Login() {
         <div>
           <p>PASSWORD</p>
           <label>
-            <input type="text" value={isPassword} onChange={e => setPassword(e.target.value)}
+            <input type="password" value={isPassword} onChange={e => setPassword(e.target.value)}
                    placeholder="비밀번호를 입력해주세요."/>
           </label>
         </div>

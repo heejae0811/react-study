@@ -1,9 +1,15 @@
 .my-page {
-  h2 {
-    margin-bottom: 10px;
-  }
+  ul {
+    margin: 20px 0;
 
-  p {
-    margin-bottom: 5px;
+    li {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+
+      p {
+        margin-right: 10px;
+      }
+    }
   }
 }

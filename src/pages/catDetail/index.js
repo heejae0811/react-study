@@ -12,6 +12,7 @@ import {
 import {catStatus} from '../../database/cats'
 import Access from '../../component/access'
 import './index.scss'
+import Header from '../../component/layout/Header'
 
 const CatDetail = () => {
   const [isEatCount, setEatCount] = useState(1)
@@ -157,33 +158,35 @@ const CatDetail = () => {
       {
         loginUser !== null ? (
           <>
+            <Header/>
+
             <h1>{selectedCat.name}</h1>
 
             <div className="cat-info">
               <img className={selectedCat.status === catStatus.die ? 'disabled' : ''} src={selectedCat.profileImage}
                    alt={selectedCat.name}/>
 
-              <div className="cat-text">
-                <div>
+              <ul className="cat-text">
+                <li>
                   <p>Age</p>
                   <p>{selectedCat.age}</p>
-                </div>
+                </li>
 
-                <div>
+                <li>
                   <p>Weight</p>
                   <p>{selectedCat.weight}kg</p>
-                </div>
+                </li>
 
-                <div>
+                <li>
                   <p>Status</p>
                   <p>{selectedCat.status}</p>
-                </div>
+                </li>
 
-                <div>
+                <li>
                   <p>Gender</p>
                   <p>{selectedCat.gender}</p>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
 
             <div className="cat-btn">
