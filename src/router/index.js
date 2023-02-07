@@ -5,12 +5,10 @@ import CatCreate from '../pages/catCreate'
 import CatList from '../pages/catList'
 import CatDetail from '../pages/catDetail'
 
-
-
 const Router = () => {
   const routes = useRoutes([
     {
-      path: '/',
+      path: '/react-study',
       index: true,
       element: <App/>
     },

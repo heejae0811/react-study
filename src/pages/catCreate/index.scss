@@ -23,19 +23,19 @@
           padding: 10px;
         }
       }
-    }
-  }
 
-  button {
-    min-width: 120px;
-    margin-right: 10px;
+      button {
+        min-width: 120px;
+        margin-right: 10px;
 
-    &:first-child {
-      background-color: #f6b352;
-    }
+        &:first-child {
+          background-color: #f6b352;
+        }
 
-    &:last-child {
-      background-color: #1f2124;
+        &:last-child {
+          background-color: #1f2124;
+        }
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-import {useNavigate, useParams} from 'react-router'
+import {useParams, useNavigate} from 'react-router'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {
@@ -10,6 +10,7 @@ import {
   handleAge
 } from '../../redux/cat'
 import {catStatus} from '../../database/cats'
+import Access from '../access'
 import './index.scss'
 
 const CatDetail = () => {
@@ -20,9 +21,10 @@ const CatDetail = () => {
   const [isWorkoutClick, setWorkoutClick] = useState(false)
 
   const params = useParams()
-  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
+  const loginUser = useSelector(state => state.user.loginUser)
   const catList = useSelector(state => state.cat.cats)
   const selectedCat = useSelector(state => state.cat.selectedCat)
 
@@ -152,51 +154,59 @@ const CatDetail = () => {
 
   return (
     <div className="cat-detail">
-      <h1>{selectedCat.name}</h1>
+      {
+        loginUser !== null ? (
+          <>
+            <h1>{selectedCat.name}</h1>
 
-      <div className="cat-info">
-        <img className={selectedCat.status === catStatus.die ? 'disabled' : ''} src={selectedCat.profileImage}
-             alt={selectedCat.name}/>
+            <div className="cat-info">
+              <img className={selectedCat.status === catStatus.die ? 'disabled' : ''} src={selectedCat.profileImage}
+                   alt={selectedCat.name}/>
 
-        <div className="cat-text">
-          <div>
-            <p>Age</p>
-            <p>{selectedCat.age}</p>
-          </div>
+              <div className="cat-text">
+                <div>
+                  <p>Age</p>
+                  <p>{selectedCat.age}</p>
+                </div>
 
-          <div>
-            <p>Weight</p>
-            <p>{selectedCat.weight}kg</p>
-          </div>
+                <div>
+                  <p>Weight</p>
+                  <p>{selectedCat.weight}kg</p>
+                </div>
 
-          <div>
-            <p>Status</p>
-            <p>{selectedCat.status}</p>
-          </div>
+                <div>
+                  <p>Status</p>
+                  <p>{selectedCat.status}</p>
+                </div>
 
-          <div>
-            <p>Gender</p>
-            <p>{selectedCat.gender}</p>
-          </div>
-        </div>
-      </div>
+                <div>
+                  <p>Gender</p>
+                  <p>{selectedCat.gender}</p>
+                </div>
+              </div>
+            </div>
 
-      <div>
-        <button onClick={eatMeat} disabled={isMeatClick || selectedCat.status === catStatus.die}>고기 먹기</button>
-        <button onClick={eatFeed} disabled={isFeedClick || selectedCat.status === catStatus.die}>사료 먹기</button>
-        <button onClick={eatWater} disabled={isWaterClick || selectedCat.status === catStatus.die}>물 먹기</button>
-        <button onClick={workout} disabled={isWorkoutClick || selectedCat.status === catStatus.die}>운동하기</button>
-      </div>
+            <div className="cat-btn">
+              <button onClick={eatMeat} disabled={isMeatClick || selectedCat.status === catStatus.die}>고기 먹기</button>
+              <button onClick={eatFeed} disabled={isFeedClick || selectedCat.status === catStatus.die}>사료 먹기</button>
+              <button onClick={eatWater} disabled={isWaterClick || selectedCat.status === catStatus.die}>물 먹기</button>
+              <button onClick={workout} disabled={isWorkoutClick || selectedCat.status === catStatus.die}>운동하기</button>
+            </div>
 
-      <ul>
-        {
-          selectedCat?.history?.map((item, index) => {
-            return (
-              <li key={index}>{item.type}: {item.eatCount} {item.time}</li>
-            )
-          })
-        }
-      </ul>
+            <ul>
+              {
+                selectedCat?.history?.map((item, index) => {
+                  return (
+                    <li key={index}>{item.type}: {item.eatCount} {item.time}</li>
+                  )
+                })
+              }
+            </ul>
+          </>
+        ) : (
+          <Access/>
+        )
+      }
     </div>
   )
 }

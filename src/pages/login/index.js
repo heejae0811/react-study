@@ -10,10 +10,7 @@ function Login() {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
   const loginUser = useSelector(state => state.user.loginUser)
-
-  console.log(user)
 
   const onLogin = () => {
     if (isId === '') {
@@ -30,7 +27,10 @@ function Login() {
 
   useEffect(() => {
     if (loginUser !== null) {
+      alert('로그인에 성공했습니다.')
       navigate('/catList')
+    } else {
+      // alert('아이디 또는 비밀번호가 틀렸습니다.')
     }
   }, [loginUser])
 
@@ -56,21 +56,8 @@ function Login() {
           </label>
         </div>
 
-        <button onClick={() => onLogin()}>확인</button>
+        <button onClick={onLogin}>확인</button>
       </form>
-
-      {/*<div>*/}
-      {/*  <label htmlFor="userId">아이디</label>*/}
-      {/*  <input type="text" id="userId" value={loginId} onChange={onChangeId} placeholder="아이디를 입력해주세요." required/>*/}
-      {/*</div>*/}
-
-      {/*<div>*/}
-      {/*  <label htmlFor="userPassword">비밀번호</label>*/}
-      {/*  <input type="text" id="userPassword" value={loginPassword} onChange={onChangePwd}*/}
-      {/*         placeholder="비밀번호를 입력해주세요." required/>*/}
-      {/*</div>*/}
-
-      {/*<button type="submit" value="로그인" onClick={onLogin}>확인</button>*/}
     </div>
   )
 }
