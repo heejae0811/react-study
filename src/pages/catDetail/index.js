@@ -34,7 +34,7 @@ const CatDetail = () => {
 
   // 고기 먹으면 +3kg
   const eatMeat = () => {
-    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
+    if (randomEat % 2 === 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -60,7 +60,7 @@ const CatDetail = () => {
 
   // 사료 먹으면 +1kg
   const eatFeed = () => {
-    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
+    if (randomEat % 2 === 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -86,7 +86,7 @@ const CatDetail = () => {
 
   // 물 먹으면 +0.1kg
   const eatWater = () => {
-    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
+    if (randomEat % 2 === 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -112,10 +112,17 @@ const CatDetail = () => {
 
   // 운동하면 -2kg
   const workout = () => {
+    setMeatClick(true)
+    setFeedClick(true)
+    setWaterClick(true)
     setWorkoutClick(true)
+
     setTimeout(() => {
+      setMeatClick(false)
+      setFeedClick(false)
+      setWaterClick(false)
       setWorkoutClick(false)
-    }, 100)
+    }, 2000)
 
     dispatch(addHistory({
       type: 'Workout',
@@ -197,6 +204,7 @@ const CatDetail = () => {
             </div>
 
             <div className="cat-record">
+              {/* TODO :: eatCount 쌓이는 것이 아니라 업데이트 */}
               <ul>
                 <h3>밥 먹은 횟수</h3>
                 {
@@ -222,7 +230,7 @@ const CatDetail = () => {
               <ul>
                 <h3>사료 먹은 시간</h3>
                 {
-                  selectedCat.history.filter(type => type.type === 'Meat').map((feed, index) => {
+                  selectedCat.history.filter(type => type.type === 'Feed').map((feed, index) => {
                     return (
                       <li key={index}>{feed.time}</li>
                     )

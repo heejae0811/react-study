@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 import * as database from '../database/cats'
 
+// TODO :: 최근 데이터 맨 위로 오게
 export const catSlice = createSlice({
   name: 'cat',
   initialState: {
@@ -16,6 +17,7 @@ export const catSlice = createSlice({
         state.selectedCat
       ]
     },
+    // TODO :: 마지막 남은 고양이 삭제 안됨
     handleDeletedCat: (state, action) => {
       state.cats = state.cats.filter(cat => cat.name !== action.payload)
 
