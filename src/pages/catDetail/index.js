@@ -9,7 +9,7 @@ import {
   handleLoseWeight,
   handleAge
 } from '../../redux/cat'
-import {catStatus, catMessage} from '../../database/cats'
+import {catStatus, catMessages} from '../../database/cats'
 import Header from '../../component/layout/Header'
 import Access from '../../component/access'
 import './index.scss'
@@ -32,8 +32,6 @@ const CatDetail = () => {
   const randomEat = Math.round(Math.random() * 10)
   const randomSeconds = ((Math.random() * (10 - 2)) + 2) * 1000
 
-  console.log(randomEat)
-
   // 고기 먹으면 +3kg
   const eatMeat = () => {
     if (randomEat % 2 === 0) {
@@ -49,7 +47,7 @@ const CatDetail = () => {
       }))
       dispatch(addHistory({
         type: 'Message',
-        message: catMessage[randomEat]
+        message: catMessages[randomEat]
       }))
       dispatch(handleGainWeight(3))
 
@@ -66,7 +64,7 @@ const CatDetail = () => {
 
   // 사료 먹으면 +1kg
   const eatFeed = () => {
-    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
+    if (randomEat % 2 === 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -79,7 +77,7 @@ const CatDetail = () => {
       }))
       dispatch(addHistory({
         type: 'Message',
-        message: catMessage[randomEat]
+        message: catMessages[randomEat]
       }))
       dispatch(handleGainWeight(1))
 
@@ -96,7 +94,7 @@ const CatDetail = () => {
 
   // 물 먹으면 +0.1kg
   const eatWater = () => {
-    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
+    if (randomEat % 2 === 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -109,7 +107,7 @@ const CatDetail = () => {
       }))
       dispatch(addHistory({
         type: 'Message',
-        message: catMessage[randomEat]
+        message: catMessages[randomEat]
       }))
       dispatch(handleGainWeight(0.1))
 
@@ -153,7 +151,7 @@ const CatDetail = () => {
       dispatch(handleAge())
     }
 
-    if (selectedCat.age > 10 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
+    if (selectedCat.age > 15 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
       dispatch(handleStatus(catStatus.die))
     } else if (selectedCat.weight > 20) {
       dispatch(handleStatus(catStatus.fat))
@@ -189,7 +187,7 @@ const CatDetail = () => {
                      alt={selectedCat.name}/>
               </div>
 
-              <ul className="cat-text">
+              <ul className="information">
                 <li>
                   <p>Age</p>
                   <p>{selectedCat.age}</p>
@@ -211,7 +209,7 @@ const CatDetail = () => {
                 </li>
               </ul>
 
-              <ul>
+              <ul className="messages">
                 {
                   selectedCat.history.filter(type => type.type === 'Message').map((message, index) => {
                     return (

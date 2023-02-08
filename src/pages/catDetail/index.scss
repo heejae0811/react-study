@@ -16,20 +16,24 @@
       }
     }
 
-    ul {
-      &.cat-text {
-        margin-left: 20px;
+    .information {
+      margin-left: 20px;
 
-        li {
-          display: flex;
-          justify-content: start;
-          align-items: center;
-          margin-bottom: 20px;
+      li {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: 20px;
 
-          p {
-            margin: 0 10px 0 0;
-          }
+        p {
+          margin: 0 10px 0 0;
         }
+      }
+    }
+
+    .messages {
+      li {
+        margin-bottom: 5px;
       }
     }
   }
@@ -65,5 +69,11 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     margin-top: 20px;
+
+    ul {
+      li {
+        margin-bottom: 5px;
+      }
+    }
   }
 }

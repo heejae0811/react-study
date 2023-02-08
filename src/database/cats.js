@@ -4,7 +4,7 @@ export const catStatus = {
   die: 'Die',
 }
 
-export const catMessage = [
+export const catMessages = [
   '집사, 나랑 놀아줘~',
   '집사야, 정신차려',
   '나를 건들지마라!!',
