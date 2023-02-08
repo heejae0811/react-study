@@ -19,6 +19,10 @@ const StyledButton = styled.button`
   &:hover {
     opacity: .8;
   }
+  
+  &:disabled {
+    background-color: #484643;
+  }
 `
 
 const Button = ({disabled, children, ...rest}) => {
