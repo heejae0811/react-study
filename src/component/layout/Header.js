@@ -22,8 +22,8 @@ const Header = () => {
     <header className="header">
       <nav>
         <ul>
-          <li onClick={() => navigate('/mypage')}>마이페이지</li>
-          <li onClick={onLogout}>로그아웃</li>
+          <li onClick={() => navigate('/mypage')}>My Page</li>
+          <li onClick={onLogout}>Logout</li>
         </ul>
       </nav>
     </header>

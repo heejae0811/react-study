@@ -151,7 +151,7 @@ const CatDetail = () => {
       dispatch(handleAge())
     }
 
-    if (selectedCat.age > 15 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
+    if (selectedCat.age > 20 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
       dispatch(handleStatus(catStatus.die))
     } else if (selectedCat.weight > 20) {
       dispatch(handleStatus(catStatus.fat))
@@ -169,6 +169,19 @@ const CatDetail = () => {
       // navigate('/')
     }
   }, [])
+
+  // 60초가 지나면 +1살, 100초가 지나면 -1kg
+  useEffect(() => {
+    if (selectedCat !== null) {
+      setTimeout(() => {
+        dispatch(handleAge())
+      }, 60000)
+
+      setTimeout(() => {
+        dispatch(handleLoseWeight(1))
+      }, 100000)
+    }
+  }, [selectedCat])
 
   if (!selectedCat) return null
 
