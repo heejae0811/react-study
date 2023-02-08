@@ -1,6 +1,3 @@
-// import GlobalStyle from './style/GlobalStyle'
-// import {useRoutes} from 'react-router'
-
 import {Routes, Route} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import Login from './pages/login'

@@ -2,8 +2,8 @@ import {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleLogin} from '../../redux/user'
+import Button from '../../component/Button'
 import './index.scss'
-import Button from '../../component/Button/Button'
 
 function Login() {
   const [isId, setId] = useState('')
@@ -57,11 +57,9 @@ function Login() {
                    placeholder="비밀번호를 입력해주세요."/>
           </label>
         </div>
-
-        <button onClick={onLogin}>sdf</button>
-        {/*<Button onClick={onLogin}>Login</Button>*/}
-        {/*<Button onClick={onLogin}>Login</Button>*/}
       </form>
+
+      <Button maxWidth="300" bgColor="#f6b352" onClick={onLogin}>Login</Button>
     </div>
   )
 }

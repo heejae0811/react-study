@@ -10,8 +10,8 @@ import {
   handleAge
 } from '../../redux/cat'
 import {catStatus, catMessages} from '../../database/cats'
-import Header from '../../component/layout/Header'
 import './index.scss'
+import Button from '../../component/Button'
 
 const CatDetail = () => {
   const [isEatCount, setEatCount] = useState(1)
@@ -185,8 +185,6 @@ const CatDetail = () => {
 
   return (
     <div className="cat-detail">
-      <Header/>
-
       <h1>{selectedCat.name}</h1>
 
       <div className="cat-info">
@@ -229,10 +227,10 @@ const CatDetail = () => {
       </div>
 
       <div className="cat-btn">
-        <button onClick={eatMeat} disabled={isMeatClick || selectedCat.status === catStatus.die}>고기 먹기</button>
-        <button onClick={eatFeed} disabled={isFeedClick || selectedCat.status === catStatus.die}>사료 먹기</button>
-        <button onClick={eatWater} disabled={isWaterClick || selectedCat.status === catStatus.die}>물 먹기</button>
-        <button onClick={workout} disabled={isWorkoutClick || selectedCat.status === catStatus.die}>운동하기</button>
+        <Button onClick={eatMeat} disabled={isMeatClick || selectedCat.status === catStatus.die} maxWidth="135" bgColor="#f65252">고기 먹기</Button>
+        <Button onClick={eatFeed} disabled={isFeedClick || selectedCat.status === catStatus.die} maxWidth="135" bgColor="#f68852">사료 먹기</Button>
+        <Button onClick={eatWater} disabled={isWaterClick || selectedCat.status === catStatus.die} maxWidth="135" bgColor="#5275f6">물 마시기</Button>
+        <Button onClick={workout} disabled={isWorkoutClick || selectedCat.status === catStatus.die} maxWidth="135" bgColor="#ab52f6">운동하기</Button>
       </div>
 
       <div className="cat-record">

@@ -1,6 +1,7 @@
 import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleLogout} from '../../redux/user'
+import Button from '../Button'
 import './header.scss'
 
 const Header = () => {
@@ -25,8 +26,12 @@ const Header = () => {
         loginUser !== null ? (
           <nav>
             <ul>
-              <li onClick={() => navigate('/mypage')}>My Page</li>
-              <li onClick={onLogout}>Logout</li>
+              <li>
+                <Button onClick={() => navigate('/mypage')} minWidth="100" bgColor="#f6b352">My Page</Button>
+              </li>
+              <li>
+                <Button onClick={onLogout} minWidth="100" bgColor="#1f2124">Logout</Button>
+              </li>
             </ul>
           </nav>
         ) : (

@@ -2,7 +2,7 @@ import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleDeletedCat} from '../../redux/cat'
 import {catStatus} from '../../database/cats'
-import Header from '../../component/layout/Header'
+import Button from '../../component/Button'
 import './index.scss'
 
 const CatList = () => {
@@ -28,9 +28,7 @@ const CatList = () => {
   // TODO :: 리스트에 순서대로 안들어감
   return (
     <div className="cat-list">
-      <Header/>
-
-      <button className="btn-create" onClick={() => navigate('/catCreate')}>Cat Create</button>
+      <Button className="btn-create" onClick={() => navigate('/catCreate')} maxWidth="100" bgColor="#2576B5">Cat Create</Button>
 
       <ul className="cat-card">
         {
@@ -61,8 +59,8 @@ const CatList = () => {
               </div>
 
               <div>
-                <button onClick={() => handleDetailNavigate(cat.name)}>Detail</button>
-                <button onClick={() => handelDelete(index)}>Delete</button>
+                <Button onClick={() => handleDetailNavigate(cat.name)} bgColor="#f6b352">Detail</Button>
+                <Button onClick={() => handelDelete(index)} bgColor="#484643">Delete</Button>
               </div>
             </li>
           ))

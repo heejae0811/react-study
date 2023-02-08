@@ -2,7 +2,7 @@ import {useState, useRef} from 'react'
 import {useNavigate} from 'react-router'
 import {useDispatch} from 'react-redux'
 import {handleCreatedCat} from '../../redux/cat'
-import Header from '../../component/layout/Header'
+import Button from '../../component/Button'
 import './index.scss'
 
 const CatCreate = () => {
@@ -62,8 +62,6 @@ const CatCreate = () => {
 
   return (
     <div className="cat-create">
-      <Header/>
-
       <h1>CAT CREATE</h1>
 
       <form>
@@ -136,12 +134,12 @@ const CatCreate = () => {
             Female
           </label>
         </div>
-
-        <div>
-          <button onClick={createCat}>Create</button>
-          <button onClick={() => navigate('/catList')}>Cancel</button>
-        </div>
       </form>
+
+      <div>
+        <Button onClick={createCat} maxWidth="135" bgColor="#f6b352">Create</Button>
+        <Button onClick={() => navigate('/catList')} maxWidth="135" bgColor="#1f2124">Cancel</Button>
+      </div>
     </div>
   )
 }
