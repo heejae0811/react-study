@@ -9,6 +9,7 @@ import CatCreate from './pages/catCreate'
 import CatList from './pages/catList'
 import CatDetail from './pages/catDetail'
 import Error from './pages/error'
+import Header from './component/layout/Header'
 import './app.scss'
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
 
   return (
     <>
+      <Header/>
+
       {
         loginUser !== null ? (
           <Routes>
