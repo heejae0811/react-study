@@ -37,8 +37,8 @@ const CatCreate = () => {
     const createCat = {
       profileImage: isProfile.thumbnail,
       name: isName,
-      age: isAge,
-      weight: isWeight,
+      age: Number(isAge),
+      weight: Number(isWeight),
       status: isStatus,
       gender: isGender,
       history: []

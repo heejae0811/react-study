@@ -34,7 +34,7 @@ const CatDetail = () => {
 
   // 고기 먹으면 +3kg
   const eatMeat = () => {
-    if (randomEat % 2 === 0) {
+    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -60,7 +60,7 @@ const CatDetail = () => {
 
   // 사료 먹으면 +1kg
   const eatFeed = () => {
-    if (randomEat % 2 === 0) {
+    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -86,7 +86,7 @@ const CatDetail = () => {
 
   // 물 먹으면 +0.1kg
   const eatWater = () => {
-    if (randomEat % 2 === 0) {
+    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -115,7 +115,7 @@ const CatDetail = () => {
     setWorkoutClick(true)
     setTimeout(() => {
       setWorkoutClick(false)
-    }, 1000)
+    }, 100)
 
     dispatch(addHistory({
       type: 'Workout',
@@ -153,7 +153,6 @@ const CatDetail = () => {
 
   if (!selectedCat) return null
 
-  // TODO :: 타입별로 CSS 작성하기
   return (
     <div className="cat-detail">
       {
@@ -197,15 +196,62 @@ const CatDetail = () => {
               <button onClick={workout} disabled={isWorkoutClick || selectedCat.status === catStatus.die}>운동하기</button>
             </div>
 
-            <ul>
-              {
-                selectedCat?.history?.map((item, index) => {
-                  return (
-                    <li key={index}>{item.type}: {item.eatCount} {item.time}</li>
-                  )
-                })
-              }
-            </ul>
+            <div className="cat-record">
+              <ul>
+                <h3>밥 먹은 횟수</h3>
+                {
+                  selectedCat.history.filter(type => type.type === 'EatCount').map((eatCount, index) => {
+                    return (
+                      <li key={index}>{eatCount.eatCount}</li>
+                    )
+                  })
+                }
+              </ul>
+
+              <ul>
+                <h3>고기 먹은 시간</h3>
+                {
+                  selectedCat.history.filter(type => type.type === 'Meat').map((meat, index) => {
+                    return (
+                      <li key={index}>{meat.time}</li>
+                    )
+                  })
+                }
+              </ul>
+
+              <ul>
+                <h3>사료 먹은 시간</h3>
+                {
+                  selectedCat.history.filter(type => type.type === 'Meat').map((feed, index) => {
+                    return (
+                      <li key={index}>{feed.time}</li>
+                    )
+                  })
+                }
+              </ul>
+
+              <ul>
+                <h3>물 마신 시간</h3>
+                {
+                  selectedCat.history.filter(type => type.type === 'Water').map((water, index) => {
+                    return (
+                      <li key={index}>{water.time}</li>
+                    )
+                  })
+                }
+              </ul>
+
+              <ul>
+                <h3>운동한 시간</h3>
+                {
+                  selectedCat.history.filter(type => type.type === 'Workout').map((workout, index) => {
+                    return (
+                      <li key={index}>{workout.time}</li>
+                    )
+                  })
+                }
+              </ul>
+            </div>
           </>
         ) : (
           <Access/>

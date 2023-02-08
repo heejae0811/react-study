@@ -57,7 +57,14 @@
     }
   }
 
-  ul {
+  .cat-record {
+    display: flex;
+    justify-content: start;
+    align-items: start;
     margin-top: 20px;
+
+    ul {
+      width: 20%;
+    }
   }
 }
