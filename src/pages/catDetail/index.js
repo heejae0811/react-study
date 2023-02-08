@@ -9,7 +9,7 @@ import {
   handleLoseWeight,
   handleAge
 } from '../../redux/cat'
-import {catStatus} from '../../database/cats'
+import {catStatus, catMessage} from '../../database/cats'
 import Header from '../../component/layout/Header'
 import Access from '../../component/access'
 import './index.scss'
@@ -32,6 +32,8 @@ const CatDetail = () => {
   const randomEat = Math.round(Math.random() * 10)
   const randomSeconds = ((Math.random() * (10 - 2)) + 2) * 1000
 
+  console.log(randomEat)
+
   // 고기 먹으면 +3kg
   const eatMeat = () => {
     if (randomEat % 2 === 0) {
@@ -44,6 +46,10 @@ const CatDetail = () => {
       dispatch(addHistory({
         type: 'Meat',
         time: new Date().toLocaleString()
+      }))
+      dispatch(addHistory({
+        type: 'Message',
+        message: catMessage[randomEat]
       }))
       dispatch(handleGainWeight(3))
 
@@ -60,7 +66,7 @@ const CatDetail = () => {
 
   // 사료 먹으면 +1kg
   const eatFeed = () => {
-    if (randomEat % 2 === 0) {
+    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -70,6 +76,10 @@ const CatDetail = () => {
       dispatch(addHistory({
         type: 'Feed',
         time: new Date().toLocaleString()
+      }))
+      dispatch(addHistory({
+        type: 'Message',
+        message: catMessage[randomEat]
       }))
       dispatch(handleGainWeight(1))
 
@@ -86,7 +96,7 @@ const CatDetail = () => {
 
   // 물 먹으면 +0.1kg
   const eatWater = () => {
-    if (randomEat % 2 === 0) {
+    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -96,6 +106,10 @@ const CatDetail = () => {
       dispatch(addHistory({
         type: 'Water',
         time: new Date().toLocaleString()
+      }))
+      dispatch(addHistory({
+        type: 'Message',
+        message: catMessage[randomEat]
       }))
       dispatch(handleGainWeight(0.1))
 
@@ -170,8 +184,10 @@ const CatDetail = () => {
             <h1>{selectedCat.name}</h1>
 
             <div className="cat-info">
-              <img className={selectedCat.status === catStatus.die ? 'disabled' : ''} src={selectedCat.profileImage}
-                   alt={selectedCat.name}/>
+              <div>
+                <img className={selectedCat.status === catStatus.die ? 'disabled' : ''} src={selectedCat.profileImage}
+                     alt={selectedCat.name}/>
+              </div>
 
               <ul className="cat-text">
                 <li>
@@ -193,6 +209,16 @@ const CatDetail = () => {
                   <p>Gender</p>
                   <p>{selectedCat.gender}</p>
                 </li>
+              </ul>
+
+              <ul>
+                {
+                  selectedCat.history.filter(type => type.type === 'Message').map((message, index) => {
+                    return (
+                      <li key={index}>{message.message}</li>
+                    )
+                  })
+                }
               </ul>
             </div>
 
