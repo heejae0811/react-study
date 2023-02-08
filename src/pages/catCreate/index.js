@@ -1,9 +1,8 @@
 import {useState, useRef} from 'react'
 import {useNavigate} from 'react-router'
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {handleCreatedCat} from '../../redux/cat'
 import Header from '../../component/layout/Header'
-import Access from '../../component/access'
 import './index.scss'
 
 const CatCreate = () => {
@@ -17,7 +16,6 @@ const CatCreate = () => {
   const fileInputRef = useRef(null)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const loginUser = useSelector(state => state.user.loginUser)
 
   const uploadImage = (e) => {
     const fileList = e.target.files
@@ -64,93 +62,86 @@ const CatCreate = () => {
 
   return (
     <div className="cat-create">
-      {
-        loginUser !== null ? (
-          <>
-            <Header/>
+      <Header/>
 
-            <h1>CAT CREATE</h1>
+      <h1>CAT CREATE</h1>
 
-            <form>
-              <div>
-                <p>Image</p>
-                {
-                  isProfile === '' ? (
-                    <>
-                    </>
-                  ) : (
-                    <>
-                      <img src={isProfile.thumbnail} alt=""/>
-                    </>
-                  )
-                }
-                <label>
-                  <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" ref={fileInputRef} onChange={uploadImage}/>
-                </label>
-              </div>
+      <form>
+        <div>
+          <p>Image</p>
+          {
+            isProfile === '' ? (
+              <>
+              </>
+            ) : (
+              <>
+                <img src={isProfile.thumbnail} alt=""/>
+              </>
+            )
+          }
+          <label>
+            <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" ref={fileInputRef}
+                   onChange={uploadImage}/>
+          </label>
+        </div>
 
-              <div>
-                <p>Name</p>
-                <label>
-                  <input type="text" name="name" value={isName} onChange={e => setName(e.target.value)}
-                         placeholder="이름을 입력해주세요."/>
-                </label>
-              </div>
+        <div>
+          <p>Name</p>
+          <label>
+            <input type="text" name="name" value={isName} onChange={e => setName(e.target.value)}
+                   placeholder="이름을 입력해주세요."/>
+          </label>
+        </div>
 
-              <div>
-                <p>Age</p>
-                <label>
-                  <input type="number" name="age" value={isAge} onChange={e => setAge(e.target.value)}
-                         placeholder="나이를 입력해주세요."/>
-                </label>
-              </div>
+        <div>
+          <p>Age</p>
+          <label>
+            <input type="number" name="age" value={isAge} onChange={e => setAge(e.target.value)}
+                   placeholder="나이를 입력해주세요."/>
+          </label>
+        </div>
 
-              <div>
-                <p>Weight</p>
-                <label>
-                  <input type="number" name="weight" value={isWeight} onChange={e => setWeight(e.target.value)}
-                         placeholder="체중을 입력해주세요."/>
-                </label>
-              </div>
+        <div>
+          <p>Weight</p>
+          <label>
+            <input type="number" name="weight" value={isWeight} onChange={e => setWeight(e.target.value)}
+                   placeholder="체중을 입력해주세요."/>
+          </label>
+        </div>
 
-              <div>
-                <p>Status</p>
-                <label>
-                  <input type="radio" name="status" value="Normal" onChange={e => setStatus(e.target.value)}/>
-                  Normal
-                </label>
-                <label>
-                  <input type="radio" name="status" value="Fat" onChange={e => setStatus(e.target.value)}/>
-                  Fat
-                </label>
-                <label>
-                  <input type="radio" name="status" value="Die" onChange={e => setStatus(e.target.value)}/>
-                  Die
-                </label>
-              </div>
+        <div>
+          <p>Status</p>
+          <label>
+            <input type="radio" name="status" value="Normal" onChange={e => setStatus(e.target.value)}/>
+            Normal
+          </label>
+          <label>
+            <input type="radio" name="status" value="Fat" onChange={e => setStatus(e.target.value)}/>
+            Fat
+          </label>
+          <label>
+            <input type="radio" name="status" value="Die" onChange={e => setStatus(e.target.value)}/>
+            Die
+          </label>
+        </div>
 
-              <div>
-                <p>Gender</p>
-                <label>
-                  <input type="radio" name="gender" value="Male" onChange={e => setGender(e.target.value)}/>
-                  Male
-                </label>
-                <label>
-                  <input type="radio" name="gender" value="Female" onChange={e => setGender(e.target.value)}/>
-                  Female
-                </label>
-              </div>
+        <div>
+          <p>Gender</p>
+          <label>
+            <input type="radio" name="gender" value="Male" onChange={e => setGender(e.target.value)}/>
+            Male
+          </label>
+          <label>
+            <input type="radio" name="gender" value="Female" onChange={e => setGender(e.target.value)}/>
+            Female
+          </label>
+        </div>
 
-              <div>
-                <button onClick={createCat}>Create</button>
-                <button onClick={() => navigate('/catList')}>Cancel</button>
-              </div>
-            </form>
-          </>
-        ) : (
-          <Access/>
-        )
-      }
+        <div>
+          <button onClick={createCat}>Create</button>
+          <button onClick={() => navigate('/catList')}>Cancel</button>
+        </div>
+      </form>
     </div>
   )
 }

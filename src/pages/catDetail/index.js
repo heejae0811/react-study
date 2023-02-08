@@ -11,7 +11,6 @@ import {
 } from '../../redux/cat'
 import {catStatus, catMessages} from '../../database/cats'
 import Header from '../../component/layout/Header'
-import Access from '../../component/access'
 import './index.scss'
 
 const CatDetail = () => {
@@ -25,7 +24,6 @@ const CatDetail = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const loginUser = useSelector(state => state.user.loginUser)
   const catList = useSelector(state => state.cat.cats)
   const selectedCat = useSelector(state => state.cat.selectedCat)
 
@@ -34,7 +32,7 @@ const CatDetail = () => {
 
   // 고기 먹으면 +3kg
   const eatMeat = () => {
-    if (randomEat % 2 === 0) {
+    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -134,7 +132,7 @@ const CatDetail = () => {
       setFeedClick(false)
       setWaterClick(false)
       setWorkoutClick(false)
-    }, 2000)
+    }, 0)
 
     dispatch(addHistory({
       type: 'Workout',
@@ -145,13 +143,13 @@ const CatDetail = () => {
     catListStatus()
   }
 
-  // 나이, 몸무게에 따른 상태 체크
+  // 나이, 몸무게에 따른 상태 체크 TODO :: 한 번 늦게 반영됨
   const catListStatus = () => {
     if (isEatCount % 3 === 0) {
       dispatch(handleAge())
     }
 
-    if (selectedCat.age > 20 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
+    if (selectedCat.age > 100 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
       dispatch(handleStatus(catStatus.die))
     } else if (selectedCat.weight > 20) {
       dispatch(handleStatus(catStatus.fat))
@@ -187,121 +185,113 @@ const CatDetail = () => {
 
   return (
     <div className="cat-detail">
-      {
-        loginUser !== null ? (
-          <>
-            <Header/>
+      <Header/>
 
-            <h1>{selectedCat.name}</h1>
+      <h1>{selectedCat.name}</h1>
 
-            <div className="cat-info">
-              <div>
-                <img className={selectedCat.status === catStatus.die ? 'disabled' : ''} src={selectedCat.profileImage}
-                     alt={selectedCat.name}/>
-              </div>
+      <div className="cat-info">
+        <div>
+          <img className={selectedCat.status === catStatus.die ? 'disabled' : ''} src={selectedCat.profileImage}
+               alt={selectedCat.name}/>
+        </div>
 
-              <ul className="information">
-                <li>
-                  <p>Age</p>
-                  <p>{selectedCat.age}</p>
-                </li>
+        <ul className="information">
+          <li>
+            <p>Age</p>
+            <p>{selectedCat.age}</p>
+          </li>
 
-                <li>
-                  <p>Weight</p>
-                  <p>{selectedCat.weight}kg</p>
-                </li>
+          <li>
+            <p>Weight</p>
+            <p>{selectedCat.weight}kg</p>
+          </li>
 
-                <li>
-                  <p>Status</p>
-                  <p>{selectedCat.status}</p>
-                </li>
+          <li>
+            <p>Status</p>
+            <p>{selectedCat.status}</p>
+          </li>
 
-                <li>
-                  <p>Gender</p>
-                  <p>{selectedCat.gender}</p>
-                </li>
-              </ul>
+          <li>
+            <p>Gender</p>
+            <p>{selectedCat.gender}</p>
+          </li>
+        </ul>
 
-              <ul className="messages">
-                {
-                  selectedCat.history.filter(type => type.type === 'Message').map((message, index) => {
-                    return (
-                      <li key={index}>{message.message}</li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
+        <ul className="messages">
+          {
+            selectedCat.history.filter(type => type.type === 'Message').map((message, index) => {
+              return (
+                <li key={index}>{message.message}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
 
-            <div className="cat-btn">
-              <button onClick={eatMeat} disabled={isMeatClick || selectedCat.status === catStatus.die}>고기 먹기</button>
-              <button onClick={eatFeed} disabled={isFeedClick || selectedCat.status === catStatus.die}>사료 먹기</button>
-              <button onClick={eatWater} disabled={isWaterClick || selectedCat.status === catStatus.die}>물 먹기</button>
-              <button onClick={workout} disabled={isWorkoutClick || selectedCat.status === catStatus.die}>운동하기</button>
-            </div>
+      <div className="cat-btn">
+        <button onClick={eatMeat} disabled={isMeatClick || selectedCat.status === catStatus.die}>고기 먹기</button>
+        <button onClick={eatFeed} disabled={isFeedClick || selectedCat.status === catStatus.die}>사료 먹기</button>
+        <button onClick={eatWater} disabled={isWaterClick || selectedCat.status === catStatus.die}>물 먹기</button>
+        <button onClick={workout} disabled={isWorkoutClick || selectedCat.status === catStatus.die}>운동하기</button>
+      </div>
 
-            <div className="cat-record">
-              {/* TODO :: eatCount 쌓이는 것이 아니라 업데이트 */}
-              <ul>
-                <h3>밥 먹은 횟수</h3>
-                {
-                  selectedCat.history.filter(type => type.type === 'EatCount').map((eatCount, index) => {
-                    return (
-                      <li key={index}>{eatCount.eatCount}</li>
-                    )
-                  })
-                }
-              </ul>
+      <div className="cat-record">
+        {/* TODO :: eatCount 쌓이는 것이 아니라 업데이트 */}
+        <ul>
+          <h3>밥 먹은 횟수</h3>
+          {
+            selectedCat.history.filter(type => type.type === 'EatCount').map((eatCount, index) => {
+              return (
+                <li key={index}>{eatCount.eatCount}</li>
+              )
+            })
+          }
+        </ul>
 
-              <ul>
-                <h3>고기 먹은 시간</h3>
-                {
-                  selectedCat.history.filter(type => type.type === 'Meat').map((meat, index) => {
-                    return (
-                      <li key={index}>{meat.time}</li>
-                    )
-                  })
-                }
-              </ul>
+        <ul>
+          <h3>고기 먹은 시간</h3>
+          {
+            selectedCat.history.filter(type => type.type === 'Meat').map((meat, index) => {
+              return (
+                <li key={index}>{meat.time}</li>
+              )
+            })
+          }
+        </ul>
 
-              <ul>
-                <h3>사료 먹은 시간</h3>
-                {
-                  selectedCat.history.filter(type => type.type === 'Feed').map((feed, index) => {
-                    return (
-                      <li key={index}>{feed.time}</li>
-                    )
-                  })
-                }
-              </ul>
+        <ul>
+          <h3>사료 먹은 시간</h3>
+          {
+            selectedCat.history.filter(type => type.type === 'Feed').map((feed, index) => {
+              return (
+                <li key={index}>{feed.time}</li>
+              )
+            })
+          }
+        </ul>
 
-              <ul>
-                <h3>물 마신 시간</h3>
-                {
-                  selectedCat.history.filter(type => type.type === 'Water').map((water, index) => {
-                    return (
-                      <li key={index}>{water.time}</li>
-                    )
-                  })
-                }
-              </ul>
+        <ul>
+          <h3>물 마신 시간</h3>
+          {
+            selectedCat.history.filter(type => type.type === 'Water').map((water, index) => {
+              return (
+                <li key={index}>{water.time}</li>
+              )
+            })
+          }
+        </ul>
 
-              <ul>
-                <h3>운동한 시간</h3>
-                {
-                  selectedCat.history.filter(type => type.type === 'Workout').map((workout, index) => {
-                    return (
-                      <li key={index}>{workout.time}</li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-          </>
-        ) : (
-          <Access/>
-        )
-      }
+        <ul>
+          <h3>운동한 시간</h3>
+          {
+            selectedCat.history.filter(type => type.type === 'Workout').map((workout, index) => {
+              return (
+                <li key={index}>{workout.time}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
     </div>
   )
 }

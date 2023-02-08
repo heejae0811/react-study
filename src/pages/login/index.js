@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleLogin} from '../../redux/user'
 import './index.scss'
+import Button from '../../component/Button/Button'
 
 function Login() {
   const [isId, setId] = useState('')
@@ -57,7 +58,9 @@ function Login() {
           </label>
         </div>
 
-        <button onClick={onLogin}>확인</button>
+        <button onClick={onLogin}>sdf</button>
+        {/*<Button onClick={onLogin}>Login</Button>*/}
+        {/*<Button onClick={onLogin}>Login</Button>*/}
       </form>
     </div>
   )
