@@ -17,7 +17,6 @@ export const catMessages = [
   '나는 너가 좋다.. 영광으로 알아라!'
 ]
 
-// TODO :: 가가 삭제 안됨, id를 추가해야하나?
 export const cats = [
   {
     profileImage: require('../assets/img/cat01.jpg'),
