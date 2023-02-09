@@ -8,7 +8,7 @@ export const users = [
   {
     name: '스틱',
     loginId: 'sticker',
-    password: '123',
+    password: '111',
     phoneNumber: '010-1243-1234'
   }
 ]

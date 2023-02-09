@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleLogin} from '../../redux/user'
@@ -11,36 +11,35 @@ function Login() {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const loginUser = useSelector(state => state.user.loginUser)
+  const users = useSelector(state => state.user.users)
 
   const onLogin = () => {
+    const userId = users.filter(user => user.loginId === isId)
+    const userPw = users.filter(user => user.password === isPassword)
+
     if (isId === '') {
       alert('아이디를 입력해주세요.')
     } else if (isPassword === '') {
       alert('비밀번호를 입력해주세요.')
+    } else if (userId.length === 0) {
+      alert('아이디가 틀렸습니다.')
+    } else if (userPw.length === 0) {
+      alert('비밀번호가 틀렸습니다.')
     } else {
       dispatch(handleLogin({
         loginId: isId,
         password: isPassword
       }))
+      alert('로그인 되었습니다.')
+      navigate('/catList')
     }
   }
-
-  // TODO :: 아이디, 비밀번호 틀렸을 때 alert
-  useEffect(() => {
-    if (loginUser !== null) {
-      alert('로그인인 되었습니다.')
-      navigate('/catList')
-    } else {
-      // alert('아이디 또는 비밀번호가 틀렸습니다.')
-    }
-  }, [loginUser])
 
   return (
     <div className="login inner">
       <h1>LOGIN</h1>
       <h4>아이디 = test, 비밀번호 = 123</h4>
-      <h4>아이디 = sticker, 비밀번호 = 123</h4>
+      <h4>아이디 = sticker, 비밀번호 = 111</h4>
 
       <form>
         <div>
