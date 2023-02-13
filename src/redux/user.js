@@ -11,19 +11,9 @@ export const userSlice = createSlice({
   reducers: {
     handleLogin: (state, action) => {
       state.loginUser = state.users.find(user => user.loginId === action.payload.loginId && user.password === action.payload.password)
-
-      state.users = [
-        ...state.users.filter(user => user.loginId !== state.loginUser.loginId),
-        state.loginUser
-      ]
     },
     handleLogout: (state, action) => {
       state.loginUser = null
-
-      state.users = [
-        ...state.users,
-        state.loginUser
-      ]
     }
   }
 })

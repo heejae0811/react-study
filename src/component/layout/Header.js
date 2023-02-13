@@ -10,14 +10,11 @@ const Header = () => {
 
   const loginUser = useSelector(state => state.user.loginUser)
 
-  // TODO :: dispatch 사용해서 로그아웃 시키기
   const onLogout = () => {
     alert('로그아웃 되었습니다.')
 
-    window.localStorage.removeItem('persist:root')
-    window.location.reload()
-
-    // dispatch(handleLogout())
+    dispatch(handleLogout())
+    navigate('/')
   }
 
   return (
