@@ -132,7 +132,7 @@ const CatDetail = () => {
       setFeedClick(false)
       setWaterClick(false)
       setWorkoutClick(false)
-    }, 5000)
+    }, 3000)
 
     dispatch(addHistory({
       type: 'Workout',

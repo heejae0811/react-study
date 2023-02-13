@@ -1,7 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import * as database from '../database/cats'
 
-// TODO :: 마지막 남은 고양이 삭제 안됨, 가가 삭제 안됨
 export const catSlice = createSlice({
   name: 'cat',
   initialState: {
@@ -11,19 +10,9 @@ export const catSlice = createSlice({
   reducers: {
     handleCreatedCat: (state, action) => {
       state.cats = [action.payload, ...state.cats]
-
-      state.cats = [
-        ...state.cats.filter(cat => cat.name !== state.selectedCat.name),
-        state.selectedCat
-      ]
     },
     handleDeletedCat: (state, action) => {
       state.cats = state.cats.filter(cat => cat.name !== action.payload)
-
-      state.cats = [
-        ...state.cats.filter(cat => cat.name !== state.selectedCat.name),
-        state.selectedCat
-      ]
     },
     handleSelectedCat: (state, action) => {
       state.selectedCat = state.cats.find(cat => cat.name === action.payload)

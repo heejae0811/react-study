@@ -28,6 +28,14 @@ const CatList = () => {
   // TODO :: 리스트에 순서대로 안들어감
   return (
     <div className="cat-list">
+      {
+        catList.length === 0 ? (
+          <h1>고양이 목록이 없습니다.</h1>
+        ) : (
+          <></>
+        )
+      }
+
       <Button className="btn-create" onClick={() => navigate('/catCreate')} maxWidth="100" bgColor="#2576B5">Cat Create</Button>
 
       <ul className="cat-card">
