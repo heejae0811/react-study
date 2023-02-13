@@ -10,6 +10,8 @@ const CatList = () => {
   const dispatch = useDispatch()
   const catList = useSelector(state => state.cat.cats)
 
+  console.log(catList)
+
   const handleDetailNavigate = (name) => {
     navigate(`/catDetail/${name}`)
   }

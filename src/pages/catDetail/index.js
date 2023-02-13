@@ -32,7 +32,7 @@ const CatDetail = () => {
 
   // 고기 먹으면 +3kg
   const eatMeat = () => {
-    if (randomEat % 2 === 0 || randomEat % 2 !== 0) {
+    if (randomEat % 2 === 0) {
       setEatCount(isEatCount + 1)
 
       dispatch(addHistory({
@@ -132,7 +132,7 @@ const CatDetail = () => {
       setFeedClick(false)
       setWaterClick(false)
       setWorkoutClick(false)
-    }, 3000)
+    }, 2000)
 
     dispatch(addHistory({
       type: 'Workout',
@@ -149,7 +149,7 @@ const CatDetail = () => {
       dispatch(handleAge())
     }
 
-    if (selectedCat.age > 100 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
+    if (selectedCat.age > 10 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
       dispatch(handleStatus(catStatus.die))
     } else if (selectedCat.weight > 20) {
       dispatch(handleStatus(catStatus.fat))
@@ -169,17 +169,17 @@ const CatDetail = () => {
   }, [])
 
   // 60초가 지나면 +1살, 100초가 지나면 -1kg
-  useEffect(() => {
-    if (selectedCat !== null) {
-      setTimeout(() => {
-        dispatch(handleAge())
-      }, 60000)
-
-      setTimeout(() => {
-        dispatch(handleLoseWeight(1))
-      }, 100000)
-    }
-  }, [selectedCat])
+  // useEffect(() => {
+  //   if (selectedCat !== null) {
+  //     setTimeout(() => {
+  //       dispatch(handleAge())
+  //     }, 60000)
+  //
+  //     setTimeout(() => {
+  //       dispatch(handleLoseWeight(1))
+  //     }, 100000)
+  //   }
+  // }, [selectedCat])
 
   if (!selectedCat) return null
 
@@ -226,7 +226,7 @@ const CatDetail = () => {
         </ul>
       </div>
 
-      <div className="cat-btn">
+      <div className="cat-button">
         <Button onClick={eatMeat} disabled={isMeatClick || selectedCat.status === catStatus.die} maxWidth="135" bgColor="#f65252">고기 먹기</Button>
         <Button onClick={eatFeed} disabled={isFeedClick || selectedCat.status === catStatus.die} maxWidth="135" bgColor="#f68852">사료 먹기</Button>
         <Button onClick={eatWater} disabled={isWaterClick || selectedCat.status === catStatus.die} maxWidth="135" bgColor="#5275f6">물 마시기</Button>
@@ -290,6 +290,8 @@ const CatDetail = () => {
           }
         </ul>
       </div>
+
+      <Button className="btn-list" onClick={() => navigate('/catList')} maxWidth="300" bgColor="#f6b352">Cat List</Button>
     </div>
   )
 }
