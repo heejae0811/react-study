@@ -12,6 +12,7 @@ function Login() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const users = useSelector(state => state.user.users)
+  const loginUser = useSelector(state => state.user.loginUser)
 
   const onLogin = () => {
     const userId = users.filter(user => user.loginId === isId)
@@ -37,28 +38,39 @@ function Login() {
 
   return (
     <div className="login inner">
-      <h1>LOGIN</h1>
-      <h4>아이디 = test, 비밀번호 = 123</h4>
-      <h4>아이디 = sticker, 비밀번호 = 111</h4>
+      {
+        loginUser === null ? (
+          <>
+            <h1>LOGIN</h1>
+            <h4>아이디 = test, 비밀번호 = 123</h4>
+            <h4>아이디 = sticker, 비밀번호 = 111</h4>
 
-      <form>
-        <div>
-          <p>ID</p>
-          <label>
-            <input type="text" value={isId} onChange={e => setId(e.target.value)} placeholder="아이디를 입력해주세요."/>
-          </label>
-        </div>
+            <form>
+              <div>
+                <p>ID</p>
+                <label>
+                  <input type="text" value={isId} onChange={e => setId(e.target.value)} placeholder="아이디를 입력해주세요."/>
+                </label>
+              </div>
 
-        <div>
-          <p>PASSWORD</p>
-          <label>
-            <input type="password" value={isPassword} onChange={e => setPassword(e.target.value)}
-                   placeholder="비밀번호를 입력해주세요."/>
-          </label>
-        </div>
-      </form>
+              <div>
+                <p>PASSWORD</p>
+                <label>
+                  <input type="password" value={isPassword} onChange={e => setPassword(e.target.value)}
+                         placeholder="비밀번호를 입력해주세요."/>
+                </label>
+              </div>
+            </form>
 
-      <Button maxWidth="300" bgColor="#f6b352" onClick={onLogin}>Login</Button>
+            <Button maxWidth="300" bgColor="#f6b352" onClick={onLogin}>Login</Button>
+          </>
+        ) : (
+          <>
+            <h1>로그인에 성공했습니다.</h1>
+            <Button onClick={() => navigate('/catList')} maxWidth="300" bgColor="#f6b352">Go to Cat List</Button>
+          </>
+        )
+      }
     </div>
   )
 }
