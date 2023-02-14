@@ -1,5 +1,5 @@
-import {useParams, useNavigate} from 'react-router'
 import {useState, useEffect} from 'react'
+import {useParams, useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {
   handleSelectedCat,
@@ -10,8 +10,8 @@ import {
   handleAge
 } from '../../redux/cat'
 import {catStatus, catMessages} from '../../database/cats'
-import './index.scss'
 import Button from '../../component/Button'
+import './index.scss'
 
 const CatDetail = () => {
   const [isEatCount, setEatCount] = useState(1)
@@ -30,15 +30,25 @@ const CatDetail = () => {
   const randomEat = Math.round(Math.random() * 10)
   const randomSeconds = ((Math.random() * (10 - 2)) + 2) * 1000
 
+  // TODO :: 커스텀 훅 사용해서 중복코드 줄이기
   // 고기 먹으면 +3kg
   const eatMeat = () => {
     if (randomEat % 2 === 0) {
       setEatCount(isEatCount + 1)
 
-      dispatch(addHistory({
-        type: 'EatCount',
-        eatCount: isEatCount
-      }))
+      if (selectedCat.history.length === 0) {
+        dispatch(addHistory({
+          type: 'EatCount',
+          eatCount: 1
+        }))
+      } else {
+        let eatCountList = selectedCat.history.filter(history => history.type === 'EatCount')
+        let eatCount = eatCountList[eatCountList.length - 1].eatCount
+        dispatch(addHistory({
+          type: 'EatCount',
+          eatCount: eatCount + 1
+        }))
+      }
       dispatch(addHistory({
         type: 'Meat',
         time: new Date().toLocaleString()
@@ -52,7 +62,6 @@ const CatDetail = () => {
       catListStatus()
     } else {
       alert('안먹어!')
-
       setMeatClick(true)
       setTimeout(() => {
         setMeatClick(false)
@@ -65,10 +74,19 @@ const CatDetail = () => {
     if (randomEat % 2 === 0) {
       setEatCount(isEatCount + 1)
 
-      dispatch(addHistory({
-        type: 'EatCount',
-        eatCount: isEatCount
-      }))
+      if (selectedCat.history.length === 0) {
+        dispatch(addHistory({
+          type: 'EatCount',
+          eatCount: 1
+        }))
+      } else {
+        let eatCountList = selectedCat.history.filter(history => history.type === 'EatCount')
+        let eatCount = eatCountList[eatCountList.length - 1].eatCount
+        dispatch(addHistory({
+          type: 'EatCount',
+          eatCount: eatCount + 1
+        }))
+      }
       dispatch(addHistory({
         type: 'Feed',
         time: new Date().toLocaleString()
@@ -82,7 +100,6 @@ const CatDetail = () => {
       catListStatus()
     } else {
       alert('안먹어!')
-
       setFeedClick(true)
       setTimeout(() => {
         setFeedClick(false)
@@ -95,10 +112,19 @@ const CatDetail = () => {
     if (randomEat % 2 === 0) {
       setEatCount(isEatCount + 1)
 
-      dispatch(addHistory({
-        type: 'EatCount',
-        eatCount: isEatCount
-      }))
+      if (selectedCat.history.length === 0) {
+        dispatch(addHistory({
+          type: 'EatCount',
+          eatCount: 1
+        }))
+      } else {
+        let eatCountList = selectedCat.history.filter(history => history.type === 'EatCount')
+        let eatCount = eatCountList[eatCountList.length - 1].eatCount
+        dispatch(addHistory({
+          type: 'EatCount',
+          eatCount: eatCount + 1
+        }))
+      }
       dispatch(addHistory({
         type: 'Water',
         time: new Date().toLocaleString()
@@ -112,7 +138,6 @@ const CatDetail = () => {
       catListStatus()
     } else {
       alert('안먹어!')
-
       setWaterClick(true)
       setTimeout(() => {
         setWaterClick(false)
@@ -143,7 +168,7 @@ const CatDetail = () => {
     catListStatus()
   }
 
-  // 나이, 몸무게에 따른 상태 체크 TODO :: 한 번 늦게 반영됨
+  // 나이, 몸무게에 따른 상태 체크
   const catListStatus = () => {
     if (isEatCount % 3 === 0) {
       dispatch(handleAge())
@@ -238,7 +263,7 @@ const CatDetail = () => {
         <ul>
           <h3>밥 먹은 횟수</h3>
           {
-            selectedCat.history.filter(type => type.type === 'EatCount').map((eatCount, index) => {
+            selectedCat.history.filter(history => history.type === 'EatCount').map((eatCount, index) => {
               return (
                 <li key={index}>{eatCount.eatCount}</li>
               )
@@ -249,7 +274,7 @@ const CatDetail = () => {
         <ul>
           <h3>고기 먹은 시간</h3>
           {
-            selectedCat.history.filter(type => type.type === 'Meat').map((meat, index) => {
+            selectedCat.history.filter(history => history.type === 'Meat').map((meat, index) => {
               return (
                 <li key={index}>{meat.time}</li>
               )
@@ -260,7 +285,7 @@ const CatDetail = () => {
         <ul>
           <h3>사료 먹은 시간</h3>
           {
-            selectedCat.history.filter(type => type.type === 'Feed').map((feed, index) => {
+            selectedCat.history.filter(history => history.type === 'Feed').map((feed, index) => {
               return (
                 <li key={index}>{feed.time}</li>
               )
@@ -271,7 +296,7 @@ const CatDetail = () => {
         <ul>
           <h3>물 마신 시간</h3>
           {
-            selectedCat.history.filter(type => type.type === 'Water').map((water, index) => {
+            selectedCat.history.filter(history => history.type === 'Water').map((water, index) => {
               return (
                 <li key={index}>{water.time}</li>
               )
@@ -282,7 +307,7 @@ const CatDetail = () => {
         <ul>
           <h3>운동한 시간</h3>
           {
-            selectedCat.history.filter(type => type.type === 'Workout').map((workout, index) => {
+            selectedCat.history.filter(history => history.type === 'Workout').map((workout, index) => {
               return (
                 <li key={index}>{workout.time}</li>
               )
