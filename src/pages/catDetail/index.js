@@ -12,6 +12,7 @@ import {
 import {catStatus, catMessages} from '../../database/cats'
 import Button from '../../component/Button'
 import './index.scss'
+import UseCatAct from '../../hooks/useCatAct'
 
 const CatDetail = () => {
   const [isEatCount, setEatCount] = useState(1)
@@ -34,21 +35,6 @@ const CatDetail = () => {
   // 고기 먹으면 +3kg
   const eatMeat = () => {
     if (randomEat % 2 === 0) {
-      setEatCount(isEatCount + 1)
-
-      if (selectedCat.history.length === 0) {
-        dispatch(addHistory({
-          type: 'EatCount',
-          eatCount: 1
-        }))
-      } else {
-        let eatCountList = selectedCat.history.filter(history => history.type === 'EatCount')
-        let eatCount = eatCountList[eatCountList.length - 1].eatCount
-        dispatch(addHistory({
-          type: 'EatCount',
-          eatCount: eatCount + 1
-        }))
-      }
       dispatch(addHistory({
         type: 'Meat',
         time: new Date().toLocaleString()
@@ -59,6 +45,7 @@ const CatDetail = () => {
       }))
       dispatch(handleGainWeight(3))
 
+      eatCount()
       catListStatus()
     } else {
       alert('안먹어!')
@@ -72,21 +59,6 @@ const CatDetail = () => {
   // 사료 먹으면 +1kg
   const eatFeed = () => {
     if (randomEat % 2 === 0) {
-      setEatCount(isEatCount + 1)
-
-      if (selectedCat.history.length === 0) {
-        dispatch(addHistory({
-          type: 'EatCount',
-          eatCount: 1
-        }))
-      } else {
-        let eatCountList = selectedCat.history.filter(history => history.type === 'EatCount')
-        let eatCount = eatCountList[eatCountList.length - 1].eatCount
-        dispatch(addHistory({
-          type: 'EatCount',
-          eatCount: eatCount + 1
-        }))
-      }
       dispatch(addHistory({
         type: 'Feed',
         time: new Date().toLocaleString()
@@ -97,6 +69,7 @@ const CatDetail = () => {
       }))
       dispatch(handleGainWeight(1))
 
+      eatCount()
       catListStatus()
     } else {
       alert('안먹어!')
@@ -110,21 +83,6 @@ const CatDetail = () => {
   // 물 먹으면 +0.1kg
   const eatWater = () => {
     if (randomEat % 2 === 0) {
-      setEatCount(isEatCount + 1)
-
-      if (selectedCat.history.length === 0) {
-        dispatch(addHistory({
-          type: 'EatCount',
-          eatCount: 1
-        }))
-      } else {
-        let eatCountList = selectedCat.history.filter(history => history.type === 'EatCount')
-        let eatCount = eatCountList[eatCountList.length - 1].eatCount
-        dispatch(addHistory({
-          type: 'EatCount',
-          eatCount: eatCount + 1
-        }))
-      }
       dispatch(addHistory({
         type: 'Water',
         time: new Date().toLocaleString()
@@ -135,6 +93,7 @@ const CatDetail = () => {
       }))
       dispatch(handleGainWeight(0.1))
 
+      eatCount()
       catListStatus()
     } else {
       alert('안먹어!')
@@ -166,6 +125,25 @@ const CatDetail = () => {
     dispatch(handleLoseWeight(2))
 
     catListStatus()
+  }
+
+  // 밥 먹은 횟수 증가
+  const eatCount = () => {
+    setEatCount(isEatCount + 1)
+
+    if (selectedCat.history.length === 0) {
+      dispatch(addHistory({
+        type: 'EatCount',
+        eatCount: 1
+      }))
+    } else {
+      let eatCountList = selectedCat.history.filter(history => history.type === 'EatCount')
+      let eatCount = eatCountList[eatCountList.length - 1].eatCount
+      dispatch(addHistory({
+        type: 'EatCount',
+        eatCount: eatCount + 1
+      }))
+    }
   }
 
   // 나이, 몸무게에 따른 상태 체크

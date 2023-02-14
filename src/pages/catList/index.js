@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleDeletedCat} from '../../redux/cat'
@@ -10,7 +11,7 @@ const CatList = () => {
   const dispatch = useDispatch()
   const catList = useSelector(state => state.cat.cats)
 
-  console.log(catList)
+  let [listOrder, setListOrder] = useState(catList)
 
   const handleDetailNavigate = (name) => {
     navigate(`/catDetail/${name}`)
@@ -27,7 +28,12 @@ const CatList = () => {
     }
   }
 
+  const handleOrder = () => {
+
+  }
+
   // TODO :: 리스트에 순서대로 안들어감
+  // TODO :: 리코일 사용해서 정렬
   return (
     <div className="cat-list">
       {
