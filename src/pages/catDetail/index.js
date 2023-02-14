@@ -12,7 +12,6 @@ import {
 import {catStatus, catMessages} from '../../database/cats'
 import Button from '../../component/Button'
 import './index.scss'
-import UseCatAct from '../../hooks/useCatAct'
 
 const CatDetail = () => {
   const [isEatCount, setEatCount] = useState(1)
@@ -139,6 +138,7 @@ const CatDetail = () => {
     } else {
       let eatCountList = selectedCat.history.filter(history => history.type === 'EatCount')
       let eatCount = eatCountList[eatCountList.length - 1].eatCount
+
       dispatch(addHistory({
         type: 'EatCount',
         eatCount: eatCount + 1
