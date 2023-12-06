@@ -22,10 +22,10 @@ const Header = () => {
                     <nav>
                         <ul className="flex gap-6">
                             <li className="text-xl hover:text-indigo-700 transition font-semibold">
-                                <a href="/mypage">My Page</a>
+                                <a href="/mypage">마이 페이지</a>
                             </li>
                             <li className="text-xl hover:text-indigo-700 transition font-semibold">
-                                <button onClick={onLogout}>Log out</button>
+                                <button onClick={onLogout}>로그아웃</button>
                             </li>
                         </ul>
                     </nav>

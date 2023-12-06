@@ -39,11 +39,11 @@ function Login() {
             {
                 loginUser === null ? (
                     <>
-                        <h1 className="mb-12 text-3xl font-bold text-center">LOGIN</h1>
+                        <h1 className="mb-12 text-3xl font-bold text-center">로그인</h1>
 
                         <form>
                             <div className="mb-6">
-                                <p className="mb-3 text-lg font-semibold">ID</p>
+                                <p className="mb-3 text-lg font-semibold">아이디</p>
                                 <label>
                                     <input
                                         type="text"
@@ -55,7 +55,7 @@ function Login() {
                             </div>
 
                             <div className="mb-9">
-                                <p className="mb-3 text-lg font-semibold">PASSWORD</p>
+                                <p className="mb-3 text-lg font-semibold">비밀번호</p>
                                 <label>
                                     <input
                                         type="password"
@@ -70,7 +70,7 @@ function Login() {
                         <button
                             className="w-full p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-bold"
                             onClick={onLogin}>
-                            Login
+                            로그인 하기
                         </button>
                     </>
                 ) : (

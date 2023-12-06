@@ -42,7 +42,7 @@ const CatList = () => {
                 )
             }
 
-            <h1 className="mb-12 text-3xl font-bold text-center">Cat List</h1>
+            <h1 className="mb-12 text-3xl font-bold text-center">고양이 키우기</h1>
 
 
             {/*<Button className="btn-create" onClick={() => navigate('/catCreate')} maxWidth="100" bgColor="#2576B5">Cat*/}
