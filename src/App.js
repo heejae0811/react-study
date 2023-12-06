@@ -1,5 +1,6 @@
 import {Routes, Route} from 'react-router-dom'
 import {useSelector} from 'react-redux'
+import { Helmet } from 'react-helmet-async'
 import Login from './pages/login'
 import MyPage from './pages/mypage'
 import CatCreate from './pages/catCreate'
@@ -14,6 +15,18 @@ function App() {
 
     return (
         <>
+            <Helmet>
+                <title>React 고양이 키우기</title>
+                <meta name="description" content="나만의 고양이를 키워보세요."/>
+
+                <meta property="og:type" content="website"/>
+                <meta property="og:title" content="React 고양이 키우기"/>
+                <meta property="og:site_name" content="React 고양이 키우기"/>
+                <meta property="og:description" content="나만의 고양이를 키워보세요."/>
+                <meta property="og:image" content="/react-study/meta.jpg"/>
+                <meta property="og:url" content="https://heejae0811.github.io/react-study/" />
+            </Helmet>
+
             <Layout>
                 {
                     loginUser !== null ? (
