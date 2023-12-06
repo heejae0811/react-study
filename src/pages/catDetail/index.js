@@ -10,7 +10,6 @@ import {
     handleAge
 } from '../../redux/cat'
 import {catStatus, catMessages} from '../../database/cats'
-import Button from '../../component/Button'
 
 const CatDetail = () => {
     const [isEatCount, setEatCount] = useState(1)
@@ -170,32 +169,31 @@ const CatDetail = () => {
         }
     }, [])
 
-    // 60초가 지나면 +1살, 100초가 지나면 -1kg
-    // useEffect(() => {
-    //   if (selectedCat !== null) {
-    //     setTimeout(() => {
-    //       dispatch(handleAge())
-    //     }, 60000)
-    //
-    //     setTimeout(() => {
-    //       dispatch(handleLoseWeight(1))
-    //     }, 100000)
-    //   }
-    // }, [selectedCat])
-
     if (!selectedCat) return null
 
     return (
         <>
             <h1 className="mb-12 text-3xl font-bold text-center">{selectedCat.name}</h1>
 
-            <div className="flex justify-items-center items-center gap-6">
-                <img
-                    className={selectedCat.status === catStatus.die ? 'w-1/2 mb-6 border rounded brightness-50' : 'w-1/2 mb-6 border rounded'}
-                    src={selectedCat.profileImage}
-                    alt={selectedCat.name}/>
+            <div className="flex justify-items-center items-center gap-6 mb-6">
+                <div className="w-1/2">
+                    <img
+                        className={selectedCat.status === catStatus.die ? 'border rounded brightness-50' : 'border rounded'}
+                        src={selectedCat.profileImage}
+                        alt={selectedCat.name}/>
 
-                <ul>
+                    <ul className="mt-3 font-semibold">
+                        {
+                            selectedCat.history.filter(type => type.type === 'Message').map((message, index) => {
+                                return (
+                                    <li key={index}>{message.message}</li>
+                                )
+                            })
+                        }
+                    </ul>
+                </div>
+
+                <ul className="w-1/2">
                     <li className="flex justify-items-start items-center gap-3 mb-3">
                         <p className="text-lg">나이</p>
                         <p className="text-lg">{selectedCat.age}</p>
@@ -208,105 +206,115 @@ const CatDetail = () => {
 
                     <li className="flex justify-items-start items-center gap-3 mb-3">
                         <p className="text-lg">상태</p>
-                        <p>{selectedCat.status}</p>
+                        <p className="text-lg">{selectedCat.status}</p>
                     </li>
 
                     <li className="flex justify-items-start items-center gap-3 mb-3">
                         <p className="text-lg">성별</p>
-                        <p>{selectedCat.gender}</p>
+                        <p className="text-lg">{selectedCat.gender}</p>
                     </li>
-                </ul>
 
-                <ul className="messages">
-                    {
-                        selectedCat.history.filter(type => type.type === 'Message').map((message, index) => {
-                            return (
-                                <li key={index}>{message.message}</li>
-                            )
-                        })
-                    }
+                    {/* TODO :: eatCount 쌓이는 것이 아니라 업데이트 */}
+                    <ul className="flex justify-items-start items-center gap-3 mb-3">
+                        <p className="text-lg">밥 먹은 횟수</p>
+                        {
+                            selectedCat.history.filter(history => history.type === 'EatCount').map((eatCount, index) => {
+                                return (
+                                    <li
+                                        className="text-lg"
+                                        key={index}>
+                                        {eatCount.eatCount}
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
                 </ul>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                 <button
-                    className="p-3 bg-red-400 hover:bg-red-500 rounded transition"
+                    className={selectedCat.status === catStatus.die ? 'p-3 bg-red-400 rounded brightness-50' : 'p-3 bg-red-400 hover:bg-red-500 transition rounded'}
                     onClick={eatMeat}
                     disabled={isMeatClick || selectedCat.status === catStatus.die}>
                     간식 먹기
                 </button>
                 <button
-                    className="p-3 bg-amber-400 hover:bg-amber-500 rounded transition"
+                    className={selectedCat.status === catStatus.die ? 'p-3 bg-amber-400 rounded brightness-50' : 'p-3 bg-amber-400 hover:bg-amber-500 transition rounded'}
                     onClick={eatFeed}
                     disabled={isFeedClick || selectedCat.status === catStatus.die}>
                     사료 먹기
                 </button>
                 <button
-                    className="p-3 bg-blue-400 hover:bg-blue-500 rounded transition"
+                    className={selectedCat.status === catStatus.die ? 'p-3 bg-blue-400 rounded brightness-50' : 'p-3 bg-blue-400 hover:bg-blue-500 transition rounded'}
                     onClick={eatWater}
                     disabled={isWaterClick || selectedCat.status === catStatus.die}>
                     물 마시기
                 </button>
                 <button
-                    className="p-3 bg-violet-400 hover:bg-violet-500 rounded transition"
+                    className={selectedCat.status === catStatus.die ? 'p-3 bg-violet-400 rounded brightness-50' : 'p-3 bg-violet-400 hover:bg-violet-500 transition rounded'}
                     onClick={workout}
                     disabled={isWorkoutClick || selectedCat.status === catStatus.die}>
                     운동하기
                 </button>
             </div>
 
-            <div className="cat-record">
-                {/* TODO :: eatCount 쌓이는 것이 아니라 업데이트 */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
                 <ul>
-                    <h3>밥 먹은 횟수</h3>
-                    {
-                        selectedCat.history.filter(history => history.type === 'EatCount').map((eatCount, index) => {
-                            return (
-                                <li key={index}>{eatCount.eatCount}</li>
-                            )
-                        })
-                    }
-                </ul>
-
-                <ul>
-                    <h3>간식 먹은 시간</h3>
+                    <h3 className="mb-3 text-lg font-semibold">간식 먹은 시간</h3>
                     {
                         selectedCat.history.filter(history => history.type === 'Meat').map((meat, index) => {
                             return (
-                                <li key={index}>{meat.time}</li>
+                                <li
+                                    className="mb-3"
+                                    key={index}>
+                                    {meat.time}
+                                </li>
                             )
                         })
                     }
                 </ul>
 
                 <ul>
-                    <h3>사료 먹은 시간</h3>
+                    <h3 className="mb-3 text-lg font-semibold">사료 먹은 시간</h3>
                     {
                         selectedCat.history.filter(history => history.type === 'Feed').map((feed, index) => {
                             return (
-                                <li key={index}>{feed.time}</li>
+                                <li
+                                    className="mb-3"
+                                    key={index}>
+                                    {feed.time}
+                                </li>
                             )
                         })
                     }
                 </ul>
 
                 <ul>
-                    <h3>물 마신 시간</h3>
+                    <h3 className="mb-3 text-lg font-semibold">물 마신 시간</h3>
                     {
                         selectedCat.history.filter(history => history.type === 'Water').map((water, index) => {
                             return (
-                                <li key={index}>{water.time}</li>
+                                <li
+                                    className="mb-3"
+                                    key={index}>
+                                    {water.time}
+                                </li>
                             )
                         })
                     }
                 </ul>
 
                 <ul>
-                    <h3>운동한 시간</h3>
+                    <h3 className="mb-3 text-lg font-semibold">운동한 시간</h3>
                     {
                         selectedCat.history.filter(history => history.type === 'Workout').map((workout, index) => {
                             return (
-                                <li key={index}>{workout.time}</li>
+                                <li
+                                    className="mb-3"
+                                    key={index}>
+                                    {workout.time}
+                                </li>
                             )
                         })
                     }
@@ -314,9 +322,9 @@ const CatDetail = () => {
             </div>
 
             <button
-                className="block w-full max-w-xs m-auto mt-12 p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-bold"
+                className="block w-full max-w-xs m-auto p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-bold"
                 onClick={() => navigate('/catList')}>
-                목록 페이지로 돌아가기
+                다른 고양이 키우러 가기
             </button>
         </>
     )

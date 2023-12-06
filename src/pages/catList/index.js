@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleDeletedCat} from '../../redux/cat'
@@ -8,12 +7,6 @@ const CatList = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const catList = useSelector(state => state.cat.cats)
-
-    let [listOrder, setListOrder] = useState(catList)
-
-    const handleDetailNavigate = (name) => {
-        navigate(`/catDetail/${name}`)
-    }
 
     const handelDelete = (index) => {
         const deletedCat = catList.map(cat => cat.name)
@@ -26,12 +19,7 @@ const CatList = () => {
         }
     }
 
-    const handleOrder = () => {
-
-    }
-
     // TODO :: 리스트에 순서대로 안들어감
-    // TODO :: 리코일 사용해서 정렬
     return (
         <>
             {
@@ -44,9 +32,15 @@ const CatList = () => {
 
             <h1 className="mb-12 text-3xl font-bold text-center">고양이 키우기</h1>
 
-
-            {/*<Button className="btn-create" onClick={() => navigate('/catCreate')} maxWidth="100" bgColor="#2576B5">Cat*/}
-            {/*    Create</Button>*/}
+            <div className="mb-6 text-right">
+                <button
+                    className="max-w-xs p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-bold"
+                    onClick={() => navigate('/catCreate')}>
+                    고양이 추가하기
+                </button>
+            </div>
+            
+            <p className="mb-3 text-base">총 {catList.length} 마리</p>
 
             <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {

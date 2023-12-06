@@ -17,9 +17,9 @@ function Login() {
         const userPw = users.filter(user => user.password === isPassword)
 
         if (isId === '') {
-            alert('아이디를 입력해주세요.')
+            alert('아이디를 입력해 주세요.')
         } else if (isPassword === '') {
-            alert('비밀번호를 입력해주세요.')
+            alert('비밀번호를 입력해 주세요.')
         } else if (userId.length === 0) {
             alert('아이디가 틀렸습니다.')
         } else if (userPw.length === 0) {
@@ -49,7 +49,7 @@ function Login() {
                                         type="text"
                                         value={isId}
                                         onChange={e => setId(e.target.value)}
-                                        placeholder="아이디를 입력해주세요. (test)"
+                                        placeholder="아이디를 입력해 주세요. (test)"
                                         className="w-full p-3 outline-none rounded"/>
                                 </label>
                             </div>
@@ -61,7 +61,7 @@ function Login() {
                                         type="password"
                                         value={isPassword}
                                         onChange={e => setPassword(e.target.value)}
-                                        placeholder="비밀번호를 입력해주세요. (123)"
+                                        placeholder="비밀번호를 입력해 주세요. (123)"
                                         className="w-full p-3 outline-none rounded"/>
                                 </label>
                             </div>

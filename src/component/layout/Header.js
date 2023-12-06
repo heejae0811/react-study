@@ -9,10 +9,10 @@ const Header = () => {
     const loginUser = useSelector(state => state.user.loginUser)
 
     const onLogout = () => {
-        alert('로그아웃 됐습니다.')
-
-        dispatch(handleLogout())
-        navigate('/')
+        if(window.confirm('로그아웃 하시겠습니까?')) {
+            dispatch(handleLogout())
+            navigate('/')
+        }
     }
 
     return (
@@ -22,6 +22,9 @@ const Header = () => {
                     <nav>
                         <ul className="flex gap-6">
                             <li className="text-xl hover:text-indigo-700 transition font-semibold">
+                                <a href="/catList">고양이 키우기</a>
+                            </li>
+                            <li className="text-xl hover:text-indigo-700 transition font-semibold">
                                 <a href="/mypage">마이 페이지</a>
                             </li>
                             <li className="text-xl hover:text-indigo-700 transition font-semibold">
@@ -30,8 +33,7 @@ const Header = () => {
                         </ul>
                     </nav>
                 ) : (
-                    <>
-                    </>
+                    <></>
                 )
             }
         </header>
