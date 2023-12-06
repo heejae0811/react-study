@@ -2,7 +2,6 @@ import {useState} from 'react'
 import {useNavigate} from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
 import {handleLogin} from '../../redux/user'
-import Layout from '../../component/layout/Layout'
 
 function Login() {
     const [isId, setId] = useState('')
@@ -36,58 +35,56 @@ function Login() {
     }
 
     return (
-        <Layout>
-            <div className="login inner">
-                {
-                    loginUser === null ? (
-                        <>
-                            <h1 className="mt-6 mb-12 text-3xl font-bold text-center">LOGIN</h1>
+        <div className="login inner">
+            {
+                loginUser === null ? (
+                    <>
+                        <h1 className="mb-12 text-3xl font-bold text-center">LOGIN</h1>
 
-                            <form>
-                                <div className="mb-6">
-                                    <p className="mb-3 text-lg font-semibold">ID</p>
-                                    <label>
-                                        <input
-                                            type="text"
-                                            value={isId}
-                                            onChange={e => setId(e.target.value)}
-                                            placeholder="아이디를 입력해주세요. (test)"
-                                            className="w-full p-3 outline-none rounded"/>
-                                    </label>
-                                </div>
+                        <form>
+                            <div className="mb-6">
+                                <p className="mb-3 text-lg font-semibold">ID</p>
+                                <label>
+                                    <input
+                                        type="text"
+                                        value={isId}
+                                        onChange={e => setId(e.target.value)}
+                                        placeholder="아이디를 입력해주세요. (test)"
+                                        className="w-full p-3 outline-none rounded"/>
+                                </label>
+                            </div>
 
-                                <div className="mb-9">
-                                    <p className="mb-3 text-lg font-semibold">PASSWORD</p>
-                                    <label>
-                                        <input
-                                            type="password"
-                                            value={isPassword}
-                                            onChange={e => setPassword(e.target.value)}
-                                            placeholder="비밀번호를 입력해주세요. (123)"
-                                            className="w-full p-3 outline-none rounded"/>
-                                    </label>
-                                </div>
-                            </form>
+                            <div className="mb-9">
+                                <p className="mb-3 text-lg font-semibold">PASSWORD</p>
+                                <label>
+                                    <input
+                                        type="password"
+                                        value={isPassword}
+                                        onChange={e => setPassword(e.target.value)}
+                                        placeholder="비밀번호를 입력해주세요. (123)"
+                                        className="w-full p-3 outline-none rounded"/>
+                                </label>
+                            </div>
+                        </form>
 
-                            <button
-                                className="w-full p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-bold"
-                                onClick={onLogin}>
-                                Login
-                            </button>
-                        </>
-                    ) : (
-                        <>
-                            <h1 className="mt-6 mb-12 text-3xl font-bold text-center">로그인 됐습니다.</h1>
-                            <button
-                                className="w-full p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-bold"
-                                onClick={() => navigate('/catList')}>
-                                고양이 키우러 가기
-                            </button>
-                        </>
-                    )
-                }
-            </div>
-        </Layout>
+                        <button
+                            className="w-full p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-bold"
+                            onClick={onLogin}>
+                            Login
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <h1 className="mt-6 mb-12 text-3xl font-bold text-center">로그인 됐습니다.</h1>
+                        <button
+                            className="w-full p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-bold"
+                            onClick={() => navigate('/catList')}>
+                            고양이 키우러 가기
+                        </button>
+                    </>
+                )
+            }
+        </div>
     )
 }
 

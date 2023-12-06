@@ -6,7 +6,7 @@ const Layout = (props: {
 }) => {
     return (
         <>
-            <div className="w-frll min-h-screen p-6 bg-indigo-200">
+            <div className="w-full min-h-screen p-6 bg-indigo-200">
                 <Header/>
 
                 <main className="w-full max-w-screen-lg min-h-screen m-auto">
