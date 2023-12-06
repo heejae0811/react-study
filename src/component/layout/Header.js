@@ -9,7 +9,7 @@ const Header = () => {
     const loginUser = useSelector(state => state.user.loginUser)
 
     const onLogout = () => {
-        alert('로그아웃 되었습니다.')
+        alert('로그아웃 됐습니다.')
 
         dispatch(handleLogout())
         navigate('/')
