@@ -75,7 +75,7 @@ function Login() {
                     </>
                 ) : (
                     <>
-                        <h1 className="mt-6 mb-12 text-3xl font-bold text-center">로그인 됐습니다.</h1>
+                        <h1 className="mt-6 mb-12 text-3xl font-bold text-center">이미 로그인 됐습니다.</h1>
                         <button
                             className="w-full p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-bold"
                             onClick={() => navigate('/catList')}>
