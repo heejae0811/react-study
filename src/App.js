@@ -7,7 +7,8 @@ import CatList from './pages/catList'
 import CatDetail from './pages/catDetail'
 import Error from './pages/error'
 import Header from './component/layout/Header'
-import './app.scss'
+// import './app.scss'
+import './index.css'
 
 function App() {
   const loginUser = useSelector(state => state.user.loginUser)
