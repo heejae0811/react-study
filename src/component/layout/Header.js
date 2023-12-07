@@ -20,14 +20,14 @@ const Header = () => {
             {
                 loginUser !== null ? (
                     <nav>
-                        <ul className="flex gap-6">
-                            <li className="text-xl hover:text-indigo-700 transition font-semibold">
+                        <ul className="flex gap-4 md:gap-6">
+                            <li className="text-lg md:text-xl hover:text-indigo-700 transition font-semibold">
                                 <a href="/catList">고양이 키우기</a>
                             </li>
-                            <li className="text-xl hover:text-indigo-700 transition font-semibold">
+                            <li className="text-lg md:text-xl md:text-xl hover:text-indigo-700 transition font-semibold">
                                 <a href="/mypage">마이 페이지</a>
                             </li>
-                            <li className="text-xl hover:text-indigo-700 transition font-semibold">
+                            <li className="text-lg md:text-xl hover:text-indigo-700 transition font-semibold">
                                 <button onClick={onLogout}>로그아웃</button>
                             </li>
                         </ul>

@@ -232,7 +232,7 @@ const CatDetail = () => {
                 </ul>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-6">
                 <button
                     className={selectedCat.status === catStatus.die ? 'p-3 bg-red-400 rounded brightness-50' : 'p-3 bg-red-400 hover:bg-red-500 transition rounded'}
                     onClick={eatMeat}

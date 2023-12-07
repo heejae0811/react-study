@@ -182,7 +182,7 @@ const CatCreate = () => {
                 </div>
             </form>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
                 <button
                     className="w-full p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-bold"
                     onClick={createCat}>
