@@ -31,8 +31,8 @@ export const cats = [
     profileImage: require('../assets/img/cat02.jpg'),
     name: '나나',
     gender: '암컷',
-    age: 7,
-    weight: 15,
+    age: 5,
+    weight: 10,
     status: catStatus.fat,
     history: []
   },
@@ -40,7 +40,7 @@ export const cats = [
     profileImage: require('../assets/img/cat03.jpg'),
     name: '다다',
     gender: '수컷',
-    age: 15,
+    age: 21,
     weight: 12,
     status: catStatus.die,
     history: []

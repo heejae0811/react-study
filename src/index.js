@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 const persistor = persistStore(store)
 
 root.render(
-    <BrowserRouter basename="/react-study">
+    <BrowserRouter>
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <HelmetProvider>

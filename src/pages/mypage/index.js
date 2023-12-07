@@ -8,7 +8,7 @@ function MyPage() {
 
     return (
         <>
-            <h1 className="mb-12 text-3xl font-bold text-center">마이 페이지</h1>
+            <h1 className="mb-12 text-3xl font-bold text-center">내 정보</h1>
 
             <ul>
                 <li className="flex justify-items-start items-center gap-6 mb-12">

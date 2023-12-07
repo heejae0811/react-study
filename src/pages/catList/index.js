@@ -48,13 +48,16 @@ const CatList = () => {
                         <li
                             className="p-6 border hover:border-indigo-700 transition rounded text-center group"
                             key={index}>
-                            <a href={`/catDetail/${cat.name}`}>
+                            <div
+                                className="cursor-pointer"
+                                onClick={() => navigate(`/catDetail/${cat.name}`)}>
                                 <h2 className="mb-6 text-xl group-hover:text-indigo-700 transition font-semibold">{cat.name}</h2>
 
                                 <img
                                     className={cat.status === catStatus.die ? 'md:h-64 m-auto mb-6 border group-hover:border-indigo-700 transition rounded-full brightness-50' : 'md:h-64 m-auto mb-6 border group-hover:border-indigo-700 transition rounded-full'}
                                     src={cat.profileImage}
-                                    alt={cat.name}/>
+                                    alt={cat.name}
+                                    onClick={() => navigate(`/catDetail/${cat.name}`)}/>
 
                                 <div className="flex justify-items-center items-center gap-3 w-fit m-auto mb-3">
                                     <p className="text-lg">나이</p>
@@ -75,10 +78,10 @@ const CatList = () => {
                                     <p className="text-lg">성별</p>
                                     <p className="text-lg">{cat.gender}</p>
                                 </div>
-                            </a>
+                            </div>
 
                             <button
-                                className="w-full p-3 bg-indigo-400 hover:bg-indigo-500 transition rounded text-lg font-semibold"
+                                className="w-full p-3 bg-indigo-100 hover:bg-indigo-500 transition rounded text-lg font-semibold"
                                 onClick={() => handelDelete(index)}>
                                 삭제하기
                             </button>
