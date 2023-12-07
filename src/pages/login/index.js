@@ -21,7 +21,7 @@ function Login() {
         } else if (isPassword === '') {
             alert('비밀번호를 입력해 주세요.')
         } else if (userId.length === 0) {
-            alert('아이디가 틀렸습니다.')
+            alert('존재하지 않는 아이디입니다.')
         } else if (userPw.length === 0) {
             alert('비밀번호가 틀렸습니다.')
         } else {

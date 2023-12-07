@@ -52,7 +52,7 @@ const CatList = () => {
                                 <h2 className="mb-6 text-xl group-hover:text-indigo-700 transition font-semibold">{cat.name}</h2>
 
                                 <img
-                                    className={cat.status === catStatus.die ? 'mb-6 border group-hover:border-indigo-700 transition rounded-full brightness-50' : 'mb-6 border group-hover:border-indigo-700 transition rounded-full'}
+                                    className={cat.status === catStatus.die ? 'md:h-64 m-auto mb-6 border group-hover:border-indigo-700 transition rounded-full brightness-50' : 'md:h-64 m-auto mb-6 border group-hover:border-indigo-700 transition rounded-full'}
                                     src={cat.profileImage}
                                     alt={cat.name}/>
 
