@@ -2,7 +2,6 @@ import {useState, useRef} from 'react'
 import {useNavigate} from 'react-router'
 import {useDispatch} from 'react-redux'
 import {handleCreatedCat} from '../../redux/cat'
-import Button from '../../component/Button'
 
 const CatCreate = () => {
     const [isProfile, setProfile] = useState('')
@@ -70,9 +69,7 @@ const CatCreate = () => {
                         isProfile === '' ? (
                             <></>
                         ) : (
-                            <>
-                                <img src={isProfile.thumbnail} alt="cat"/>
-                            </>
+                            <img className="mb-3" src={isProfile.thumbnail} alt="cat"/>
                         )
                     }
                     <label>
@@ -81,8 +78,8 @@ const CatCreate = () => {
                             name="image"
                             accept="image/jpg, image/jpeg, image/png"
                             ref={fileInputRef}
-                            onChange={uploadImage}
-                            className="w-full outline-none rounded"/>
+                            className="w-full outline-none rounded"
+                            onChange={uploadImage}/>
                     </label>
                 </div>
 
@@ -93,8 +90,8 @@ const CatCreate = () => {
                             type="text"
                             name="name"
                             value={isName} onChange={e => setName(e.target.value)}
-                            placeholder="이름을 입력해 주세요."
-                            className="w-full p-3 outline-none rounded"/>
+                            className="w-full p-3 outline-none rounded"
+                            placeholder="이름을 입력해 주세요."/>
                     </label>
                 </div>
 
@@ -105,8 +102,8 @@ const CatCreate = () => {
                             type="number"
                             name="age"
                             value={isAge} onChange={e => setAge(e.target.value)}
-                            placeholder="나이를 입력해 주세요."
-                            className="w-full p-3 outline-none rounded"/>
+                            className="w-full p-3 outline-none rounded"
+                            placeholder="나이를 입력해 주세요."/>
                     </label>
                 </div>
 
@@ -117,8 +114,8 @@ const CatCreate = () => {
                             type="number"
                             name="weight"
                             value={isWeight} onChange={e => setWeight(e.target.value)}
-                            placeholder="체중을 입력해 주세요."
-                            className="w-full p-3 outline-none rounded"/>
+                            className="w-full p-3 outline-none rounded"
+                            placeholder="체중을 입력해 주세요."/>
                     </label>
                 </div>
 
@@ -131,27 +128,24 @@ const CatCreate = () => {
                                 type="radio"
                                 name="status"
                                 value="정상"
-                                onChange={e => setStatus(e.target.value)}
-                                className="w-5 h-5"/>
-                            정상
+                                className="w-5 h-5"
+                                onChange={e => setStatus(e.target.value)}/> 정상
                         </label>
                         <label className="flex justify-items-start items-center gap-2">
                             <input
                                 type="radio"
                                 name="status"
                                 value="비만"
-                                onChange={e => setStatus(e.target.value)}
-                                className="w-5 h-5"/>
-                            비만
+                                className="w-5 h-5"
+                                onChange={e => setStatus(e.target.value)}/> 비만
                         </label>
                         <label className="flex justify-items-start items-center gap-2">
                             <input
                                 type="radio"
                                 name="status"
                                 value="사망"
-                                nChange={e => setStatus(e.target.value)}
-                                className="w-5 h-5"/>
-                            사망
+                                className="w-5 h-5"
+                                onChange={e => setStatus(e.target.value)}/> 사망
                         </label>
                     </div>
                 </div>
@@ -165,18 +159,16 @@ const CatCreate = () => {
                                 type="radio"
                                 name="gender"
                                 value="수컷"
-                                onChange={e => setGender(e.target.value)}
-                                className="w-5 h-5"/>
-                            수컷
+                                className="w-5 h-5"
+                                onChange={e => setGender(e.target.value)}/> 수컷
                         </label>
                         <label className="flex justify-items-start items-center gap-2">
                             <input
                                 type="radio"
                                 name="gender"
                                 value="암컷"
-                                onChange={e => setGender(e.target.value)}
-                                className="w-5 h-5"/>
-                            암컷
+                                className="w-5 h-5"
+                                onChange={e => setGender(e.target.value)}/> 암컷
                         </label>
                     </div>
                 </div>

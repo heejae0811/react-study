@@ -13,7 +13,7 @@ import {catStatus, catMessages} from '../../database/cats'
 
 const CatDetail = () => {
     const [isEatCount, setEatCount] = useState(1)
-    const [isMeatClick, setMeatClick] = useState(false)
+    const [isSnackClick, setSnackClick] = useState(false)
     const [isFeedClick, setFeedClick] = useState(false)
     const [isWaterClick, setWaterClick] = useState(false)
     const [isWorkoutClick, setWorkoutClick] = useState(false)
@@ -30,7 +30,7 @@ const CatDetail = () => {
 
     // TODO :: 커스텀 훅 사용해서 중복코드 줄이기
     // 간식 먹으면 +3kg
-    const eatMeat = () => {
+    const eatSnack = () => {
         if (randomEat % 2 === 0) {
             dispatch(addHistory({
                 type: 'Meat',
@@ -46,9 +46,9 @@ const CatDetail = () => {
             catListStatus()
         } else {
             alert('안먹어!')
-            setMeatClick(true)
+            setSnackClick(true)
             setTimeout(() => {
-                setMeatClick(false)
+                setSnackClick(false)
             }, randomSeconds)
         }
     }
@@ -101,19 +101,19 @@ const CatDetail = () => {
         }
     }
 
-    // 운동하면 -2kg
+    // 운동하면 -2kg (밥 먹을 수 없음)
     const workout = () => {
-        setMeatClick(true)
+        setSnackClick(true)
         setFeedClick(true)
         setWaterClick(true)
         setWorkoutClick(true)
 
         setTimeout(() => {
-            setMeatClick(false)
+            setSnackClick(false)
             setFeedClick(false)
             setWaterClick(false)
             setWorkoutClick(false)
-        }, 2000)
+        }, randomSeconds)
 
         dispatch(addHistory({
             type: 'Workout',
@@ -150,7 +150,7 @@ const CatDetail = () => {
             dispatch(handleAge())
         }
 
-        if (selectedCat.age > 10 || selectedCat.weight < 1 || (selectedCat.age * 0.1) > selectedCat.weight) {
+        if (selectedCat.age > 20 || selectedCat.weight <= 0) {
             dispatch(handleStatus(catStatus.die))
         } else if (selectedCat.weight > 20) {
             dispatch(handleStatus(catStatus.fat))
@@ -234,27 +234,27 @@ const CatDetail = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-6">
                 <button
-                    className={selectedCat.status === catStatus.die ? 'p-3 bg-red-400 rounded brightness-50' : 'p-3 bg-red-400 hover:bg-red-500 transition rounded'}
-                    onClick={eatMeat}
-                    disabled={isMeatClick || selectedCat.status === catStatus.die}>
+                    className={isSnackClick || selectedCat.status === catStatus.die ? 'p-3 bg-red-400 rounded brightness-50' : 'p-3 bg-red-400 hover:bg-red-500 transition rounded'}
+                    disabled={isSnackClick || selectedCat.status === catStatus.die}
+                    onClick={eatSnack}>
                     간식 먹기
                 </button>
                 <button
-                    className={selectedCat.status === catStatus.die ? 'p-3 bg-amber-400 rounded brightness-50' : 'p-3 bg-amber-400 hover:bg-amber-500 transition rounded'}
-                    onClick={eatFeed}
-                    disabled={isFeedClick || selectedCat.status === catStatus.die}>
+                    className={isFeedClick || selectedCat.status === catStatus.die ? 'p-3 bg-amber-400 rounded brightness-50' : 'p-3 bg-amber-400 hover:bg-amber-500 transition rounded'}
+                    disabled={isFeedClick || selectedCat.status === catStatus.die}
+                    onClick={eatFeed}>
                     사료 먹기
                 </button>
                 <button
-                    className={selectedCat.status === catStatus.die ? 'p-3 bg-blue-400 rounded brightness-50' : 'p-3 bg-blue-400 hover:bg-blue-500 transition rounded'}
-                    onClick={eatWater}
-                    disabled={isWaterClick || selectedCat.status === catStatus.die}>
+                    className={isWaterClick || selectedCat.status === catStatus.die ? 'p-3 bg-blue-400 rounded brightness-50' : 'p-3 bg-blue-400 hover:bg-blue-500 transition rounded'}
+                    disabled={isWaterClick || selectedCat.status === catStatus.die}
+                    onClick={eatWater}>
                     물 마시기
                 </button>
                 <button
-                    className={selectedCat.status === catStatus.die ? 'p-3 bg-violet-400 rounded brightness-50' : 'p-3 bg-violet-400 hover:bg-violet-500 transition rounded'}
-                    onClick={workout}
-                    disabled={isWorkoutClick || selectedCat.status === catStatus.die}>
+                    className={isWorkoutClick || selectedCat.status === catStatus.die ? 'p-3 bg-violet-400 rounded brightness-50' : 'p-3 bg-violet-400 hover:bg-violet-500 transition rounded'}
+                    disabled={isWorkoutClick || selectedCat.status === catStatus.die}
+                    onClick={workout}>
                     운동하기
                 </button>
             </div>

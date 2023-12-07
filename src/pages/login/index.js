@@ -48,9 +48,9 @@ function Login() {
                                     <input
                                         type="text"
                                         value={isId}
-                                        onChange={e => setId(e.target.value)}
+                                        className="w-full p-3 outline-none rounded"
                                         placeholder="아이디를 입력해 주세요. (test)"
-                                        className="w-full p-3 outline-none rounded"/>
+                                        onChange={e => setId(e.target.value)}/>
                                 </label>
                             </div>
 
@@ -60,9 +60,9 @@ function Login() {
                                     <input
                                         type="password"
                                         value={isPassword}
-                                        onChange={e => setPassword(e.target.value)}
+                                        className="w-full p-3 outline-none rounded"
                                         placeholder="비밀번호를 입력해 주세요. (123)"
-                                        className="w-full p-3 outline-none rounded"/>
+                                        onChange={e => setPassword(e.target.value)}/>
                                 </label>
                             </div>
                         </form>
