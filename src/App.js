@@ -19,12 +19,12 @@ function App() {
                 <title>React 고양이 키우기</title>
                 <meta name="description" content="나만의 고양이를 키워보세요." data-react-helmet="true"/>
 
-                <meta property="og:type" content="website" data-react-helmet="true"/>
-                <meta property="og:title" content="React 고양이 키우기" data-react-helmet="true"/>
-                <meta property="og:site_name" content="React 고양이 키우기" data-react-helmet="true"/>
-                <meta property="og:description" content="나만의 고양이를 키워보세요." data-react-helmet="true"/>
-                <meta property="og:image" content="https://heejae0811.github.io/react-study/meta.jpg" data-react-helmet="true"/>
-                <meta property="og:url" content="https://heejae0811.github.io/react-study" data-react-helmet="true"/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:title" content="React 고양이 키우기"/>
+                <meta property="og:site_name" content="React 고양이 키우기"/>
+                <meta property="og:description" content="나만의 고양이를 키워보세요."/>
+                <meta property="og:image" content="https://heejae0811.github.io/react-study/meta.jpg"/>
+                <meta property="og:url" content="https://heejae0811.github.io/react-study"/>
             </Helmet>
 
             <Layout>
