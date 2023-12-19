@@ -23,9 +23,9 @@ const initialState = {
       ]
     },
     {
-      name: '스틱',
-      loginId: 'sticker',
-      password: '123123123',
+      name: '리액트',
+      loginId: 'react',
+      password: '12345',
       phoneNumber: '010-1243-1234',
       isAdmin: false,
       accessToken: '43c1051a9b9d8e7779123328182e4',

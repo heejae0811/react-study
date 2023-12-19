@@ -24,31 +24,19 @@ const Header = () => {
                   <Link to="/intro">자기소개</Link>
                 </li>
                 <li>
-                  <Link to="/todo">To Do List</Link>
-                </li>
-                <li>
                   <Link to="/props">부모/자식 Props</Link>
                 </li>
                 <li>
                   <Link to="/snow">눈 내리기</Link>
                 </li>
                 <li>
-                  <Link to="/mypage">마이페이지</Link>
+                  <Link to="/todo">To Do List</Link>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <Link to="/intro">자기소개</Link>
-                </li>
-                <li>
-                  <Link to="/todo">To Do List</Link>
-                </li>
-                <li>
-                  <Link to="/props">부모/자식 Props</Link>
-                </li>
-                <li>
-                  <Link to="/snow">눈 내리기</Link>
+                  로그인을 하셔야 메뉴 이용이 가능합니다.
                 </li>
               </>
             )
@@ -60,6 +48,9 @@ const Header = () => {
         user ? (
           <ul>
             <li>{user.loginId} 님</li>
+            <li>
+              <Link to="/mypage">마이페이지</Link>
+            </li>
             <li className="logout" onClick={onLogOut}>로그아웃</li>
           </ul>
         ) : (

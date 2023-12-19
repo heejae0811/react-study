@@ -3,17 +3,16 @@ import {Routes, Route} from 'react-router-dom'
 import {ThemeProvider} from 'styled-components'
 import {darkTheme, lightTheme} from './component/theme/Theme'
 import GlobalStyle from './component/theme/GlobalStyle'
-import IntroPage from './pages/intro/index'
-import TodoPage from './pages/todo/index'
-import PropsPage from './pages/props/index'
-import SnowPage from './pages/snow/index'
-import LoginPage from './pages/login/index'
-import MyPage from './pages/mypage/index'
+import {useUserState} from './context/UserContext'
 import Header from './component/layout/Header'
 import Footer from './component/layout/Footer'
-import Snow from './component/snow/Snow'
 import ThemeButton from './component/theme/ThemeButton'
-import {useUserState} from './context/UserContext'
+import LoginPage from './pages/login/index'
+import MyPage from './pages/mypage/index'
+import IntroPage from './pages/intro/index'
+import PropsPage from './pages/props/index'
+import SnowPage from './pages/snow/index'
+import TodoPage from './pages/todo/index'
 
 function App() {
   const {user} = useUserState()
@@ -31,9 +30,9 @@ function App() {
         {user ? (
           <Routes isDarkMode={isDarkMode}>
             <Route path="/intro" element={<IntroPage/>}/>
-            <Route path="/todo" element={<TodoPage/>}/>
             <Route path="/props" element={<PropsPage/>}/>
             <Route path="/snow" element={<SnowPage/>}/>
+            <Route path="/todo" element={<TodoPage/>}/>
             <Route path="/mypage" element={<MyPage/>}/>
           </Routes>
         ) : (

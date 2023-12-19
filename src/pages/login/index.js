@@ -38,7 +38,7 @@ function LoginPage() {
   return (
     <div className="login-page">
       <h4>아이디 = test, 비밀번호 = 123</h4>
-      <h4>아이디 = sticker, 비밀번호 = 123123123 (false)</h4>
+      <h4>아이디 = react, 비밀번호 = 12345 (false)</h4>
 
       <div>
         <label htmlFor="user_id">아이디</label>
