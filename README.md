@@ -1,8 +1,8 @@
 # 기능 구현
-1. redux, @reduxjs/toolkit 이용해 user, cat 상태 저장하기
-2. redux-persist를 이용해 데이터 로컬 스토리지 저장하기
+1. redux, @reduxjs/toolkit을 사용해 user, cat 상태 저장하기
+2. redux-persist를 사용해 데이터 로컬 스토리지 저장하기
 3. react-helmet-async를 이용해 메타 태그 추가하기
-4. 테일윈드 CSS 적용하기
+4. React Tailwind CSS
 
 <br>
 
